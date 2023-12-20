@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour
     bool onGround;
     InputActionAsset playerInput;
     RockTrajectory trajectoryRenderer;
+
+    private void Awake()
+    {
+        RenderSettings.fog = true;
+        Debug.Log("turning on fog, it's off in scene mode");
+    }
     void Start()
     {
         playerController = GetComponent<CharacterController>();
@@ -67,6 +73,7 @@ public class PlayerController : MonoBehaviour
         playerInput.Enable();
         playerInput.FindAction("LaunchAttack", true).performed += _ => OnAimRock();
         playerInput.FindAction("LaunchAttack", true).canceled += _ => PlayerAttack();
+
     }
     public void OnMove(InputValue input)
     {
