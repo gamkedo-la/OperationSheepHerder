@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a27e7996d7baa44b6b7473b451af85, type: 3}
+  m_Name: Ghost
+  m_EditorClassIdentifier: 
+  hitsToDefeat: {fileID: 11400000, guid: 33a2ccaf266899a49a4241262f0d797f, type: 2}
+  baseSpeed: {fileID: 11400000, guid: 7b2211da26320084693fdb3f3a24c23d, type: 2}
+  prefab: {fileID: 0}
+  animator: {fileID: 0}
+  agent: {fileID: 0}
+  hitCount: 0
