@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 1663390051}
     - target: {fileID: 8835780469073812156, guid: 76de656e9eb67194f98bfa24f31bba3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 89.67139
+      value: 472
       objectReference: {fileID: 0}
     - target: {fileID: 8835780469073812156, guid: 76de656e9eb67194f98bfa24f31bba3c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -330,7 +330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835780469073812156, guid: 76de656e9eb67194f98bfa24f31bba3c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 545.28046
+      value: 366
       objectReference: {fileID: 0}
     - target: {fileID: 8835780469073812156, guid: 76de656e9eb67194f98bfa24f31bba3c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -420,6 +420,30 @@ PrefabInstance:
     - target: {fileID: 3311962203902219751, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664227585765522334, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979388640014002959, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979388640014002959, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979388640014002959, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 478.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979388640014002959, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979388640014002959, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 401.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
