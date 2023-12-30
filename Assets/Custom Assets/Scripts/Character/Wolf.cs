@@ -114,7 +114,7 @@ public class Wolf : Enemy
             Vector3 targetPos = target.transform.position;
             if (!_agent.hasPath || targetPos != previousTargetPosition)
             {
-                /*_agent.SetDestination(targetPos);*/
+                _agent.SetDestination(targetPos);
             }
             if (Vector3.Distance(transform.position, player.transform.position) < 10)
             {

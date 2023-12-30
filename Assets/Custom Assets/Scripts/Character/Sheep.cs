@@ -94,7 +94,7 @@ public class Sheep : MonoBehaviour
             fleeTimerEnd = Random.Range(3.5f, 6);
 
             //set speed to flee speed
-            animator.SetBool("isRunning", true);
+            //animator.SetBool("isRunning", true);
             _speed = fleeSpeed.Value;
             agent.speed = _speed;
 
@@ -128,7 +128,7 @@ public class Sheep : MonoBehaviour
         }
         if (step == FSM.Step.Exit)
         {
-            animator.SetBool("isRunning", false);
+            //animator.SetBool("isRunning", false);
             attacker = null;
         }
     }
@@ -138,7 +138,7 @@ public class Sheep : MonoBehaviour
         {
             _currentState = _follow;
             Debug.Log("sheep is following player");
-            animator.SetBool("isWalking", true);
+            //animator.SetBool("isWalking", true);
         }
         if (step == FSM.Step.Update)
         {
@@ -170,7 +170,7 @@ public class Sheep : MonoBehaviour
             _currentState = _wander;
             Debug.Log("sheep is wandering");
             wanderTimer = wanderTime;
-            animator.SetBool("isWalking", true);
+            //animator.SetBool("isWalking", true);
         }
         if (step == FSM.Step.Update)
         {
