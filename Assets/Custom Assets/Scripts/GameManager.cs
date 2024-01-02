@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public delegate void OnUpdateWolves();
     public OnUpdateSheep onUpdateSheepCallback;
     public OnUpdateWolves onUpdateWolvesCallback;
+
+    public InputAction pauseAction;
 
     private void Awake()
     {
@@ -35,6 +38,24 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            OnPauseGame();
+        }
+    }
+    private void OnEnable()
+    {
+        pauseAction = new InputAction("GameManager/PauseGame");
+        pauseAction.performed += ctx => OnPauseGame();
+        pauseAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        pauseAction.Disable();
+    }
     public void LoadSceneByName(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
