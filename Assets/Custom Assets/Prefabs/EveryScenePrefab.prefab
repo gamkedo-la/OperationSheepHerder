@@ -371,7 +371,7 @@ MonoBehaviour:
   focusRadius: 8
   focusCentering: 0.5
   rotationSpeed: 90
-  distance: 24.1
+  distance: 18.8
   minVerticalAngle: 30
   maxVerticalAngle: 60
   alignDelay: 5
@@ -550,6 +550,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSheep: []
   activeWolves: []
+  pauseAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 635047ff-2e30-4c66-ad91-2b90b2a6d3b6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   levels:
   - {fileID: 0}
   currentLevel: {fileID: 11400000, guid: 2d4838600b2e78f4a9bead182917b0c9, type: 2}

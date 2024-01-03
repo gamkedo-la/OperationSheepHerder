@@ -622,6 +622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4902801738210899681, guid: 73b3227799a60ce44bcd261a6aabf672, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5711004789027515483, guid: 73b3227799a60ce44bcd261a6aabf672, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -746,6 +750,26 @@ PrefabInstance:
     - target: {fileID: 8469358248931655277, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: pauseAction.m_Name
       value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TreeDistance
+      value: 542
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_DetailObjectDensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TreeCrossFadeLength
+      value: 150.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_DetailObjectDistance
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TreeBillboardDistance
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8800065742644287665, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
