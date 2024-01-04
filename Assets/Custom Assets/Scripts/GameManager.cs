@@ -38,13 +38,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            OnPauseGame();
-        }
-    }
+
     private void OnEnable()
     {
         pauseAction = new InputAction("GameManager/PauseGame");
@@ -65,10 +59,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-/*    private void OnLevelWasLoaded(int level)
-    {
-        DynamicGI.UpdateEnvironment();
-    }*/
 
     public void OnPauseGame()
     {
