@@ -217,6 +217,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52d4276b310544641bead43c877992f9, type: 3}
+--- !u!20 &265212245 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 514156188858610278, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+  m_PrefabInstance: {fileID: 9028759597406480453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383844790
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,11 +475,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8835780469073812156, guid: 76de656e9eb67194f98bfa24f31bba3c, type: 3}
   m_PrefabInstance: {fileID: 1358790057054746818}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1246764476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4238462866796959965, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+  m_PrefabInstance: {fileID: 9028759597406480453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1663390051 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8800065742644287664, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
   m_PrefabInstance: {fileID: 9028759597406480453}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1673796919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4679609500908870368, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+  m_PrefabInstance: {fileID: 9028759597406480453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1673796922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673796919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ab8416b0701a9f34280fb9651b4b89d4, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 1246764476}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: GameManager
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 265212245}
 --- !u!1001 &1822685247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -686,6 +737,22 @@ PrefabInstance:
       propertyPath: pauseAction.m_Name
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 8469358248931655277, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: pauseAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469358248931655277, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: pauseAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 2f3c3115-0927-4d36-93ca-b80bf8536fa9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469358248931655277, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: pauseAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/space
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469358248931655277, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: pauseAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_TreeDistance
       value: 542
@@ -725,5 +792,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4679609500908870368, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1673796922}
   m_SourcePrefab: {fileID: 100100000, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
