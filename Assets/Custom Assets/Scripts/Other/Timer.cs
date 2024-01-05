@@ -42,7 +42,13 @@ public class Timer : MonoBehaviour
         wolfCooldownTimerActive = false;
         playerCooldownTimerActive = false;
         followBellTimerActive = false;
-        OnRingBellEnded.Raise();
+        if(OnRingBellEnded)
+        {
+            OnRingBellEnded.Raise();
+        } else
+        {
+            Debug.Log("OnRingBellEnded null, avoided error on .Raise() call");
+        }
         yield break;
     }
 

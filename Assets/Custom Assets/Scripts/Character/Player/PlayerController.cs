@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         trajectoryRenderer = GetComponentInChildren<RockTrajectory>();
         playerInput = GetComponent<PlayerInput>().actions;
         playerInput.Enable();
-        playerInput.FindAction("LaunchAttack", true).performed += _ => StartAiming();
+        playerInput.FindAction("LaunchAttack", true).started += _ => StartAiming();
         playerInput.FindAction("LaunchAttack", true).canceled += _ => EndAiming();
     }
     public void OnMove(InputValue input)
