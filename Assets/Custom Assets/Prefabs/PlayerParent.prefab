@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5622897867171903909}
   - component: {fileID: 8507308350311247569}
   - component: {fileID: 6734103619420813576}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlayerForward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3048206151809105854}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: 0, z: 0.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5372984501935618718}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5622897867171903909
 MonoBehaviour:
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockPrefab: {fileID: 6534842050116577175, guid: ede2e95f65b8a5b4cbf238a8c693d928, type: 3}
-  launchVelocity: 15
   rockCount: 0
   maxRockCount: 5
+  launchVelocity: 15
 --- !u!114 &8507308350311247569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 3, z: 10}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -121,7 +121,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.3664093
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -163,7 +163,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 1
-    alignment: 1
+    alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5210768949794847280}
   - component: {fileID: 5199060567846411052}
   - component: {fileID: 2509963726026598757}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,13 +197,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4543737806604165897}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5372984501935618718}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5199060567846411052
 MeshFilter:
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 3049885374871306495}
   - component: {fileID: 8089906838246895599}
   - component: {fileID: 6891297994814958426}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlayerParent
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -286,7 +286,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5372984501935618719}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
@@ -295,6 +294,7 @@ Transform:
   - {fileID: 5210768949794847280}
   - {fileID: 1093680723317464459}
   m_Father: {fileID: 0}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5372984501935618716
 MonoBehaviour:
