@@ -42,7 +42,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""id"": ""a476b646-8ce5-45c3-9804-562f2ab5734a"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": ""NormalizeVector2,InvertVector2(invertX=false,invertY=false)"",
-                    ""interactions"": ""CustomHolding(useDefaultSettingsDuration=true,useDefaultSettingsPressPoint=true)"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {

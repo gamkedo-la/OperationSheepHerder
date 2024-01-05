@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
     }
     public void EndAiming()
     {
+        Debug.Log("end aiming");
         holdingAim = false;
         PlayerAttack();
     }

@@ -143,7 +143,7 @@ Transform:
   - {fileID: 3255755855740694126}
   - {fileID: 8664227585765522334}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2158292372870123520
 GameObject:
@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2687749827814640380}
   m_LocalRotation: {x: 0.23852561, y: 0.67633325, z: -0.24764776, w: 0.6514211}
-  m_LocalPosition: {x: 80.386696, y: 9.13591, z: 545.0965}
+  m_LocalPosition: {x: 232.28668, y: 9.13591, z: 466.39648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -425,9 +425,9 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 80a7485fb97ad2d408a86ff06d9b7794, type: 2}
-  m_TreeDistance: 5000
-  m_TreeBillboardDistance: 104
-  m_TreeCrossFadeLength: 5
+  m_TreeDistance: 542
+  m_TreeBillboardDistance: 200
+  m_TreeCrossFadeLength: 150.7
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 4cd20e2a2a3ebe84ea7fe2d165b16fdc, type: 2}
   m_BuildHeightMesh: 1
 --- !u!1 &4679609500908870368
 GameObject:
@@ -514,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755133501225709435}
   - component: {fileID: 8469358248931655277}
+  - component: {fileID: 132377538155120757}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -551,18 +552,56 @@ MonoBehaviour:
   activeSheep: []
   activeWolves: []
   pauseAction:
-    m_Name: 
+    m_Name: Pause
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 635047ff-2e30-4c66-ad91-2b90b2a6d3b6
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 2f3c3115-0927-4d36-93ca-b80bf8536fa9
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
     m_Flags: 0
   levels:
   - {fileID: 0}
   currentLevel: {fileID: 11400000, guid: 2d4838600b2e78f4a9bead182917b0c9, type: 2}
   pauseMenu: {fileID: 793414560727680319}
+--- !u!114 &132377538155120757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679609500908870368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ab8416b0701a9f34280fb9651b4b89d4, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 4238462866796959965}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: GameManager
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 514156188858610278}
 --- !u!1 &6226777038751701680
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6226777038751701680}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 446, y: 13, z: 407}
+  m_LocalPosition: {x: 471, y: 13, z: 457}
   m_LocalScale: {x: 35, y: 20, z: 35}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1489,7 +1528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5372984501935618718, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 91.4
+      value: 244.97
       objectReference: {fileID: 0}
     - target: {fileID: 5372984501935618718, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1497,7 +1536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5372984501935618718, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 546.9
+      value: 466.86
       objectReference: {fileID: 0}
     - target: {fileID: 5372984501935618718, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
       propertyPath: m_LocalRotation.w
