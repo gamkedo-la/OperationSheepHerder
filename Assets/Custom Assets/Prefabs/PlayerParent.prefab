@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b8beede6bccbf47b106e70494aa673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockPrefab: {fileID: 6534842050116577175, guid: ede2e95f65b8a5b4cbf238a8c693d928, type: 3}
+  rockPrefab: {fileID: 1072227298933755419, guid: 2dba03a09fda6af48b485301ce483c25, type: 3}
   rockCount: 0
   maxRockCount: 5
   launchVelocity: 15
