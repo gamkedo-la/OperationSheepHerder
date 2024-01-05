@@ -1591,10 +1591,6 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.31297302
       objectReference: {fileID: 0}
-    - target: {fileID: 8507308350311247569, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
-      propertyPath: debugAlwaysDrawTrajectory
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

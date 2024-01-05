@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     Timer timer;
     int stepsSinceLastGrounded;
     bool onGround;
+    bool holdingAim = false;
     InputActionAsset playerInput;
     RockTrajectory trajectoryRenderer;
 
@@ -71,9 +72,8 @@ public class PlayerController : MonoBehaviour
         trajectoryRenderer = GetComponentInChildren<RockTrajectory>();
         playerInput = GetComponent<PlayerInput>().actions;
         playerInput.Enable();
-        playerInput.FindAction("LaunchAttack", true).performed += _ => OnAimRock();
-        playerInput.FindAction("LaunchAttack", true).canceled += _ => PlayerAttack();
-
+        playerInput.FindAction("LaunchAttack", true).performed += _ => StartAiming();
+        playerInput.FindAction("LaunchAttack", true).canceled += _ => EndAiming();
     }
     public void OnMove(InputValue input)
     {
@@ -94,6 +94,23 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Must assign Player Input Space (which should be the camera following the player).");
         }
+    }
+
+    public void StartAiming()
+    {
+        holdingAim = true;
+    }
+    public void EndAiming()
+    {
+        holdingAim = false;
+        PlayerAttack();
+    }
+    private void Update()
+    {
+        if(holdingAim)
+        {
+            OnAimRock();
+        }   
     }
 
 

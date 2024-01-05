@@ -67,7 +67,7 @@ MonoBehaviour:
   input: {x: 0, y: 0}
   trajectoryVertDist: 1
   maxCurveLength: 25
-  debugAlwaysDrawTrajectory: 1
+  debugAlwaysDrawTrajectory: 0
 --- !u!120 &6734103619420813576
 LineRenderer:
   serializedVersion: 2
