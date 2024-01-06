@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Wolf : Enemy
 {
@@ -17,6 +18,16 @@ public class Wolf : Enemy
     //if distance is less than attackRadius, wolf will transition to attack
     [SerializeField] 
     float attackRadius;
+
+    //variables for health
+    [SerializeField]
+    float currentHealth, maxHealth;
+    //using the Unity UI system to display Wolf health
+    [SerializeField]
+    Slider uiHealthValue;
+    //this finds the object in the scene that holds the UI for health
+    [SerializeField]
+    GameObject uiHealthObject;
 
     FSM fsm;
     //use current state for anything?
@@ -70,6 +81,16 @@ public class Wolf : Enemy
         activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_chase);
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            //Using 'I' for 'injure' 
+            //this is a temporary helper function to show how to damage health and show the UI
+            TakeDamage();
+        }
     }
     void FixedUpdate()
     {
@@ -233,6 +254,25 @@ public class Wolf : Enemy
         //transform.RotateAround(player.transform.position, Vector3.up, Random.Range(50, 270));
 
     }
+
+    void TakeDamage()
+    {
+        //when the player presses 'I' they take 5 damage
+        currentHealth -= 5;
+        //this updates the Slider value of Current Health / Max Health
+        uiHealthValue.value = currentHealth / maxHealth;
+
+        //if the enemy health is less than the max, turn the UI on
+        if (currentHealth <= maxHealth)
+        {
+            uiHealthObject.SetActive(true);
+            uiHealthObject.transform.LookAt(Camera.main.transform);
+        }
+        //if the enemy health is at (or greater than) max, turn the UI off
+        else
+            uiHealthObject.SetActive(false);
+    }
+
     void OnDestroy()
     {
         if (Application.isPlaying)
