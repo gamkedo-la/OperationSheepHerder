@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5642637392924491420}
   m_Layer: 0
   m_Name: SheepParent 1
-  m_TagString: Untagged
+  m_TagString: Sheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bf43086b3a13074d834ff20a1643b33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8118591
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bf43086b3a13074d834ff20a1643b33, type: 3}
       propertyPath: m_LocalPosition.y
@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bf43086b3a13074d834ff20a1643b33, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.5822754
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bf43086b3a13074d834ff20a1643b33, type: 3}
       propertyPath: m_LocalRotation.w

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 using UnityEngine.UI;
+using Unity.AI.Navigation;
+using UnityEngine.Android;
 
 public class Wolf : Enemy
 {
@@ -135,7 +137,13 @@ public class Wolf : Enemy
             Vector3 targetPos = target.transform.position;
             if (!_agent.hasPath || targetPos != previousTargetPosition)
             {
+                //TODO: Figure out why wolf movement is jumpy/weird
                 _agent.SetDestination(targetPos);
+                NavMeshPath path = new();
+                if (NavMesh.CalculatePath(transform.position, targetPos, 0, path))
+                {
+                    _agent.SetPath(path);
+                }
             }
             if (Vector3.Distance(transform.position, player.transform.position) < 10)
             {
@@ -146,9 +154,9 @@ public class Wolf : Enemy
                         float randomChanceToDodge = Random.value * 3;
                         if (randomChanceToDodge < 3 && randomChanceToDodge > 2)
                         {
-                            CircleTarget();
+                            //CircleTarget();
                         }
-                        _agent.SetDestination(targetPos);
+                        //_agent.SetDestination(targetPos);
                     }
                 }
             }
@@ -204,7 +212,6 @@ public class Wolf : Enemy
     {
         if (step == FSM.Step.Enter)
         {
-            CircleTarget();
         }
 
         if (step == FSM.Step.Update)
@@ -248,13 +255,6 @@ public class Wolf : Enemy
     {
         activeSheep = GameManager.instance.activeSheep;
     }
-    void CircleTarget()
-    {
-        _agent.SetPath(null);
-        //transform.RotateAround(player.transform.position, Vector3.up, Random.Range(50, 270));
-
-    }
-
     void TakeDamage()
     {
         //when the player presses 'I' they take 5 damage

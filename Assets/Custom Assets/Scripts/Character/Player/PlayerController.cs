@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour
 
     public delegate void Attack();
     public Attack onAttackCallback;
+    //TODO: decide if this delegate & callback are needed
+    public delegate void TargetFound(GameObject target);
+    public TargetFound onTargetFoundCallback;
+
     public readonly Vector3 gravity = new Vector3(0, -3f, 0);
 
     CharacterController playerController;
@@ -59,6 +63,10 @@ public class PlayerController : MonoBehaviour
     bool holdingAim = false;
     InputActionAsset playerInput;
     RockTrajectory trajectoryRenderer;
+
+    float targetingRotateSpeed = 2;
+
+    GameObject _target;
 
     private void Awake()
     {
@@ -75,6 +83,7 @@ public class PlayerController : MonoBehaviour
         playerInput.FindAction("LaunchAttack", true).started += _ => StartAiming();
         playerInput.FindAction("LaunchAttack", true).canceled += _ => EndAiming();
     }
+
     public void OnMove(InputValue input)
     {
         Vector2 inputVec = input.Get<Vector2>();
@@ -117,12 +126,10 @@ public class PlayerController : MonoBehaviour
     //called when attack button is held down, should be repeatedly called like an update function
     public void OnAimRock()
     {
-        Debug.Log("aim rock");
         //if arrow keys pressed, move rock trajectory, otherwise launch rock in forward direction
         //TODO: Not working for some reason
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();
-        //Vector2 input = playerInput.Player.AimAttack.ReadValue<Vector2>();
-        trajectoryRenderer.transform.Rotate(new Vector2(input.x, -input.y) * 1.5f, Space.World);
+        transform.Rotate(new Vector2(input.x, input.y * targetingRotateSpeed), Space.World);
         trajectoryRenderer.DrawTrajectory();
     }
 

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(LineRenderer))]
 public class RockTrajectory : MonoBehaviour
@@ -28,13 +30,16 @@ public class RockTrajectory : MonoBehaviour
 
     LineRenderer line;
 
+    PlayerController player;
+
     void Awake()
     {
+        player = GetComponentInParent<PlayerController>();
         line = GetComponent<LineRenderer>();
         startPosition = transform.position;
         startVelocity = transform.forward * GetComponent<LaunchRock>().launchVelocity;
-
     }
+
 
     void Update()
     {
@@ -54,8 +59,9 @@ public class RockTrajectory : MonoBehaviour
         var currentVelocity = startVelocity;
 
         Ray ray = new Ray(currentPosition, currentVelocity.normalized);
+        RaycastHit hit;
         int i = 0;
-        while (!Physics.Raycast(ray, out RaycastHit hit, trajectoryVertDist) && Vector3.Distance(startPosition, currentPosition) < maxCurveLength)
+        while (!Physics.Raycast(ray, out hit, trajectoryVertDist) && Vector3.Distance(startPosition, currentPosition) < maxCurveLength)
         {
             i++;
             var t = trajectoryVertDist / currentVelocity.magnitude;
@@ -77,19 +83,31 @@ public class RockTrajectory : MonoBehaviour
 
             if (hit.transform)
             {
-                //add code to visually show player their attack will hit target
 
-                if (hit.collider.gameObject.CompareTag("Enemy"))
-                {
-                    //let that enemy script know that it is targeted
-                }
                 curvePoints.Add(hit.point);
             }
 
 
         }
+        if (hit.collider)
+        {
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                LockOn(hit.collider.gameObject);
+            }
+        }
         line.positionCount = curvePoints.Count;
         line.SetPositions(curvePoints.ToArray());
+    }
+
+    void LockOn(GameObject target)
+    {
+        //TODO: visually show player they are targeting an enemy
+        //TODO: Not sure how to implement this yet
+        //TODO: let that enemy script know that it is targeted, for evasion?
+
+        //player.onTargetFoundCallback.Invoke(target);
+        //line.SetPositions(new Vector3[] { transform.position, target.transform.position });
     }
 
     public void ClearTrajectory()

@@ -23,13 +23,23 @@ public class LaunchRock : MonoBehaviour
     int counter = 0;
     void Awake()
     {
-        player = FindObjectOfType<PlayerController>();
-        player.onAttackCallback += OnPlayerAttack;
+        player = GetComponentInParent<PlayerController>();
         rocks = new GameObject[5];
         for (int i = 0; i < rocks.Length; i++)
         {
             rocks[i] = null;
         }
+    }
+
+    private void OnEnable()
+    {
+        player.onAttackCallback += OnPlayerAttack;
+    }
+
+    private void OnDisable()
+    {
+        player.onAttackCallback -= OnPlayerAttack;
+
     }
     public void OnPlayerAttack()
     {

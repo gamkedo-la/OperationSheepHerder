@@ -12,6 +12,7 @@ TagManager:
   - Dragon
   - Sheep
   - Grass
+  - Enemy
   layers:
   - Default
   - TransparentFX
