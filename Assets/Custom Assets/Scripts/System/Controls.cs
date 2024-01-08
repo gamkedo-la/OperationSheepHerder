@@ -62,6 +62,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LockOn"",
+                    ""type"": ""Button"",
+                    ""id"": ""01dbfd16-1921-4b06-8c32-726b04216136"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -194,6 +203,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""LaunchAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""217773de-a70a-4e55-9081-a8d31b34c28e"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""LockOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -350,6 +370,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_AimAttack = m_Player.FindAction("AimAttack", throwIfNotFound: true);
         m_Player_RingBell = m_Player.FindAction("RingBell", throwIfNotFound: true);
         m_Player_LaunchAttack = m_Player.FindAction("LaunchAttack", throwIfNotFound: true);
+        m_Player_LockOn = m_Player.FindAction("LockOn", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_RotateCamera = m_Camera.FindAction("RotateCamera", throwIfNotFound: true);
@@ -422,6 +443,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AimAttack;
     private readonly InputAction m_Player_RingBell;
     private readonly InputAction m_Player_LaunchAttack;
+    private readonly InputAction m_Player_LockOn;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -430,6 +452,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @AimAttack => m_Wrapper.m_Player_AimAttack;
         public InputAction @RingBell => m_Wrapper.m_Player_RingBell;
         public InputAction @LaunchAttack => m_Wrapper.m_Player_LaunchAttack;
+        public InputAction @LockOn => m_Wrapper.m_Player_LockOn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -451,6 +474,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @LaunchAttack.started += instance.OnLaunchAttack;
             @LaunchAttack.performed += instance.OnLaunchAttack;
             @LaunchAttack.canceled += instance.OnLaunchAttack;
+            @LockOn.started += instance.OnLockOn;
+            @LockOn.performed += instance.OnLockOn;
+            @LockOn.canceled += instance.OnLockOn;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -467,6 +493,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @LaunchAttack.started -= instance.OnLaunchAttack;
             @LaunchAttack.performed -= instance.OnLaunchAttack;
             @LaunchAttack.canceled -= instance.OnLaunchAttack;
+            @LockOn.started -= instance.OnLockOn;
+            @LockOn.performed -= instance.OnLockOn;
+            @LockOn.canceled -= instance.OnLockOn;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -599,6 +628,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAimAttack(InputAction.CallbackContext context);
         void OnRingBell(InputAction.CallbackContext context);
         void OnLaunchAttack(InputAction.CallbackContext context);
+        void OnLockOn(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

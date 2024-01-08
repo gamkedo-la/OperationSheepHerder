@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,22 +29,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameEvent OnRingBellEvent;
 
-    [SerializeField] 
+    [SerializeField]
     HitsToDefeat hitsToDefeat;
 
-    [SerializeField] 
+    [SerializeField]
     SpeedSO speed;
 
-    [SerializeField] 
+    [SerializeField]
     float rotationSpeed;
 
-    [SerializeField] 
+    [SerializeField]
     Transform playerInputSpace = default;
 
-    [SerializeField] 
+    [SerializeField]
     Rect allowedArea;
 
-    [SerializeField, Min(0f)] 
+    [SerializeField, Min(0f)]
     float probeDistance = 1f;
 
     public delegate void Attack();
@@ -68,6 +69,9 @@ public class PlayerController : MonoBehaviour
 
     GameObject _target;
 
+    public Transform Target { get; set; }
+    public bool LockedOn { get; set; }
+
     private void Awake()
     {
         RenderSettings.fog = true;
@@ -82,6 +86,11 @@ public class PlayerController : MonoBehaviour
         playerInput.Enable();
         playerInput.FindAction("LaunchAttack", true).started += _ => StartAiming();
         playerInput.FindAction("LaunchAttack", true).canceled += _ => EndAiming();
+    }
+
+    public void OnLockOn()
+    {
+        LockedOn = !LockedOn;
     }
 
     public void OnMove(InputValue input)
@@ -116,10 +125,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if(holdingAim)
+        if (holdingAim)
         {
             OnAimRock();
-        }   
+        }
     }
 
 
@@ -148,7 +157,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        
+
         trajectoryRenderer.transform.localEulerAngles = Vector3.zero;
     }
     public void OnRingBell()

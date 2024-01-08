@@ -694,9 +694,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1134388905287598374, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1605474281509964159, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_Name
       value: EveryScenePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1944946582605880721, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2914303527729942539, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: distance
@@ -769,6 +777,10 @@ PrefabInstance:
     - target: {fileID: 8003598882525546869, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800065742644287664, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8800065742644287664, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_IsActive

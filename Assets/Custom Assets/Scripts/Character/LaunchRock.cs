@@ -43,12 +43,20 @@ public class LaunchRock : MonoBehaviour
     }
     public void OnPlayerAttack()
     {
+        var fireVector = transform.forward;
+        if(player.LockedOn){
+            var directionVector = player.Target.position - transform.position;
+            directionVector.y = 0;
+            fireVector = directionVector.normalized;
+        }
+        
+
         // to begin level, instantiate new rock objects until reaching maxRockCount
         if (rockCount < maxRockCount)
         {
             GameObject rock = Instantiate(rockPrefab, transform.position, transform.rotation);
             Rigidbody rockRB = rock.GetComponent<Rigidbody>();
-            rockRB.AddRelativeForce(Vector3.forward * launchVelocity, ForceMode.VelocityChange);
+            rockRB.AddForce(fireVector * launchVelocity, ForceMode.VelocityChange);
             rocks[System.Array.FindIndex(rocks, x => x == null)] = rock;
         }
 
@@ -60,7 +68,7 @@ public class LaunchRock : MonoBehaviour
 
             rocks[counter].GetComponent<OnCollisionTarget>().firstHit = true;
             rocks[counter].transform.SetPositionAndRotation(transform.position, Quaternion.identity);
-            rocks[counter].GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity, ForceMode.VelocityChange);
+            rocks[counter].GetComponent<Rigidbody>().AddForce(fireVector * launchVelocity, ForceMode.VelocityChange);
             counter++;
         }
         if (counter >= maxRockCount)

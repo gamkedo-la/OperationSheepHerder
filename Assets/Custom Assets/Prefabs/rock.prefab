@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c48b37e9091a8a940a32e56de4f35eee, type: 3}
       propertyPath: m_Name
-      value: rock Variant
+      value: rock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -115,7 +115,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -136,6 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstHit: 1
-  particles: {fileID: 8094875405035257195, guid: ede2e95f65b8a5b4cbf238a8c693d928, type: 3}
+  particles: {fileID: 3396885616553986590, guid: bf5bc87d0a3891644b236324f02db7f1, type: 3}
   coolDownSeconds: 2
   hitEnemy: 0

@@ -9,7 +9,7 @@ public class RockTrajectory : MonoBehaviour
 {
 
     //TODO: targeting system to target wolves, not auto target but significant helper to target when close enough 
-    [SerializeField] 
+    [SerializeField]
     Vector3 startPosition;
 
     [SerializeField]
@@ -18,19 +18,20 @@ public class RockTrajectory : MonoBehaviour
     [SerializeField]
     Vector2 input;
 
-    [SerializeField] 
+    [SerializeField]
     float trajectoryVertDist = 0.25f;
 
-    [SerializeField] 
+    [SerializeField]
     float maxCurveLength = 5f;
 
     [Header("Debug")]
-    [SerializeField] 
+    [SerializeField]
     bool debugAlwaysDrawTrajectory = false;
 
     LineRenderer line;
 
     PlayerController player;
+
 
     void Awake()
     {
@@ -49,7 +50,89 @@ public class RockTrajectory : MonoBehaviour
         }
     }
 
+    Transform GetNearestTarget()
+    {
+        var colliders = Physics.OverlapSphere(transform.position, maxCurveLength);
+        Transform bestTarget = null;
+
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach (var potentialTarget in colliders)
+        {
+            if (!potentialTarget.CompareTag("Enemy"))
+            {
+                continue;
+            }
+
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget.transform;
+            }
+        }
+
+        return bestTarget;
+    }
+
     public void DrawTrajectory()
+    {
+        if (player.LockedOn)
+        {
+            player.Target = GetNearestTarget();
+            if (player.Target == null)
+            {
+                DrawUnlockedTrajectory();
+                return;
+            }
+            DrawLockedTrajectory();
+            return;
+        }
+        DrawUnlockedTrajectory();
+    }
+
+    public void DrawLockedTrajectory()
+    {
+        var curvePoints = new List<Vector3>();
+        startPosition = transform.position;
+        startVelocity = (player.Target.position - startPosition).normalized * GetComponent<LaunchRock>().launchVelocity;
+        startVelocity.y = 0;
+        curvePoints.Add(startPosition);
+        var currentPosition = startPosition;
+        var currentVelocity = startVelocity;
+
+        int i = 0;
+        int numSteps = 10;
+        float dt = 0.1f;
+        float time = 0.0f;
+        while (i < numSteps && Vector3.Distance(currentPosition, player.Target.position) > Vector3.kEpsilon)
+        {
+            i++;
+            time += dt;
+            currentPosition = startPosition + time * startVelocity;
+            currentPosition.y = startPosition.y + startVelocity.y * time + (Physics.gravity.y / 2f * time * time);
+
+            curvePoints.Add(currentPosition);
+
+            Vector3 lastPosition = line.GetPosition(line.positionCount-1);
+
+            if (Physics.Raycast(lastPosition, (currentPosition - lastPosition).normalized, out var hit, (currentPosition - lastPosition).magnitude))
+            {
+                if(hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Ground")){
+                    Debug.Log(hit.transform.tag);
+                    curvePoints.Add(hit.point);
+                    break;
+                }
+                
+            }
+
+        }
+        line.positionCount = curvePoints.Count;
+        line.SetPositions(curvePoints.ToArray());
+    }
+
+    private void DrawUnlockedTrajectory()
     {
         var curvePoints = new List<Vector3>();
         startPosition = transform.position;
@@ -93,25 +176,16 @@ public class RockTrajectory : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                LockOn(hit.collider.gameObject);
+                //LockOn(hit.collider.gameObject);
             }
         }
         line.positionCount = curvePoints.Count;
         line.SetPositions(curvePoints.ToArray());
     }
 
-    void LockOn(GameObject target)
-    {
-        //TODO: visually show player they are targeting an enemy
-        //TODO: Not sure how to implement this yet
-        //TODO: let that enemy script know that it is targeted, for evasion?
-
-        //player.onTargetFoundCallback.Invoke(target);
-        //line.SetPositions(new Vector3[] { transform.position, target.transform.position });
-    }
-
     public void ClearTrajectory()
     {
         line.positionCount = 0;
     }
+
 }
