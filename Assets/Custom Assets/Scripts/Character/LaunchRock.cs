@@ -67,7 +67,8 @@ public class LaunchRock : MonoBehaviour
             rockCount = rocks.Count();
 
             rocks[counter].GetComponent<OnCollisionTarget>().firstHit = true;
-            rocks[counter].transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+            rocks[counter].GetComponent<Rigidbody>().position = transform.position;
+            rocks[counter].GetComponent<Rigidbody>().velocity = Vector3.zero;
             rocks[counter].GetComponent<Rigidbody>().AddForce(fireVector * launchVelocity, ForceMode.VelocityChange);
             counter++;
         }
