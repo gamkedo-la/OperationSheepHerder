@@ -74,6 +74,7 @@ public class Wolf : Enemy
         {
             GameManager.instance.UpdateActiveWolves();
         }
+        onHitCallback += TakeDamage;
     }
     void Start()
     {
@@ -84,33 +85,9 @@ public class Wolf : Enemy
         fsm.OnSpawn(_chase);
 
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            //Using 'I' for 'injure' 
-            //this is a temporary helper function to show how to damage health and show the UI
-            TakeDamage();
-        }
-    }
     void FixedUpdate()
     {
         fsm.OnUpdate();
-    }
-
-    public void OnHit()
-    {
-        Debug.Log("on hit called");
-        hitCount.Value++;
-        if (hitCount.Value >= _hitsToDefeat)
-        {
-            fsm.TransitionTo(_die);
-        }
-        else
-        {
-            fsm.TransitionTo(_chase);
-        }
     }
 
     //chase player or sheep to attack
@@ -255,8 +232,9 @@ public class Wolf : Enemy
     {
         activeSheep = GameManager.instance.activeSheep;
     }
-    void TakeDamage()
+    public override void TakeDamage(GameObject weapon)
     {
+        Debug.Log(weapon.name);
         //when the player presses 'I' they take 5 damage
         currentHealth -= 5;
         //this updates the Slider value of Current Health / Max Health

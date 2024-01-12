@@ -22,7 +22,6 @@ public class TreeColliders : MonoBehaviour
     void PlaceTreeColliders()
     {
         TreeInstance[] trees = terrain.terrainData.treeInstances;
-        Debug.Log(terrain.terrainData.treeInstanceCount);
         TerrainData tData = terrain.terrainData;
         GameObject colliderParent = new GameObject("ColliderParent");
             for (int i = 0; i < trees.Length - 1; i++)

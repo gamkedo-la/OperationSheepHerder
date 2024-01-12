@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,21 +39,10 @@ public class OnCollisionTarget : MonoBehaviour
             {
                 if (timeStamp <= Time.time)
                 {
-                    if (hitObject.CompareTag("Wolf"))
+                    if (hitObject.CompareTag("Enemy"))
                     {
-                        hitObject.GetComponent<Wolf>().OnHit();
-                    }
-                    else if (hitObject.CompareTag("Ghost"))
-                    {
-                        //hitObject.GetComponent<Ghost>().OnHit();
-                    }
-                    else if (hitObject.CompareTag("Dragon"))
-                    {
-                        //hitObject.GetComponent<Dragon>().OnHit();
-                    }
-                    else if (hitObject.CompareTag("EvilVine"))
-                    {
-                        //hitObject.GetComponent<EvilVine>().OnHit();
+                        Debug.Log("hit enemy");
+                        hitObject.GetComponent<Enemy>().onHitCallback.Invoke(this.gameObject);
                     }
                 }
             }

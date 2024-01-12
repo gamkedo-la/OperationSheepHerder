@@ -501,7 +501,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
-  hitCount: {fileID: 8432698155617968472}
   player: {fileID: 0}
   target: {fileID: 0}
   _agent: {fileID: 7968087563639658752}
@@ -512,8 +511,8 @@ MonoBehaviour:
   attackRadius: 3
   currentHealth: 30
   maxHealth: 30
-  uiHealthValue: {fileID: 0}
-  uiHealthObject: {fileID: 0}
+  uiHealthValue: {fileID: 5105575936262005147}
+  uiHealthObject: {fileID: 2532696508585898229}
 --- !u!195 &7968087563639658752
 NavMeshAgent:
   m_ObjectHideFlags: 0
