@@ -1,20 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 //TODO: Re-work enemy structure
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Character
 {
     public EnemyType type;
 
-    public GameObject player;
 
     public GameObject target = null;
 
-    public NavMeshAgent _agent;
-
-    [SerializeField]
-    Animator _animator;
 
     public delegate void OnHit(GameObject weapon);
     public OnHit onHitCallback;
@@ -30,5 +26,4 @@ public abstract class Enemy : MonoBehaviour
         return navHit.position;
     }
 
-    public abstract void TakeDamage(GameObject weapon);
 }

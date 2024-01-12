@@ -9,8 +9,6 @@ using UnityEngine.Android;
 
 public class Wolf : Enemy
 {
-    [SerializeField] 
-    Transform ground;
     //if distance to target is less than chase radius, transition to chase
     [SerializeField] 
     float chaseRadius;
@@ -20,16 +18,6 @@ public class Wolf : Enemy
     //if distance is less than attackRadius, wolf will transition to attack
     [SerializeField] 
     float attackRadius;
-
-    //variables for health
-    [SerializeField]
-    float currentHealth, maxHealth;
-    //using the Unity UI system to display Wolf health
-    [SerializeField]
-    Slider uiHealthValue;
-    //this finds the object in the scene that holds the UI for health
-    [SerializeField]
-    GameObject uiHealthObject;
 
     FSM fsm;
     //use current state for anything?
@@ -41,12 +29,12 @@ public class Wolf : Enemy
     Vector3 chaseStartLocation;
 
     float _speed;
-    int _hitsToDefeat;
 
     //track current hunger level
     //TODO: have increased hunger level make wolves more desperate; less likely to attack in packs, easier to kill; hunger goes down when it kills a sheep 
     //TODO: decide if above comment is how things will work
-    float hunger;
+    //float hunger;
+
     //list of active wolves in scene, will be used to influence wolves behavior to prefer staying in a pack and ganging up on nearby sheep 
     List<Wolf> activeWolves;
     List<Sheep> activeSheep;
@@ -56,8 +44,6 @@ public class Wolf : Enemy
         player = FindObjectOfType<PlayerController>().gameObject;
         timer = FindObjectOfType<Timer>();
         _speed = type.baseSpeed.Value;
-        _hitsToDefeat = type.hitsToDefeat.Value;
-        hunger = 0f;
 
         //set state functions
         fsm = new FSM();
@@ -100,6 +86,7 @@ public class Wolf : Enemy
                 _agent.ResetPath();
             }
             _currentState = _chase;
+            _agent.speed = _speed;
             Debug.Log("enter chase state");
             chaseStartLocation = transform.position;
             if (target == null)

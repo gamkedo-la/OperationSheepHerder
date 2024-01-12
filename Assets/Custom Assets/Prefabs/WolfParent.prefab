@@ -505,14 +505,13 @@ MonoBehaviour:
   target: {fileID: 0}
   _agent: {fileID: 7968087563639658752}
   _animator: {fileID: 0}
-  ground: {fileID: 0}
-  chaseRadius: 30
-  hungerThreshold: 100
-  attackRadius: 3
   currentHealth: 30
   maxHealth: 30
   uiHealthValue: {fileID: 5105575936262005147}
-  uiHealthObject: {fileID: 2532696508585898229}
+  uiHealthObject: {fileID: 8007261443627516837}
+  chaseRadius: 30
+  hungerThreshold: 100
+  attackRadius: 3
 --- !u!195 &7968087563639658752
 NavMeshAgent:
   m_ObjectHideFlags: 0

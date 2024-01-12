@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Sheep : MonoBehaviour
+public class Sheep : Character
 {
 
     //TODO: Sheep should have health bars, once x amount of time has passed since being attacked they recover health over time
@@ -244,5 +244,10 @@ public class Sheep : MonoBehaviour
         {
             GameManager.instance.UpdateActiveSheep();
         }
+    }
+
+    public override void TakeDamage(GameObject weapon)
+    {
+        throw new System.NotImplementedException();
     }
 }
