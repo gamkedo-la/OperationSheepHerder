@@ -1519,6 +1519,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5372984501935618717, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
+      propertyPath: attackCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372984501935618717, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
       propertyPath: playerInputSpace
       value: 
       objectReference: {fileID: 3654917424681527500}
