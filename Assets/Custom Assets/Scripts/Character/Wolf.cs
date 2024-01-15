@@ -83,10 +83,6 @@ public class Wolf : Enemy
     {
         if (step == FSM.Step.Enter)
         {
-            if (_agent.hasPath)
-            {
-                _agent.ResetPath();
-            }
             _currentState = _chase;
             _agent.speed = speed;
             Debug.Log("enter chase state");
