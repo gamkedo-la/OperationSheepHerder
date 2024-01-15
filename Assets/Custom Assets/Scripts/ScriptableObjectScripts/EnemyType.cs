@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyType : ScriptableObject
 {
     //TODO: transition hitsToDefeat to health bar
-    public HitsToDefeat hitsToDefeat;
-    public SpeedSO baseSpeed;
+    public float baseSpeed;
     public GameObject prefab;
+    public float baseAttack;
 }

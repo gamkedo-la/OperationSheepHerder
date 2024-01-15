@@ -12,10 +12,12 @@ public class OnCollisionTarget : MonoBehaviour
     [SerializeField]
     ParticleSystem particles;
     float timeStamp;
-    [SerializeField] 
+    [SerializeField]
+    WeaponSO weaponType;
     float coolDownSeconds;
     public bool hitEnemy = false;
     Rigidbody rB;
+    
 
 
     void Awake()
@@ -27,6 +29,7 @@ public class OnCollisionTarget : MonoBehaviour
     {
         GameObject hitObject = collision.gameObject;
         
+
         if (firstHit)
         {
             firstHit = false;
@@ -42,7 +45,7 @@ public class OnCollisionTarget : MonoBehaviour
                     if (hitObject.CompareTag("Enemy"))
                     {
                         Debug.Log("hit enemy");
-                        hitObject.GetComponent<Enemy>().onHitCallback.Invoke(this.gameObject);
+                        hitObject.GetComponent<Enemy>().onHitCallback.Invoke(this.gameObject, weaponType.DamageValue);
                     }
                 }
             }

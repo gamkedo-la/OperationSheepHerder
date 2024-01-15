@@ -271,7 +271,6 @@ GameObject:
   - component: {fileID: 320836367184462976}
   - component: {fileID: 3049885374871306495}
   - component: {fileID: 8089906838246895599}
-  - component: {fileID: 6891297994814958426}
   m_Layer: 0
   m_Name: PlayerParent
   m_TagString: Player
@@ -338,14 +337,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855dd245a4f2c3a44896e0e56567ab2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  _agent: {fileID: 0}
+  _animator: {fileID: 0}
+  uiHealthValue: {fileID: 0}
+  uiHealthObject: {fileID: 0}
+  player: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 0
+  attackPower: 0
+  speed: 0
+  playerSpeed: 5
   attackCooldown: 3
   bellTimer: 0
   followBell: 0
-  mainCamera: {fileID: 0}
-  OnRingBellEvent: {fileID: 0}
-  hitsToDefeat: {fileID: 11400000, guid: affc688c6c028e54d95e0f684a5d6332, type: 2}
-  speed: {fileID: 11400000, guid: d3f0493ebcfc7dc47a98b7d270c0809f, type: 2}
   rotationSpeed: 0
   playerInputSpace: {fileID: 0}
   allowedArea:
@@ -456,19 +460,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!208 &6891297994814958426
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5372984501935618719}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.29, z: 0}
-  m_TimeToStationary: 0.5

@@ -500,18 +500,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779956bd5570e0a44a6f16b49ad7e706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
-  player: {fileID: 0}
-  target: {fileID: 0}
   _agent: {fileID: 7968087563639658752}
   _animator: {fileID: 0}
-  currentHealth: 30
-  maxHealth: 30
   uiHealthValue: {fileID: 5105575936262005147}
   uiHealthObject: {fileID: 8007261443627516837}
+  player: {fileID: 0}
+  currentHealth: 30
+  maxHealth: 30
+  attackPower: 1
+  speed: 5
+  type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
+  target: {fileID: 0}
   chaseRadius: 30
-  hungerThreshold: 100
-  attackRadius: 3
+  attackRadius: 5
+  attackTimerCooldown: 4
 --- !u!195 &7968087563639658752
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -696,8 +698,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.017, y: 2.0868}
-  m_SizeDelta: {x: 2.4983, y: 0.5335}
+  m_AnchoredPosition: {x: 0, y: 2}
+  m_SizeDelta: {x: 2.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8544097966200785416
 Canvas:

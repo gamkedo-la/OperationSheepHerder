@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
     public IEnumerator CooldownTimer(float cooldownTime, string caller, [CallerMemberName] string callingMethod = "")
     {
         float timer = 0;
-        if (caller == "Wolf")
+        if (caller.Contains("Wolf"))
         {
             wolfCooldownTimerActive = true;
         }
@@ -39,6 +39,7 @@ public class Timer : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;//new WaitForSeconds(0.25f);
         }
+        Debug.Log("timer over");
         wolfCooldownTimerActive = false;
         playerCooldownTimerActive = false;
         followBellTimerActive = false;

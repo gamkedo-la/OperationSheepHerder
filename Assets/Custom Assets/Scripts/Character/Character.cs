@@ -9,7 +9,6 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     Animator _animator;
 
-    public float currentHealth, maxHealth;
 
     public Slider uiHealthValue;
 
@@ -17,6 +16,9 @@ public abstract class Character : MonoBehaviour
 
     public GameObject player;
 
-    public abstract void TakeDamage(GameObject weapon);
+    [SerializeField]
+    protected float currentHealth, maxHealth, attackPower, speed;
+
+    public abstract void TakeDamage(GameObject weapon, float damage);
 
 }

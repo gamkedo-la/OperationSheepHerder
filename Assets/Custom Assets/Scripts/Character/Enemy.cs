@@ -8,11 +8,10 @@ public abstract class Enemy : Character
 {
     public EnemyType type;
 
-
     public GameObject target = null;
 
 
-    public delegate void OnHit(GameObject weapon);
+    public delegate void OnHit(GameObject weapon, float damage);
     public OnHit onHitCallback;
 
     //bool isTargetedByPlayer = false;

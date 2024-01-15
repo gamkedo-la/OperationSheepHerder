@@ -7,33 +7,19 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using System;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Character
 {
     [SerializeField]
-    float radius;
+    float playerSpeed;
 
     [SerializeField]
     float attackCooldown;
 
+    //TODO: remove
     [SerializeField]
     float bellTimer;
-
     [SerializeField]
     bool followBell = false;
-
-    [SerializeField]
-    Camera mainCamera;
-
-
-
-    [SerializeField]
-    GameEvent OnRingBellEvent;
-
-    [SerializeField]
-    HitsToDefeat hitsToDefeat;
-
-    [SerializeField]
-    SpeedSO speed;
 
     [SerializeField]
     float rotationSpeed;
@@ -47,6 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Min(0f)]
     float probeDistance = 1f;
 
+    CharacterController playerController;
+
     public delegate void Attack();
     public Attack onAttackCallback;
     //TODO: decide if this delegate & callback are needed
@@ -55,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     public readonly Vector3 gravity = new Vector3(0, -3f, 0);
 
-    CharacterController playerController;
     //movement direction 
     Vector3 move;
     Timer timer;
@@ -65,10 +52,7 @@ public class PlayerController : MonoBehaviour
     InputActionAsset playerInput;
     RockTrajectory trajectoryRenderer;
 
-    float targetingRotateSpeed = 2;
-
-    GameObject _target;
-
+    float aimRotationSpeed = 2;
     public Transform Target { get; set; }
     public bool LockedOn { get; set; }
 
@@ -80,6 +64,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<CharacterController>();
+        speed = playerSpeed;
         timer = FindObjectOfType<Timer>();
         trajectoryRenderer = GetComponentInChildren<RockTrajectory>();
         playerInput = GetComponent<PlayerInput>().actions;
@@ -105,7 +90,7 @@ public class PlayerController : MonoBehaviour
             right.y = 0f;
             right.Normalize();
             move = ((forward * inputVec.y + right * inputVec.x));
-            move.y = gravity.y * Time.deltaTime * speed.Value;
+            move.y = gravity.y * Time.deltaTime * speed;
             move.Normalize();
         }
         else
@@ -132,13 +117,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //called when attack button is held down, should be repeatedly called like an update function
+    //called repeatedly when attack button is held down to update aim trajectory
     public void OnAimRock()
     {
         //if arrow keys pressed, move rock trajectory, otherwise launch rock in forward direction
-        //TODO: Not working for some reason
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();
-        transform.Rotate(new Vector2(input.x, input.y * targetingRotateSpeed), Space.World);
+        transform.Rotate(new Vector2(input.x, input.y * aimRotationSpeed), Space.World);
         trajectoryRenderer.DrawTrajectory();
     }
 
@@ -160,12 +144,13 @@ public class PlayerController : MonoBehaviour
 
         trajectoryRenderer.transform.localEulerAngles = Vector3.zero;
     }
+
+    //TODO: REMOVE BELL, REPLACE WITH DOG
     public void OnRingBell()
     {
         if (timer.followBellTimerActive == false)
         {
             timer.StartCoroutine(timer.CooldownTimer(bellTimer, "Player"));
-            OnRingBellEvent.Raise();
         }
     }
     void FixedUpdate()
@@ -198,7 +183,7 @@ public class PlayerController : MonoBehaviour
                 move.z = 0f;
             }
         }
-        playerController.Move(speed.Value * Time.deltaTime * move);
+        playerController.Move(speed * Time.deltaTime * move);
     }
     void CheckOnGround()
     {
@@ -227,7 +212,7 @@ public class PlayerController : MonoBehaviour
         float dot = Vector3.Dot(move, hit.normal);
         if (dot > 0f)
         {
-            move = (move - hit.normal * dot).normalized * speed.Value;
+            move = (move - hit.normal * dot).normalized * speed;
         }
         return true;
     }
@@ -245,5 +230,10 @@ public class PlayerController : MonoBehaviour
         {
             onGround = false;
         }
+    }
+
+    public override void TakeDamage(GameObject weapon, float damage)
+    {
+        throw new NotImplementedException();
     }
 }

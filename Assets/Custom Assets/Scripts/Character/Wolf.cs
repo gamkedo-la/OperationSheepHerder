@@ -12,28 +12,29 @@ public class Wolf : Enemy
     //if distance to target is less than chase radius, transition to chase
     [SerializeField] 
     float chaseRadius;
-    //speed += something if wolves hungry, harder over time
-    [SerializeField] 
-    float hungerThreshold;
+
+    //TODO: Decide whether to use hunger variable to make game harder; maybe increase speed or attack power
+    /*  speed += something if wolves hungry, harder over time
+        [SerializeField] 
+        float hungerThreshold;
+        track current hunger level
+        TODO: have increased hunger level make wolves more desperate; less likely to attack in packs, easier to kill; hunger goes down when it kills a sheep 
+        TODO: decide if above comment is how things will work
+        float hunger;*/
+
+
     //if distance is less than attackRadius, wolf will transition to attack
     [SerializeField] 
     float attackRadius;
+    [SerializeField]
+    float attackTimerCooldown;
 
     FSM fsm;
-    //use current state for anything?
     FSM.State _chase, _attack, _evade, _die, _currentState;
 
     Timer timer;
     Vector3 previousTargetPosition;
 
-    Vector3 chaseStartLocation;
-
-    float _speed;
-
-    //track current hunger level
-    //TODO: have increased hunger level make wolves more desperate; less likely to attack in packs, easier to kill; hunger goes down when it kills a sheep 
-    //TODO: decide if above comment is how things will work
-    //float hunger;
 
     //list of active wolves in scene, will be used to influence wolves behavior to prefer staying in a pack and ganging up on nearby sheep 
     List<Wolf> activeWolves;
@@ -43,7 +44,8 @@ public class Wolf : Enemy
         _agent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerController>().gameObject;
         timer = FindObjectOfType<Timer>();
-        _speed = type.baseSpeed.Value;
+        speed = type.baseSpeed;
+        attackPower = type.baseAttack;
 
         //set state functions
         fsm = new FSM();
@@ -86,44 +88,44 @@ public class Wolf : Enemy
                 _agent.ResetPath();
             }
             _currentState = _chase;
-            _agent.speed = _speed;
+            _agent.speed = speed;
             Debug.Log("enter chase state");
-            chaseStartLocation = transform.position;
-            if (target == null)
+
+            //add chance to target player
+            if (activeSheep.Count > 0)
             {
-                target = activeSheep[Random.Range(1, activeSheep.Count - 1)].gameObject;
+                //TODO: Switch to closest sheep
+                target = activeSheep[Random.Range(0, activeSheep.Count - 1)].gameObject;
             }
+            else
+            {
+                target = player;
+            }
+
             previousTargetPosition = target.transform.position;
 
         }
         if (step == FSM.Step.Update)
         {
-            Vector3 targetPos = target.transform.position;
-            if (!_agent.hasPath || targetPos != previousTargetPosition)
+            if (target != null)
             {
-                //TODO: Figure out why wolf movement is jumpy/weird
-                _agent.SetDestination(targetPos);
-                NavMeshPath path = new();
-                if (NavMesh.CalculatePath(transform.position, targetPos, 0, path))
+                Vector3 targetPos = target.transform.position;
+                if (!_agent.hasPath || targetPos != previousTargetPosition)
                 {
-                    _agent.SetPath(path);
-                }
-            }
-            if (Vector3.Distance(transform.position, player.transform.position) < 10)
-            {
-               if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
-                {
-                    if (hit.collider.gameObject == player)
+                    //TODO: Figure out why wolf movement is jumpy/weird
+                    _agent.SetDestination(targetPos);
+                    NavMeshPath path = new();
+                    if (NavMesh.CalculatePath(transform.position, targetPos, 0, path))
                     {
-                        float randomChanceToDodge = Random.value * 3;
-                        if (randomChanceToDodge < 3 && randomChanceToDodge > 2)
-                        {
-                            //CircleTarget();
-                        }
-                        //_agent.SetDestination(targetPos);
+                        _agent.SetPath(path);
                     }
                 }
+                if (Vector3.Distance(transform.position, target.transform.position) <= attackRadius)
+                {
+                    fsm.TransitionTo(_attack);
+                }
             }
+
         }
         if (step == FSM.Step.Exit)
         {
@@ -131,7 +133,7 @@ public class Wolf : Enemy
         }
 
     }
-    //state wolf must be in to cause damage (add to hit count) to player or sheep
+    //state wolf must be in to cause damage to player or sheep
     void FSM_Attack(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
@@ -139,31 +141,37 @@ public class Wolf : Enemy
             _currentState = _attack;
             Debug.Log("enter attack state");
             //will be switching to event 
-        }
-        if (step == FSM.Step.Update)
-        {
-            if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
+            if (target == null)
             {
                 fsm.TransitionTo(_chase);
             }
-            if (Vector3.Distance(transform.position, target.transform.position) <= attackRadius)
+        }
+        if (step == FSM.Step.Update)
+        {
+
+            if (target != null)
             {
                 if (!timer.wolfCooldownTimerActive)
                 {
-                    if (target != null)
+                    if (!timer.wolfCooldownTimerActive)
                     {
-                        target.GetComponent<HitCount>().Value++;
-                        //add code to play attack animation
-
-                        if (target != player)
-                        {
-                            target.GetComponent<Sheep>().attacker = this.gameObject;
-                            //target.GetComponent<Sheep>().attackerDirection = transform.position - chaseStartLocation;
-                        }
-                        //switch to trigger event to give sheep direction for flee?
+                        target.GetComponent<Character>().TakeDamage(this.gameObject, attackPower);
+                        StartCoroutine(timer.CooldownTimer(attackTimerCooldown, name));
+                        fsm.TransitionTo(_chase);
                     }
+                    //add code to play attack animation
+                }
+
+                if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
+                {
+                    fsm.TransitionTo(_chase);
                 }
             }
+            else
+            {
+                fsm.TransitionTo(_chase);
+            }
+
         }
         if (step == FSM.Step.Exit)
         {
@@ -195,7 +203,8 @@ public class Wolf : Enemy
         if (step == FSM.Step.Enter)
         {
             _currentState = _die;
-            Debug.Log("enter die state");
+            Debug.Log("wolf died");
+            Destroy(gameObject);
             //playAnimation
             //playSound
         }
@@ -219,11 +228,10 @@ public class Wolf : Enemy
     {
         activeSheep = GameManager.instance.activeSheep;
     }
-    public override void TakeDamage(GameObject weapon)
+    public override void TakeDamage(GameObject weapon, float damage)
     {
-        Debug.Log(weapon.name);
         //when the player presses 'I' they take 5 damage
-        currentHealth -= 5;
+        currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health
         uiHealthValue.value = currentHealth / maxHealth;
 
@@ -235,7 +243,15 @@ public class Wolf : Enemy
         }
         //if the enemy health is at (or greater than) max, turn the UI off
         else
+        {
             uiHealthObject.SetActive(false);
+        }
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            fsm.TransitionTo(_die);
+        }
     }
 
     void OnDestroy()

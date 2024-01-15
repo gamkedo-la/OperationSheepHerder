@@ -5,14 +5,8 @@ using UnityEngine.AI;
 
 public class Sheep : Character
 {
-
-    //TODO: Sheep should have health bars, once x amount of time has passed since being attacked they recover health over time
-    //TODO: CLEAN UP CODE
     public GameObject attacker = null;
-    public Vector3 attackerDirection;
-    public HitCount hitCount;
 
-    [SerializeField] GameObject player;
     [SerializeField] float wanderTime;
     [SerializeField] float wanderRadius;
     [SerializeField] float followTime;
@@ -20,13 +14,8 @@ public class Sheep : Character
     [SerializeField] float fleeTimerEnd;
     [SerializeField] bool isFleeing = false;
     [SerializeField] float bellRadius;
-    [SerializeField] SpeedSO speed;
-    [SerializeField] SpeedSO fleeSpeed;
-    [SerializeField] HitsToDefeat hitsToDefeat;
-    //Will be transitioned to health bar
-    int _hitCount;
-
-    float _speed;
+    [SerializeField] float baseSpeed;
+    [SerializeField] float fleeSpeed;
 
     FSM fsm;
     FSM.State _follow;
@@ -37,20 +26,17 @@ public class Sheep : Character
 
     Timer timer;
     float wanderTimer;
-    
-    Animator animator;
+    Vector3 attackerDirection;
+
     NavMeshAgent agent;
     
-    int previousHitCount;
 
     private void Start()
     {
-        _hitCount = GetComponent<HitCount>().Value;
-        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         timer = FindObjectOfType<Timer>();
         wanderTimer = wanderTime;
-        _speed = speed.Value;
+        speed = baseSpeed;
         _flee = FSM_Flee;
         _follow = FSM_Follow;
         _wander = FSM_Wander;
@@ -90,13 +76,12 @@ public class Sheep : Character
         {
             _currentState = _flee;
             //keep track of previous hit count in order to restart flee timer if attacked again
-            previousHitCount = _hitCount;
             fleeTimerEnd = Random.Range(3.5f, 6);
 
             //set speed to flee speed
             //animator.SetBool("isRunning", true);
-            _speed = fleeSpeed.Value;
-            agent.speed = _speed;
+            speed = fleeSpeed;
+            agent.speed = speed;
 
             //establish point in opposite direction of attack direction
             attackerDirection = transform.position - attacker.transform.position;
@@ -110,20 +95,10 @@ public class Sheep : Character
             //begin movement towards established flee point
             
             agent.SetDestination(attacker.transform.position + (attackerDirection * 10));
-            if (_hitCount > previousHitCount)
-            {
-                timer.StopCoroutine(timer.FleeTimer(fleeTimerEnd));
-                timer.StartCoroutine(timer.FleeTimer(fleeTimerEnd));
 
-                agent.SetDestination(attacker.transform.position + (attackerDirection * 10));
-            }
             if (!isFleeing)
             {
                 fsm.TransitionTo(_wander);
-            }
-            if (_hitCount >= hitsToDefeat.Value)
-            {
-                fsm.TransitionTo(_die);
             }
         }
         if (step == FSM.Step.Exit)
@@ -143,15 +118,12 @@ public class Sheep : Character
         if (step == FSM.Step.Update)
         {
             //begin movement to player position
-            agent.speed = _speed;
+            speed = baseSpeed;
+            agent.speed = speed;
             agent.SetDestination(player.transform.position);
             if (attacker != null)
             {
                 fsm.TransitionTo(_flee);
-            }
-            if (_hitCount >= hitsToDefeat.Value)
-            {
-                fsm.TransitionTo(_die);
             }
             
         }
@@ -180,7 +152,9 @@ public class Sheep : Character
                 if (wanderTimer >= wanderTime)
                 {
                     Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-                    agent.speed = _speed;
+
+                    speed = baseSpeed;
+                    agent.speed = speed;
                     agent.SetDestination(newPos);
                     wanderTimer = 0;
                 }
@@ -189,11 +163,6 @@ public class Sheep : Character
             if (attacker != null)
             {
                 fsm.TransitionTo(_flee);
-            }
-            
-            if (_hitCount >= hitsToDefeat.Value)
-            {
-                fsm.TransitionTo(_die);
             }
         }
         if (step == FSM.Step.Exit)
@@ -207,6 +176,8 @@ public class Sheep : Character
         {
             _currentState = _die;
             Debug.Log("sheep died");
+            Destroy(gameObject);
+
         }
         if (step == FSM.Step.Update)
         {
@@ -214,14 +185,9 @@ public class Sheep : Character
         }
         if (step == FSM.Step.Exit)
         {
+
             //
         }
-    }
-
-    public void OnHit()
-    {
-        //add to hit count
-        //flee
     }
     public Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
@@ -246,8 +212,33 @@ public class Sheep : Character
         }
     }
 
-    public override void TakeDamage(GameObject weapon)
+    public override void TakeDamage(GameObject weapon, float damage)
     {
-        throw new System.NotImplementedException();
+        
+        attacker = weapon;
+        Debug.Log(damage);
+        fsm.TransitionTo(_flee);
+
+        //when the player presses 'I' they take 5 damage
+        currentHealth -= damage;
+        //this updates the Slider value of Current Health / Max Health
+        uiHealthValue.value = currentHealth / maxHealth;
+
+        //if the enemy health is less than the max, turn the UI on
+        if (currentHealth <= maxHealth)
+        {
+            uiHealthObject.SetActive(true);
+            uiHealthObject.transform.LookAt(Camera.main.transform);
+        }
+        //if the enemy health is at (or greater than) max, turn the UI off
+        else
+        {
+            uiHealthObject.SetActive(false);
+        }
+
+        if (currentHealth <= 0)
+        {
+            fsm.TransitionTo(_die);
+        }
     }
 }

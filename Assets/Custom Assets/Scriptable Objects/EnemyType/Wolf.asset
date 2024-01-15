@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a27e7996d7baa44b6b7473b451af85, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  hitsToDefeat: {fileID: 11400000, guid: 2b3ea93a7d5fe594d97ffe1b63fec0bc, type: 2}
-  baseSpeed: {fileID: 11400000, guid: 98a829d34476df5439272b9478ba4197, type: 2}
-  prefab: {fileID: 0}
-  animator: {fileID: 0}
-  agent: {fileID: 0}
-  hitCount: 0
+  baseSpeed: 5
+  prefab: {fileID: 6239194566748115450, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
+  baseAttack: 3

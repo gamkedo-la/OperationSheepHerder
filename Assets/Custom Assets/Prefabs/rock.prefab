@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 6086991952082820866}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3994194568352511579
 Rigidbody:
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstHit: 0
   particles: {fileID: 3396885616553986590, guid: bf5bc87d0a3891644b236324f02db7f1, type: 3}
-  coolDownSeconds: 2
+  weaponType: {fileID: 11400000, guid: c45cf418781d9074bb869d8b6ad788d3, type: 2}
   hitEnemy: 0
 --- !u!1001 &6049442140741941481
 PrefabInstance:

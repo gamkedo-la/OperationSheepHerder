@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a27e7996d7baa44b6b7473b451af85, type: 3}
   m_Name: Dragon
   m_EditorClassIdentifier: 
-  hitsToDefeat: {fileID: 11400000, guid: 8154e73746b030c448d874f978d619da, type: 2}
-  baseSpeed: {fileID: 11400000, guid: 1d36d58c56ed3074a83fe63d5ab5f6f4, type: 2}
+  baseSpeed: 7
   prefab: {fileID: 0}
-  animator: {fileID: 0}
-  agent: {fileID: 0}
-  hitCount: 0
+  baseAttack: 7
