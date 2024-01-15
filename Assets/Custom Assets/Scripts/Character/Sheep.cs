@@ -76,7 +76,7 @@ public class Sheep : Character
         {
             _currentState = _flee;
             //keep track of previous hit count in order to restart flee timer if attacked again
-            fleeTimerEnd = Random.Range(3.5f, 6);
+            //fleeTimerEnd = Random.Range(3.5f, 6);
 
             //set speed to flee speed
             //animator.SetBool("isRunning", true);
@@ -96,7 +96,7 @@ public class Sheep : Character
             
             agent.SetDestination(attacker.transform.position + (attackerDirection * 10));
 
-            if (!isFleeing)
+            if (!timer.isFleeing)
             {
                 fsm.TransitionTo(_wander);
             }
@@ -159,11 +159,6 @@ public class Sheep : Character
                     wanderTimer = 0;
                 }
             }
-            //if sheep is hit by enemy or player, transition to flee
-            if (attacker != null)
-            {
-                fsm.TransitionTo(_flee);
-            }
         }
         if (step == FSM.Step.Exit)
         {
@@ -216,7 +211,7 @@ public class Sheep : Character
     {
         
         attacker = weapon;
-        Debug.Log(damage);
+        Debug.Log(attacker);
         fsm.TransitionTo(_flee);
 
         //when the player presses 'I' they take 5 damage

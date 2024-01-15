@@ -506,7 +506,7 @@ MonoBehaviour:
   player: {fileID: 0}
   currentHealth: 30
   maxHealth: 30
-  attackPower: 1
+  attackPower: 2
   speed: 5
   type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
   target: {fileID: 0}
