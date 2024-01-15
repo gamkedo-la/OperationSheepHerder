@@ -85,7 +85,10 @@ public class Wolf : Enemy
         {
             _currentState = _chase;
             _agent.speed = speed;
-            Debug.Log("enter chase state");
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("wolf enter chase state");
+            }
 
             //add chance to target player
             if (activeSheep.Count > 0)
@@ -135,7 +138,11 @@ public class Wolf : Enemy
         if (step == FSM.Step.Enter)
         {
             _currentState = _attack;
-            Debug.Log("enter attack state");
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("wolf enter attack state");
+            }
+            
             //will be switching to event 
             if (target == null)
             {
@@ -199,7 +206,10 @@ public class Wolf : Enemy
         if (step == FSM.Step.Enter)
         {
             _currentState = _die;
-            Debug.Log("wolf died");
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("wolf died");
+            }
             Destroy(gameObject);
             //playAnimation
             //playSound
@@ -210,8 +220,8 @@ public class Wolf : Enemy
         }
         if (step == FSM.Step.Exit)
         {
-            Debug.Log($"{this.name} died!");
-            Destroy(gameObject);
+/*            Debug.Log($"{this.name} died!");
+            Destroy(gameObject);*/
         }
     }
     //called when GameManager.instance.activeWolves changes

@@ -87,8 +87,12 @@ public class Sheep : Character
             attackerDirection = transform.position - attacker.transform.position;
             timer.StartCoroutine(timer.FleeTimer(fleeTimerEnd));
 
-            Debug.Log("sheep entered flee state");
-            
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("sheep entered flee state");
+            }
+
+
         }
         if (step == FSM.Step.Update)
         {
@@ -112,7 +116,10 @@ public class Sheep : Character
         if (step == FSM.Step.Enter)
         {
             _currentState = _follow;
-            Debug.Log("sheep is following player");
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("sheep is following player");
+            }
             //animator.SetBool("isWalking", true);
         }
         if (step == FSM.Step.Update)
@@ -140,7 +147,11 @@ public class Sheep : Character
         {
 
             _currentState = _wander;
-            Debug.Log("sheep is wandering");
+                
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("sheep is wandering");
+            }
             wanderTimer = wanderTime;
             //animator.SetBool("isWalking", true);
         }
@@ -170,7 +181,11 @@ public class Sheep : Character
         if (step == FSM.Step.Enter)
         {
             _currentState = _die;
-            Debug.Log("sheep died");
+
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("sheep died");
+            }
             Destroy(gameObject);
 
         }

@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
 
     public InputAction pauseAction;
 
+    public bool debugAll;
+
+    public bool debugFSM;
+
+
+
     private void Awake()
     {
         if (instance != null && instance != this)
