@@ -9,19 +9,14 @@ public class DetectionZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (onEnter != null)
-        {
-            if (other.gameObject.CompareTag("Sheep"))
-            {
-                onEnter.Invoke();
-            }
-        }
+        //to test if it's working, accept any collider
+        onEnter?.Invoke();
     }
     private void OnTriggerExit(Collider other)
     {
         if (onExit != null)
         {
-            onExit.Invoke();
+            onExit?.Invoke();
         }
     }
 }

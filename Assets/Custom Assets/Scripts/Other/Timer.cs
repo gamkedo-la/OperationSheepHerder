@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.CompilerServices;
 
-
+//cooldown timer for attacks, sheep flee
 public class Timer : MonoBehaviour
 {
     public bool wolfCooldownTimerActive;
@@ -13,7 +13,6 @@ public class Timer : MonoBehaviour
 
     public GameEvent OnRingBell;
     public GameEvent OnRingBellEnded;
-    //cooldown timer for player and wolf attack, and player ringing bell
 
     //TODO: change timer to static class, invoke event to let relevant scripts know when timer is over
     public IEnumerator CooldownTimer(float cooldownTime, string caller, [CallerMemberName] string callingMethod = "")
@@ -39,7 +38,10 @@ public class Timer : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;//new WaitForSeconds(0.25f);
         }
-        Debug.Log("timer over");
+        if (GameManager.instance.debugAll)
+        {
+            Debug.Log("timer over");
+        }
         wolfCooldownTimerActive = false;
         playerCooldownTimerActive = false;
         followBellTimerActive = false;
@@ -48,7 +50,10 @@ public class Timer : MonoBehaviour
             OnRingBellEnded.Raise();
         } else
         {
-            Debug.Log("OnRingBellEnded null, avoided error on .Raise() call");
+            if (GameManager.instance.debugAll)
+            {
+                Debug.Log("OnRingBellEnded null, avoided error on .Raise() call");
+            }
         }
         yield break;
     }

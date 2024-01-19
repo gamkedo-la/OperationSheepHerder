@@ -268,8 +268,6 @@ GameObject:
   - component: {fileID: 5372984501935618717}
   - component: {fileID: 5372984501935618715}
   - component: {fileID: 3121322922499999407}
-  - component: {fileID: 320836367184462976}
-  - component: {fileID: 3049885374871306495}
   - component: {fileID: 8089906838246895599}
   m_Layer: 0
   m_Name: PlayerParent
@@ -406,33 +404,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.29, z: 0}
---- !u!114 &320836367184462976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5372984501935618719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d4139fa78323245be1254fe36885fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 5372984501935618719}
-  grassMaterial: {fileID: 2100000, guid: 353c5b615c6bd894d808e7f851cd3944, type: 2}
---- !u!114 &3049885374871306495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5372984501935618719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31a5befee14e7642b9e74f3c38ceeea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 0
 --- !u!54 &8089906838246895599
 Rigidbody:
   m_ObjectHideFlags: 0

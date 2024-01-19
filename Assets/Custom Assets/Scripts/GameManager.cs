@@ -84,14 +84,14 @@ public class GameManager : MonoBehaviour
     public void UpdateActiveSheep()
     {
         activeSheep.Clear();
-        activeSheep = FindObjectsOfType<Sheep>().ToList<Sheep>();
+        activeSheep = FindObjectsOfType<Sheep>().ToList();
         onUpdateSheepCallback.Invoke();
     }
 
     public void UpdateActiveWolves()
     {
         activeWolves.Clear();
-        activeWolves = FindObjectsOfType<Wolf>().ToList<Wolf>();
+        activeWolves = FindObjectsOfType<Wolf>().ToList();
         onUpdateWolvesCallback.Invoke();
     }
     public void LevelComplete()

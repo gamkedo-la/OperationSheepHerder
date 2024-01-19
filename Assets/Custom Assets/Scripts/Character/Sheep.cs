@@ -83,8 +83,12 @@ public class Sheep : Character
             speed = fleeSpeed;
             agent.speed = speed;
 
-            //establish point in opposite direction of attack direction
-            attackerDirection = transform.position - attacker.transform.position;
+            if (attacker != null)
+            {
+                //establish point in opposite direction of attack direction
+                attackerDirection = transform.position - attacker.transform.position;
+            }
+
             timer.StartCoroutine(timer.FleeTimer(fleeTimerEnd));
 
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
@@ -97,8 +101,11 @@ public class Sheep : Character
         if (step == FSM.Step.Update)
         {
             //begin movement towards established flee point
-            
-            agent.SetDestination(attacker.transform.position + (attackerDirection * 10));
+            if (attacker != null)
+            {
+                agent.SetDestination(attacker.transform.position + (attackerDirection * 10));
+
+            }
 
             if (!timer.isFleeing)
             {
@@ -226,7 +233,10 @@ public class Sheep : Character
     {
         
         attacker = weapon;
-        Debug.Log(attacker);
+        if (GameManager.instance.debugAll)
+        {
+            Debug.Log(name + "'s attacker is " + attacker);
+        }
         fsm.TransitionTo(_flee);
 
         //when the player presses 'I' they take 5 damage
