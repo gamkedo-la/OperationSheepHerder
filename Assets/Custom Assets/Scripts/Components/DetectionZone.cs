@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using System.Linq;
-using System.Collections.Generic;
 
 public class DetectionZone : MonoBehaviour
 {

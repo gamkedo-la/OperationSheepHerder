@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4750037485171241609}
   - component: {fileID: 5642637392924491420}
   - component: {fileID: 5121915568109594024}
-  - component: {fileID: 6529004984193307307}
   - component: {fileID: 787711279439224914}
   m_Layer: 0
   m_Name: SheepParent 1
@@ -131,34 +130,6 @@ MonoBehaviour:
       - m_Target: {fileID: 3884688776824101589}
         m_TargetAssemblyTypeName: Sheep, Assembly-CSharp
         m_MethodName: OnPlayerBell
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6529004984193307307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792757998885314416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503f6ca1303f8cd4a9d565abc6cc0e5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: dc499abecfda24647919de3eb1558cde, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3884688776824101589}
-        m_TargetAssemblyTypeName: Sheep, Assembly-CSharp
-        m_MethodName: OnPlayerBellEnded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

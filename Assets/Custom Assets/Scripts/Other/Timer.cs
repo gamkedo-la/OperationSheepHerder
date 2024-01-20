@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour
         followBellTimerActive = false;
         if(OnRingBellEnded)
         {
-            OnRingBellEnded.Raise();
+            //OnRingBellEnded.Raise();
         } else
         {
             if (GameManager.instance.debugAll)
