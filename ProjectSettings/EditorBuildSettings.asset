@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8e6cdfac08057934788aae8a90d1519a
   - enabled: 1
-    path: Assets/Scenes/WoodsDay.unity
+    path: Assets/Scenes/WoodsDayLevel1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 299fc08397732024dbeb8fea0df0af85, type: 2}

@@ -11,10 +11,13 @@ public class Level : ScriptableObject
     public int sheepCount;
     public bool unlocked;
     public bool completed;
-    public TerrainData terrain;
     public EnemyType[] typesOfEnemies;
     public float spawnRate;
     public float spawnWaves;
+    public int minSheepToCompleteLevel;
+    public int pointsPerSheep;
+
+
     //map/terrain/layout
     //UI Display Info variable (to display timer or no timer or any level-specific info)
 }

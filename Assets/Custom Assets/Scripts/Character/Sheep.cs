@@ -47,7 +47,6 @@ public class Sheep : Character
         
     }
 
-    //TODO: make sheep follow player automatically, need to ring bell to recall wandering sheep...? not sure
     public void OnPlayerBell()
     {
         if (Vector3.Distance(transform.position, player.transform.position) < bellRadius)

@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8962650079861881031}
   - component: {fileID: 3884688776824101589}
-  - component: {fileID: 8242081262335243452}
   - component: {fileID: 4750037485171241609}
   - component: {fileID: 5642637392924491420}
+  - component: {fileID: 5121915568109594024}
+  - component: {fileID: 6529004984193307307}
+  - component: {fileID: 787711279439224914}
   m_Layer: 0
   m_Name: SheepParent 1
   m_TagString: Sheep
@@ -35,7 +37,7 @@ Transform:
   - {fileID: 6788090721501504936}
   - {fileID: 5227997615829581881}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3884688776824101589
 MonoBehaviour:
@@ -64,22 +66,9 @@ MonoBehaviour:
   followTime: 10
   fleeTimerEnd: 5
   isFleeing: 0
-  bellRadius: 0
+  bellRadius: 50
   baseSpeed: 3
   fleeSpeed: 5
---- !u!114 &8242081262335243452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792757998885314416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31a5befee14e7642b9e74f3c38ceeea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 0
 --- !u!65 &4750037485171241609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,6 +112,89 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5121915568109594024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792757998885314416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503f6ca1303f8cd4a9d565abc6cc0e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: bc7d946cc20ad5d47b35066056af2af5, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3884688776824101589}
+        m_TargetAssemblyTypeName: Sheep, Assembly-CSharp
+        m_MethodName: OnPlayerBell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6529004984193307307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792757998885314416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503f6ca1303f8cd4a9d565abc6cc0e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: dc499abecfda24647919de3eb1558cde, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3884688776824101589}
+        m_TargetAssemblyTypeName: Sheep, Assembly-CSharp
+        m_MethodName: OnPlayerBellEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!54 &787711279439224914
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792757998885314416}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &898402279234985845
 GameObject:
   m_ObjectHideFlags: 0

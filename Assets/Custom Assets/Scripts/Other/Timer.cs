@@ -26,6 +26,7 @@ public class Timer : MonoBehaviour
         {
             if (callingMethod == "OnRingBell")
             {
+                OnRingBell.Raise();
                 followBellTimerActive = true;
             }
             else

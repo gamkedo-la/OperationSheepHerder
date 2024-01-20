@@ -152,6 +152,8 @@ public class PlayerController : Character
         {
             timer.StartCoroutine(timer.CooldownTimer(bellTimer, "Player"));
         }
+
+
     }
     void FixedUpdate()
     {
@@ -201,12 +203,18 @@ public class PlayerController : Character
         }
         if (!Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, probeDistance))
         {
-            Debug.Log("no hit collider within probe distance");
+            if (GameManager.instance.debugAll)
+            {
+                Debug.Log("no hit collider within probe distance");
+            }
             return false;
         }
         if (!hit.collider.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("hit object not ground");
+            if (GameManager.instance.debugAll)
+            {
+                Debug.Log("hit object not ground");
+            }
             return false;
         }
         float dot = Vector3.Dot(move, hit.normal);

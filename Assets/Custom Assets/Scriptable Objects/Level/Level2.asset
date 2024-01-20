@@ -17,8 +17,9 @@ MonoBehaviour:
   sheepCount: 5
   unlocked: 1
   completed: 0
-  terrain: {fileID: 15600000, guid: da45e4fccd7effa45aec0dd63977e308, type: 2}
   typesOfEnemies:
   - {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
   spawnRate: 0
   spawnWaves: 2
+  minSheepToCompleteLevel: 0
+  pointsPerSheep: 0

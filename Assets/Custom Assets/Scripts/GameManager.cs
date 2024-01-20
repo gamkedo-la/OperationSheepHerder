@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public static bool GamePaused = false;
+
     public List<Sheep> activeSheep;
     public List<Wolf> activeWolves;
     public delegate void OnUpdateSheep();
@@ -14,13 +16,34 @@ public class GameManager : MonoBehaviour
     public OnUpdateSheep onUpdateSheepCallback;
     public OnUpdateWolves onUpdateWolvesCallback;
 
+    public List<Level> levels;
+    public Level currentLevel;
+
     public InputAction pauseAction;
 
+    /// <summary>
+    /// Debug.Log all messages.
+    /// </summary>
     public bool debugAll;
-
+    /// <summary>
+    /// Debug.Log messages related to state transitions and management for all characters using an FSM.
+    /// </summary>
     public bool debugFSM;
 
+    [SerializeField]
+    GameObject sheepPrefab;
 
+    [SerializeField]
+    GameObject wolfPrefab;
+
+    [SerializeField]
+    float spawnRadiusForSheep;
+
+    [SerializeField] 
+    GameObject pauseMenu;
+
+    [SerializeField]
+    GameObject levelCompletePanel;
 
     private void Awake()
     {
@@ -32,17 +55,23 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        activeSheep = FindObjectsOfType<Sheep>().ToList<Sheep>();
-        activeWolves = FindObjectsOfType<Wolf>().ToList<Wolf>();
-        
+        activeSheep = FindObjectsOfType<Sheep>().ToList();
+        activeWolves = FindObjectsOfType<Wolf>().ToList();
     }
- 
-    public static bool GamePaused = false;
 
-    public List<Level> levels;
-    public Level currentLevel;
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+        //Separate scene for each level
+/*        if (SceneManager.GetActiveScene().name.Contains("WoodsDay"))
+        {
+            currentLevel = levels[0];
+            SetupLevel();
+        }*/
 
-    [SerializeField] GameObject pauseMenu;
+    }
+
+
 
 
     private void OnEnable()
@@ -61,10 +90,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         if (sceneName.Contains("Level"))
         {
-            currentLevel = levels.Find(x => x.name == sceneName);
+            SetupLevel();
         }
     }
 
+    void SetupLevel()
+    {
+        for (int i = 0; i < currentLevel.sheepCount;)
+        {
+            //GameObject tmp = Instantiate(sheepPrefab);
+            //TODO: tmp.transform.position = random location within spawnRadiusForSheep around Player's SheepSpawner GameObject
+        }
+    }
 
     public void OnPauseGame()
     {
@@ -99,6 +136,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         Debug.Log("Level Complete!");
         //show level complete text
+        levelCompletePanel.SetActive(true);
+        Time.timeScale = 0f;
+
+
     }
 
     public void LoadSettingsMenu()

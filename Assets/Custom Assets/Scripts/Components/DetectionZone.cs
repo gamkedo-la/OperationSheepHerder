@@ -6,17 +6,29 @@ using System.Collections.Generic;
 public class DetectionZone : MonoBehaviour
 {
     [SerializeField] UnityEvent onEnter = default, onExit = default;
-
+    int count;
     private void OnTriggerEnter(Collider other)
     {
-        //to test if it's working, accept any collider
-        onEnter?.Invoke();
+        Debug.Log(other.gameObject);   
+        if (other.gameObject.CompareTag("Sheep"))
+        {
+            count++;
+            if (GameManager.instance.debugAll)
+            {
+                Debug.Log(count);
+            }
+            if (count >= GameManager.instance.activeSheep.Count)
+            {
+                onEnter?.Invoke();
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (onExit != null)
         {
-            onExit?.Invoke();
+            count--;
+            onExit.Invoke();
         }
     }
 }
