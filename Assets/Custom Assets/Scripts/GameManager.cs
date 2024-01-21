@@ -157,6 +157,10 @@ public class GameManager : MonoBehaviour
         pointsText.text = $"{points} points";
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void LoadSettingsMenu()
     {
         //open settings menu
