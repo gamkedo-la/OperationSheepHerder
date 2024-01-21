@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,6 +45,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameObject levelCompletePanel;
+
+    [SerializeField]
+    TextMeshProUGUI sheepSavedText;
+
+    [SerializeField]
+    TextMeshProUGUI pointsText;
 
     private void Awake()
     {
@@ -131,6 +138,12 @@ public class GameManager : MonoBehaviour
         activeWolves = FindObjectsOfType<Wolf>().ToList();
         onUpdateWolvesCallback.Invoke();
     }
+
+    public void PlayAgain()
+    {
+        Debug.Log("Play again");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void LevelComplete()
     {
         Time.timeScale = 0;
@@ -138,8 +151,10 @@ public class GameManager : MonoBehaviour
         //show level complete text
         levelCompletePanel.SetActive(true);
         Time.timeScale = 0f;
-
-
+        int sheepSaved = activeSheep.Count;
+        sheepSavedText.text = $"You saved {sheepSaved} sheep!";
+        int points = sheepSaved * currentLevel.pointsPerSheep;
+        pointsText.text = $"{points} points";
     }
 
     public void LoadSettingsMenu()
