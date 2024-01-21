@@ -746,7 +746,7 @@ MonoBehaviour:
   alignSmoothRange: 45
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 127
   minZoom: 5
   maxZoom: 15
 --- !u!1 &4314555278749256355
