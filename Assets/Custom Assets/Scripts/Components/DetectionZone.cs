@@ -7,7 +7,6 @@ public class DetectionZone : MonoBehaviour
     int count;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);   
         if (other.gameObject.CompareTag("Sheep"))
         {
             count++;
