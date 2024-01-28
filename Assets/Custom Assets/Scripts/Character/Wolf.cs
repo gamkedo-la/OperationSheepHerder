@@ -13,6 +13,11 @@ public class Wolf : Enemy
     [SerializeField] 
     float chaseRadius;
 
+    // if turned to true, will look for another wolf to follow instead of the player or sheep
+    [SerializeField]
+    bool packFollower; // if something happens to the leader or they need to split, just flip false
+    Vector2 packChaseRandomFormationOffset; // to avoid bunching up
+
     //TODO: Decide whether to use hunger variable to make game harder; maybe increase speed or attack power
     /*  speed += something if wolves hungry, harder over time
         [SerializeField] 
@@ -90,11 +95,32 @@ public class Wolf : Enemy
                 Debug.Log("wolf enter chase state");
             }
 
-            //add chance to target player
-            if (activeSheep.Count > 0)
+            // todo: add chance to target player?
+            if (packFollower)
+            {
+                target = null;
+                Wolf targetWolfScript = null;
+                int safetyLockBreak = 40; // 40 tries to find a non follower wolf, should be ample
+                packChaseRandomFormationOffset = Random.insideUnitCircle;
+                packChaseRandomFormationOffset.Normalize();
+                packChaseRandomFormationOffset *= Random.RandomRange(2f,6f); // how far is pack formation?
+                packChaseRandomFormationOffset.y -= Random.RandomRange(2f, 6f); // shift the circle behind the leader
+                while (target == null || targetWolfScript == this || targetWolfScript.packFollower)
+                {
+                    target = activeWolves[Random.Range(0, activeWolves.Count)].gameObject;
+                    targetWolfScript = target.GetComponent<Wolf>();
+                    if(safetyLockBreak-- < 0) // prevent infinite loop from bad dice rolls or few wolves left
+                    {
+                        target = player;
+                        packFollower = false; // couldn't find another wolf to follow, give up
+                        break;
+                    }
+                }
+            } else if (activeSheep.Count > 0)
             {
                 //TODO: Switch to closest sheep
-                target = activeSheep[Random.Range(0, activeSheep.Count - 1)].gameObject;
+                // note: there was a  - 1 here, but Random.Range already excludes the higher end, so no -1 :) -chris
+                target = activeSheep[Random.Range(0, activeSheep.Count)].gameObject;
             }
             else
             {
@@ -109,6 +135,12 @@ public class Wolf : Enemy
             if (target != null)
             {
                 Vector3 targetPos = target.transform.position;
+                if (packFollower)
+                {
+                    // pack formation offset relative to leader orientation
+                    targetPos += packChaseRandomFormationOffset.x * target.transform.right +
+                                    packChaseRandomFormationOffset.y * target.transform.forward;
+                }
                 if (!_agent.hasPath || targetPos != previousTargetPosition)
                 {
                     //TODO: Figure out why wolf movement is jumpy/weird
