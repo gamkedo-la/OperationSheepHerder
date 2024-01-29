@@ -107,6 +107,7 @@ public class Wolf : Enemy
                 packChaseRandomFormationOffset.y -= Random.RandomRange(2f, 6f); // shift the circle behind the leader
                 while (target == null || targetWolfScript == this || targetWolfScript.packFollower)
                 {
+                    //TODO: Physics.SphereOverlap to check if wolf is close enough to bother following/using pack behaviour
                     target = activeWolves[Random.Range(0, activeWolves.Count)].gameObject;
                     targetWolfScript = target.GetComponent<Wolf>();
                     if(safetyLockBreak-- < 0) // prevent infinite loop from bad dice rolls or few wolves left
@@ -143,7 +144,7 @@ public class Wolf : Enemy
                 }
                 if (!_agent.hasPath || targetPos != previousTargetPosition)
                 {
-                    //TODO: Figure out why wolf movement is jumpy/weird
+                    
                     _agent.SetDestination(targetPos);
                     NavMeshPath path = new();
                     if (NavMesh.CalculatePath(transform.position, targetPos, 0, path))
