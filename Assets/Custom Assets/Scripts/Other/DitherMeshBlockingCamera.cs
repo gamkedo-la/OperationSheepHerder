@@ -31,8 +31,11 @@ public class DitherMeshBlockingCamera : MonoBehaviour
 
     List<GameObject> ditheredTrees;
 
+    MaterialPropertyBlock propBlock;
+
     private void Awake()
     {
+        propBlock = new MaterialPropertyBlock();
         ditheredTrees = new List<GameObject>();
     }
     private void OnEnable()
@@ -62,90 +65,71 @@ public class DitherMeshBlockingCamera : MonoBehaviour
         if (timer >= checkInterval)
         {
             check = true;
+            CheckForObstacles();
         }
     }
 
     public void CheckForObstacles()
     {
-        if (check)
+        Debug.Log("checking for obstacles");
+        Vector3 direction = player.position - main.transform.position; 
+        //if player is within the cameras field of view, raycast to check for something blocking view of player
+        if (Vector3.Angle(main.transform.forward, direction) <= main.fieldOfView)
         {
-            Debug.Log("checking for obstacles");
-            Vector3 direction = player.position - main.transform.position; 
-            //if player is within the cameras field of view, raycast to check for something blocking view of player
-            if (Vector3.Angle(main.transform.forward, direction) <= main.fieldOfView)
-            {
-                RaycastHit[] hits = Physics.RaycastAll(main.transform.position, direction, direction.magnitude, obstructionLayerMask);
-                AdjustDither(hits);
-            }
-
-            timer = 0;
-            check = false;
+            RaycastHit[] hits = Physics.RaycastAll(main.transform.position, direction, direction.magnitude, obstructionLayerMask);
+            AdjustDither(hits);
         }
 
-        else
-        {
-            return;
-        }
+        timer = 0;
+        check = false;
     }
 
     void AdjustDither(RaycastHit[] hits)
     {
+        List<GameObject> currentHits = new();
 
-        for (int i = 0; i < hits.Length; i++)
+        List<GameObject> treesToRemove = new();
+        foreach (RaycastHit hit in hits)
         {
-
-            if (hits[i].collider.CompareTag("Tree"))
+            if (hit.collider.CompareTag("Tree"))
             {
                 if (GameManager.instance.debugAll)
                 {
                     Debug.Log("Tree obstructing view");
                 }
-                GameObject tree = hits[i].transform.gameObject;
+                GameObject tree = hit.transform.gameObject;
+                currentHits.Add(tree);
+
                 if (!ditheredTrees.Contains(tree))
                 {
-                    Material barkMat = hits[i].collider.gameObject.GetComponent<MeshRenderer>().material;
-                    Material leafMat = hits[i].collider.gameObject.GetComponent<MeshRenderer>().materials[1];
-
-
-                    barkMat.SetFloat("_Dither", dither);
-                    leafMat.SetFloat("_Dither", dither);
+                    SetDither(tree, dither);
                     ditheredTrees.Add(tree);
                 }
-
-
             }
         }
         if (ditheredTrees.Count > 0)
         {
-            
-            List<bool> shouldBeDithered = new();
-
-            //each tree in ditheredTrees should be dithered, so we start with true values
-            for (int i = 0; i < ditheredTrees.Count; i++)
+            foreach (GameObject tree in ditheredTrees)
             {
-                shouldBeDithered.Add(true);
-            }
-
-            for (int j = 0; j < ditheredTrees.Count; j++)
-            {
-                for (int k = 0; k < hits.Length - 1; k++)
+                if (!currentHits.Contains(tree))
                 {
-                    //if the given dithered tree doesn't equal any of the hit colliders, it shouldn't be dithered anymore
-                    if (!ditheredTrees[j].Equals(hits[k].collider.gameObject))
-                    {
-                        shouldBeDithered[j] = false;
-                    }
-                }
-                Material barkMat = ditheredTrees[j].GetComponent<MeshRenderer>().material;
-                Material leafMat = ditheredTrees[j].GetComponent<MeshRenderer>().materials[1];
-
-                if (!shouldBeDithered[j])
-                {
-                    barkMat.SetFloat("_Dither", noDither);
-                    leafMat.SetFloat("_Dither", noDither);
+                    SetDither(tree, noDither);
+                    treesToRemove.Add(tree);
                 }
             }
         }
+        foreach (GameObject tree in treesToRemove)
+        {
+            ditheredTrees.Remove(tree);
+        }
+    }
+
+    void SetDither(GameObject tree, float dither)
+    {
+        MeshRenderer renderer = tree.GetComponent<MeshRenderer>();
+        renderer.GetPropertyBlock(propBlock);
+        propBlock.SetFloat("_Dither", dither);
+        renderer.SetPropertyBlock(propBlock);
     }
 
     private void OnDisable()
