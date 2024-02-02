@@ -7,17 +7,16 @@ using UnityEngine.InputSystem;
 
 public class CameraFollow : MonoBehaviour
 {
+
+    public InputAction leftRight;
+
+    public InputAction upDown;
+
     [SerializeField] 
     float camSpeed;
 
     [SerializeField] 
     Transform focus;
-
-    [SerializeField] 
-    InputAction leftRight;
-
-    [SerializeField] 
-    InputAction upDown;
 
     [SerializeField, Min(0f)] 
     float focusRadius = 5f;

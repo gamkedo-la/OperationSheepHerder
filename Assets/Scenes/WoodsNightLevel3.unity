@@ -472,7 +472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313700663}
   m_LocalRotation: {x: -0.00992928, y: -0.6459145, z: -0.3365777, w: 0.685136}
-  m_LocalPosition: {x: -1000, y: 1500, z: -500}
+  m_LocalPosition: {x: -111, y: 483, z: 1554}
   m_LocalScale: {x: 300, y: 300, z: 300}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -549,8 +549,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TreeDistance
+      value: 505
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TreeCrossFadeLength
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_IgnoreQualitySettings
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TreeBillboardDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623347518957055072, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TreeMaximumFullLODCount
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
