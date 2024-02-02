@@ -31,6 +31,7 @@ public class DitherMeshBlockingCamera : MonoBehaviour
 
     List<GameObject> ditheredTrees;
 
+    //use a material property block to avoid creating extra instances of the material during runtime
     MaterialPropertyBlock propBlock;
 
     private void Awake()
@@ -71,7 +72,6 @@ public class DitherMeshBlockingCamera : MonoBehaviour
 
     public void CheckForObstacles()
     {
-        Debug.Log("checking for obstacles");
         Vector3 direction = player.position - main.transform.position; 
         //if player is within the cameras field of view, raycast to check for something blocking view of player
         if (Vector3.Angle(main.transform.forward, direction) <= main.fieldOfView)
@@ -83,7 +83,10 @@ public class DitherMeshBlockingCamera : MonoBehaviour
         timer = 0;
         check = false;
     }
-
+    /// <summary>
+    /// Apply dither to trees hit by the Raycast, and remove dither from trees that are no longer in the way.
+    /// </summary>
+    /// <param name="hits"></param>
     void AdjustDither(RaycastHit[] hits)
     {
         List<GameObject> currentHits = new();

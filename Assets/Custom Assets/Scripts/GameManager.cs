@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
     GameObject levelCompletePanel;
 
     [SerializeField]
+    GameObject gameOverPanel;
+
+    [SerializeField]
     TextMeshProUGUI sheepSavedText;
 
     [SerializeField]
@@ -70,9 +73,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         //Separate scene for each level
-/*        if (SceneManager.GetActiveScene().name.Contains("WoodsDay"))
+        string sceneName = SceneManager.GetActiveScene().name;
+
+/*        if (sceneName.Contains("Level1"))
         {
-            currentLevel = levels[0];
             SetupLevel();
         }*/
 
@@ -129,6 +133,10 @@ public class GameManager : MonoBehaviour
     {
         activeSheep.Clear();
         activeSheep = FindObjectsOfType<Sheep>().ToList();
+        if (activeSheep.Count <= currentLevel.minSheepToCompleteLevel)
+        {
+            GameOver();
+        }
         onUpdateSheepCallback.Invoke();
     }
 
@@ -155,6 +163,11 @@ public class GameManager : MonoBehaviour
         sheepSavedText.text = $"You saved {sheepSaved} sheep!";
         int points = sheepSaved * currentLevel.pointsPerSheep;
         pointsText.text = $"{points} points";
+    }
+
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
     }
 
     public void MainMenu()
