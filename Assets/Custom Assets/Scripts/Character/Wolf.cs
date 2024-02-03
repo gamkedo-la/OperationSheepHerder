@@ -41,7 +41,6 @@ public class Wolf : Enemy
     Vector3 previousTargetPosition;
 
 
-    //list of active wolves in scene, will be used to influence wolves behavior to prefer staying in a pack and ganging up on nearby sheep 
     List<Wolf> activeWolves;
     List<Sheep> activeSheep;
     void Awake()
