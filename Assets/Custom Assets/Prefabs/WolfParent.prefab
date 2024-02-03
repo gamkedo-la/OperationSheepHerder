@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 8192090911714435476}
   - component: {fileID: 7968087563639658752}
   - component: {fileID: 825474907470454060}
+  - component: {fileID: 1105378882327059256}
   m_Layer: 7
   m_Name: WolfParent
   m_TagString: Enemy
@@ -511,6 +512,7 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
   target: {fileID: 0}
   chaseRadius: 30
+  packFollower: 0
   attackRadius: 5
   attackTimerCooldown: 4
 --- !u!195 &7968087563639658752
@@ -556,6 +558,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.87, y: 1.17, z: 1.77}
   m_Center: {x: -0.15, y: 0.9, z: 0.18}
+--- !u!54 &1105378882327059256
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6239194566748115450}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7293278490529081839
 GameObject:
   m_ObjectHideFlags: 0
