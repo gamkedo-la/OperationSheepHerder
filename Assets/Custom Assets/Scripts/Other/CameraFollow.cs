@@ -28,7 +28,7 @@ public class CameraFollow : MonoBehaviour
     float rotationSpeed = 90f;
 
     [SerializeField, Range(1f, 100f)] 
-    float distance = 50f;
+    float distance = 75f;
 
     [SerializeField, Range(-89f, 89f)] 
     float minVerticalAngle = -30f, maxVerticalAngle = 60f;

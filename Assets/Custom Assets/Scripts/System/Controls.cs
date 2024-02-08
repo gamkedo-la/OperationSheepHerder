@@ -198,7 +198,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ceef1811-56a2-49f6-83cb-72d6ff7c71bc"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": ""CustomHolding(duration=0.5,pressPoint=0.5)"",
                     ""processors"": """",
                     ""groups"": ""PC"",
