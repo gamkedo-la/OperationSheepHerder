@@ -6,6 +6,6 @@ public class PlayButtonScript : MonoBehaviour
 {
     public void HandlePlayButtonClick()
     {
-        LoadingManager.Instance.LoadScene(GameEnumsNamespace.GameSceneEnums.WoodsDay);
+        LoadingManager.Instance.LoadScene(GameEnumsNamespace.GameSceneEnums.WoodsDayLevel1);
     }
 }
