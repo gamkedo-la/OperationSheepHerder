@@ -11,6 +11,8 @@ public class OnCollisionTarget : MonoBehaviour
     public bool firstHit = true;
     [SerializeField]
     ParticleSystem particles;
+    [SerializeField]
+    ParticleSystem starParticles;
     float timeStamp;
     [SerializeField]
     WeaponSO weaponType;
@@ -46,6 +48,7 @@ public class OnCollisionTarget : MonoBehaviour
                     {
                         Debug.Log("hit enemy");
                         hitObject.GetComponent<Enemy>().onHitCallback.Invoke(this.gameObject, weaponType.DamageValue);
+                        Instantiate(starParticles, collision.contacts[0].point, Quaternion.identity);
                     }
                 }
             }
