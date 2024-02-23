@@ -84,9 +84,9 @@ public class Ghost : Enemy
     }
 
 
-    public override void TakeDamage(GameObject weapon, float damage)
+    public override void TakeDamage(WeaponSO weapon, float damage)
     {
-        throw new System.NotImplementedException();
+
     }
 
     private void OnDisable()

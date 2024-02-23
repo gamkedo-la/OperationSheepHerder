@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a27e7996d7baa44b6b7473b451af85, type: 3}
-  m_Name: Wolf
+  m_Script: {fileID: 11500000, guid: bae2cd3cafbfbba409b4fc7679c0b05a, type: 3}
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  type: Wolf
-  baseSpeed: 4
-  prefab: {fileID: 6239194566748115450, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
-  baseAttack: 3
+  _name: 
+  _damageValue: 0

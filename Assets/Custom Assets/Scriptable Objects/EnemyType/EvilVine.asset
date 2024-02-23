@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a27e7996d7baa44b6b7473b451af85, type: 3}
   m_Name: EvilVine
   m_EditorClassIdentifier: 
+  type: EvilVine
   baseSpeed: 2
   prefab: {fileID: 0}
   baseAttack: 5

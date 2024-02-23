@@ -19,6 +19,9 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     protected float currentHealth, maxHealth, attackPower, speed;
 
-    public abstract void TakeDamage(GameObject weapon, float damage);
+    public delegate void OnHit(WeaponSO weapon, float damage);
+    public OnHit onHitCallback;
+
+    public abstract void TakeDamage(WeaponSO weapon, float damage);
 
 }

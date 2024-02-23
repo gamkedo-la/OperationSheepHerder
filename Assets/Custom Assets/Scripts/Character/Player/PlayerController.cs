@@ -240,7 +240,7 @@ public class PlayerController : Character
         }
     }
 
-    public override void TakeDamage(GameObject weapon, float damage)
+    public override void TakeDamage(WeaponSO weapon, float damage)
     {
         throw new NotImplementedException();
     }

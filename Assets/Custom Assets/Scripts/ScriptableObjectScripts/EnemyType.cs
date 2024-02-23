@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [CreateAssetMenu()]
 public class EnemyType : ScriptableObject
 {
-    //TODO: transition hitsToDefeat to health bar
+    public string type;
     public float baseSpeed;
     public GameObject prefab;
     public float baseAttack;

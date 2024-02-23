@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a27e7996d7baa44b6b7473b451af85, type: 3}
   m_Name: Dragon
   m_EditorClassIdentifier: 
-  baseSpeed: 7
-  prefab: {fileID: 0}
+  type: Dragon
+  baseSpeed: 6
+  prefab: {fileID: 7155922535850730701, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
   baseAttack: 7

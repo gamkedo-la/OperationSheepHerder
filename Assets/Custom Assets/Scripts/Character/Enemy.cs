@@ -11,8 +11,7 @@ public abstract class Enemy : Character
     public GameObject target = null;
 
 
-    public delegate void OnHit(GameObject weapon, float damage);
-    public OnHit onHitCallback;
+
 
     //bool isTargetedByPlayer = false;
 

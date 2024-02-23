@@ -17,14 +17,11 @@ public class OnCollisionTarget : MonoBehaviour
     [SerializeField]
     WeaponSO weaponType;
     float coolDownSeconds;
-    public bool hitEnemy = false;
-    Rigidbody rB;
     
 
 
     void Awake()
     {
-        rB = GetComponent<Rigidbody>();
         firstHit = true;
     }
     public void OnCollisionEnter(Collision collision)
@@ -47,7 +44,7 @@ public class OnCollisionTarget : MonoBehaviour
                     if (hitObject.CompareTag("Enemy"))
                     {
                         Debug.Log("hit enemy");
-                        hitObject.GetComponent<Enemy>().onHitCallback.Invoke(this.gameObject, weaponType.DamageValue);
+                        hitObject.GetComponent<Enemy>().onHitCallback.Invoke(weaponType, weaponType.DamageValue);
                         Instantiate(starParticles, collision.contacts[0].point, Quaternion.identity);
                     }
                 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5677219474880427282}
   - component: {fileID: 7883309119524328310}
   m_Layer: 0
-  m_Name: LittleDragon
+  m_Name: LittleDragonParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

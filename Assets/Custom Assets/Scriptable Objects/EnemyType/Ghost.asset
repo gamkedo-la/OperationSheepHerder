@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a27e7996d7baa44b6b7473b451af85, type: 3}
   m_Name: Ghost
   m_EditorClassIdentifier: 
-  baseSpeed: 6
-  prefab: {fileID: 0}
+  type: Ghost
+  baseSpeed: 5
+  prefab: {fileID: 8308189106648288932, guid: 102606c47ed15af4fb4af7838d7a6d0b, type: 3}
   baseAttack: 5
