@@ -806,6 +806,23 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1170565861}
   m_SourcePrefab: {fileID: 100100000, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
+--- !u!1 &1650048515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4564897230423372830, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+  m_PrefabInstance: {fileID: 9028759597406480453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1650048520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650048515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3017f2b7e6dd84a4bacb9c91dec4e24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1683248368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1496,6 +1513,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TileSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 8a17d22f22bf24b4da74c9b427a499c3, type: 2}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_UseGeometry
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_GenerateLinks
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3412775716558196273, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.187729
@@ -1507,6 +1552,18 @@ PrefabInstance:
     - target: {fileID: 3412775716558196273, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.z
       value: 9.466095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010269137536626435, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010269137536626435, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_EnableTreeColliders
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564897230423372830, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4787303368439945070, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1567,5 +1624,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4564897230423372830, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1650048520}
   m_SourcePrefab: {fileID: 100100000, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
