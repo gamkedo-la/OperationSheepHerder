@@ -190,7 +190,7 @@ public class Wolf : Enemy
                 {
                     if (!timer.wolfCooldownTimerActive)
                     {
-                        target.GetComponent<Character>().TakeDamage(this.gameObject, attackPower);
+                        target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
                         StartCoroutine(timer.CooldownTimer(attackTimerCooldown, name));
                         fsm.TransitionTo(_chase);
                     }
@@ -266,7 +266,7 @@ public class Wolf : Enemy
     {
         activeSheep = GameManager.instance.activeSheep;
     }
-    public override void TakeDamage(GameObject weapon, float damage)
+    public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)
     {
         //when the player presses 'I' they take 5 damage
         currentHealth -= damage;

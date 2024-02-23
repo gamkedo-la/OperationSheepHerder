@@ -84,7 +84,7 @@ public class Ghost : Enemy
     }
 
 
-    public override void TakeDamage(WeaponSO weapon, float damage)
+    public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)
     {
 
     }

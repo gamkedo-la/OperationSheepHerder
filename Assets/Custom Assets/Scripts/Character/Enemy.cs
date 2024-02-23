@@ -10,9 +10,6 @@ public abstract class Enemy : Character
 
     public GameObject target = null;
 
-
-
-
     //bool isTargetedByPlayer = false;
 
     public Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
