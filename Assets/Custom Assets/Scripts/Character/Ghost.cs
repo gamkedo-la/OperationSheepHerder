@@ -1,9 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ghost : Enemy
 {
+    /*
+     * Ghost targets a sheep and drifts/follows it
+     * Ghost can't be seen until it's about to attack
+     * Lantern makes all ghosts visible within a certain radius of the lantern
+     * Ghosts die
+     *      -when health drops to 0
+    */
     [SerializeField]
     float attackRadius;
     [SerializeField]

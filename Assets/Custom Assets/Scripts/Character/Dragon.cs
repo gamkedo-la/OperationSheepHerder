@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class Dragon : Enemy
 {
+    /*
+     *  Shoots poison gas? OR fire? from nose to attack
+     *      -affects all sheep within certain range
+     *  After being attacked, flies up to avoid close range attacks while still attacking sheep
+     *      -can't stay up long so must land after a little while
+     *  Die when health drops to 0
+    */
     [SerializeField]
     float attackRadius;
     [SerializeField]
