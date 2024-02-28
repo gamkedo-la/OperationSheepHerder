@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI pointsText;
 
+    [SerializeField]
+    GameObject player;
+
+    float maxSheepDistance = 30f;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -75,10 +81,7 @@ public class GameManager : MonoBehaviour
         //Separate scene for each level
         string sceneName = SceneManager.GetActiveScene().name;
 
-/*        if (sceneName.Contains("Level1"))
-        {
-            SetupLevel();
-        }*/
+        StartCoroutine(CheckSheepDistanceFromPlayer());
 
     }
 
@@ -138,6 +141,35 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
         onUpdateSheepCallback.Invoke();
+    }
+
+    IEnumerator CheckSheepDistanceFromPlayer()
+    {
+        while (true)
+        {
+            if (debugAll)
+            {
+                Debug.Log("checking sheep distance");
+            }
+            int farthestSheep = -1;
+            float farthestSheepDistance = 0f;
+            for (int i = 0; i < activeSheep.Count; i++)
+            {
+                float distance = Vector3.Distance(activeSheep[i].transform.position, player.transform.position);
+                if (distance > farthestSheepDistance)
+                {
+                    farthestSheep = i;
+                    farthestSheepDistance = distance;
+                }
+            }
+            if (farthestSheepDistance > maxSheepDistance)
+            {
+                //dog fetch sheep
+                Debug.Log(farthestSheep + " " + farthestSheepDistance);
+
+            }
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     public void UpdateActiveWolves()

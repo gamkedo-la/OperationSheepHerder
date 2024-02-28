@@ -4099,6 +4099,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 2234778233262988724}
   sheepSavedText: {fileID: 5066166323168433085}
   pointsText: {fileID: 423377548239533498}
+  player: {fileID: 8800065742644287664}
 --- !u!114 &132377538155120757
 MonoBehaviour:
   m_ObjectHideFlags: 0
