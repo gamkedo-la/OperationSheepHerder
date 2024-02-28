@@ -35,6 +35,11 @@ public class Dragon : Enemy
         
     }
 
+    private void FixedUpdate()
+    {
+        fsm.OnUpdate();
+    }
+
     void FSM_Chase(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)

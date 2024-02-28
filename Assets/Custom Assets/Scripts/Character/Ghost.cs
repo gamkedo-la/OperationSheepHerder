@@ -34,6 +34,11 @@ public class Ghost : Enemy
         fsm.OnSpawn(_follow);
     }
 
+    private void FixedUpdate()
+    {
+        fsm.OnUpdate();
+    }
+
     void FSM_Follow(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)

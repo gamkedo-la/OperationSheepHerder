@@ -38,6 +38,11 @@ public class Dog : Character
         fsm.OnSpawn(_herd);
     }
 
+    private void FixedUpdate()
+    {
+        fsm.OnUpdate();
+    }
+
     void FSM_Herd(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
@@ -47,7 +52,7 @@ public class Dog : Character
 
         if (step == FSM.Step.Update)
         {
-            Debug.Log("herd state update");
+            
         }
 
         if (step == FSM.Step.Exit)
