@@ -19,6 +19,7 @@ public class Dog : Character
 
     FSM fsm;
     FSM.State _herd, _attack, _knockedOut;
+    float idleRadius = 4f;
 
     private void OnEnable()
     {
@@ -52,7 +53,15 @@ public class Dog : Character
 
         if (step == FSM.Step.Update)
         {
-            
+            if (Vector3.Distance(transform.position, player.transform.position) <= idleRadius)
+            {
+                _agent.isStopped = true;
+            }
+            else
+            {
+                _agent.isStopped = false;
+                _agent.SetDestination(player.transform.position);
+            }
         }
 
         if (step == FSM.Step.Exit)
