@@ -171,7 +171,6 @@ public class GameManager : MonoBehaviour
         {
             farthestSheep = -1;
         }
-        Debug.Log(farthestSheep);
     }
 
     public void UpdateActiveWolves()
