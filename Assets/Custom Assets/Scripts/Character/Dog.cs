@@ -1,5 +1,15 @@
 using UnityEngine;
 
+/*
+ * Circles around nearby sheep to drive them towards the player
+ *      -player puts dog in herding mode
+ *      -dog follows player with sheep, unless a sheep has strayed then dog will leave player to retrieve sheep
+ *      -dog is in idle mode when close enough to player
+ * Attack an enemy that is attacking a sheep
+ *      -player puts dog in attack mode
+ * Get knocked out for a short time
+ *      -when takes too much damage
+ */
 public class Dog : Character
 {
     [SerializeField]
