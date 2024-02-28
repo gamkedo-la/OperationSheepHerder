@@ -66,7 +66,7 @@ public class Dog : Character
             {
                 if (GameManager.instance.farthestSheep != -1)
                 {
-                    Debug.Log("TODO: send sheep back to player");
+                    GameManager.instance.activeSheep[GameManager.instance.farthestSheep].ReturnToPlayer();
                 }
                 _agent.isStopped = true;
             }

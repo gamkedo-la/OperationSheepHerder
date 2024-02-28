@@ -29,7 +29,7 @@ public class Sheep : Character
     Vector3 attackerDirection;
 
     NavMeshAgent agent;
-    
+    private float safeRadiusWithPlayer = 4f;
 
     private void Start()
     {
@@ -134,6 +134,11 @@ public class Sheep : Character
             speed = baseSpeed;
             agent.speed = speed;
             agent.SetDestination(player.transform.position);
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance <= safeRadiusWithPlayer)
+            {
+                fsm.TransitionTo(_wander);
+            }
             if (attacker != null)
             {
                 fsm.TransitionTo(_flee);
@@ -204,6 +209,11 @@ public class Sheep : Character
 
             //
         }
+    }
+
+    public void ReturnToPlayer()
+    {
+        fsm.TransitionTo(_follow);
     }
     public Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
