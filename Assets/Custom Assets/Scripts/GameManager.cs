@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public bool debugFSM;
 
+    public int farthestSheep = -1;
+
     [SerializeField]
     GameObject sheepPrefab;
 
@@ -147,29 +149,29 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            if (debugAll)
-            {
-                Debug.Log("checking sheep distance");
-            }
-            int farthestSheep = -1;
-            float farthestSheepDistance = 0f;
-            for (int i = 0; i < activeSheep.Count; i++)
-            {
-                float distance = Vector3.Distance(activeSheep[i].transform.position, player.transform.position);
-                if (distance > farthestSheepDistance)
-                {
-                    farthestSheep = i;
-                    farthestSheepDistance = distance;
-                }
-            }
-            if (farthestSheepDistance > maxSheepDistance)
-            {
-                //dog fetch sheep
-                Debug.Log(farthestSheep + " " + farthestSheepDistance);
-
-            }
+            UpdateFarthestSheep();
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    void UpdateFarthestSheep()
+    {
+        farthestSheep = -1;
+        float farthestSheepDistance = 0f;
+        for (int i = 0; i < activeSheep.Count; i++)
+        {
+            float distance = Vector3.Distance(activeSheep[i].transform.position, player.transform.position);
+            if (distance > farthestSheepDistance)
+            {
+                farthestSheep = i;
+                farthestSheepDistance = distance;
+            }
+        }
+        if (farthestSheepDistance < maxSheepDistance)
+        {
+            farthestSheep = -1;
+        }
+        Debug.Log(farthestSheep);
     }
 
     public void UpdateActiveWolves()

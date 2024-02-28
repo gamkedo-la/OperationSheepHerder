@@ -53,14 +53,27 @@ public class Dog : Character
 
         if (step == FSM.Step.Update)
         {
-            if (Vector3.Distance(transform.position, player.transform.position) <= idleRadius)
+            Vector3 goToPoint;
+            if (GameManager.instance.farthestSheep != -1)
             {
+                goToPoint = GameManager.instance.activeSheep[GameManager.instance.farthestSheep].transform.position;
+            }
+            else
+            {
+                goToPoint = player.transform.position;
+            }
+            if (Vector3.Distance(transform.position, goToPoint) <= idleRadius)
+            {
+                if (GameManager.instance.farthestSheep != -1)
+                {
+                    Debug.Log("TODO: send sheep back to player");
+                }
                 _agent.isStopped = true;
             }
             else
             {
                 _agent.isStopped = false;
-                _agent.SetDestination(player.transform.position);
+                _agent.SetDestination(goToPoint);
             }
         }
 
