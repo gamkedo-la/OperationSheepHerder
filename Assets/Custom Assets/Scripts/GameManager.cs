@@ -167,7 +167,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverPanel.SetActive(true);
+        if (gameOverPanel)
+        {
+            gameOverPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("game over panel not connected to scene");
+        }
     }
 
     public void MainMenu()

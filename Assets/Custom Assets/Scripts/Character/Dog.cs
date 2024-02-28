@@ -47,7 +47,7 @@ public class Dog : Character
 
         if (step == FSM.Step.Update)
         {
-
+            Debug.Log("herd state update");
         }
 
         if (step == FSM.Step.Exit)
