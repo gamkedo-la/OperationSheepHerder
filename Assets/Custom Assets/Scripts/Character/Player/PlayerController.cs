@@ -9,9 +9,6 @@ using System;
 
 public class PlayerController : Character
 {
-
-    // This is a test comment for my first commit --  Ill remove this
-
     [SerializeField]
     float playerSpeed;
 
