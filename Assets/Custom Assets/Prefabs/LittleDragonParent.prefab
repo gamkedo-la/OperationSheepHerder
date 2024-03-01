@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 7883309119524328310}
-  _animator: {fileID: 0}
+  _animator: {fileID: 278259390954582342}
   uiHealthValue: {fileID: 0}
   uiHealthObject: {fileID: 0}
   player: {fileID: 0}
@@ -57,6 +57,8 @@ MonoBehaviour:
   speed: 2
   type: {fileID: 11400000, guid: 7229205f9883f48499a2b957d9365271, type: 2}
   target: {fileID: 0}
+  attackRadius: 0
+  attackCooldown: 0
 --- !u!195 &7883309119524328310
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -147,11 +149,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: little_dragon
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 5247c36c7264fc046944928dafd85983, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3a362a6afa502844f89da8ea49dff45a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5247c36c7264fc046944928dafd85983, type: 3}
+--- !u!95 &278259390954582342 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 5247c36c7264fc046944928dafd85983, type: 3}
+  m_PrefabInstance: {fileID: 5959958685454372055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6141994709838359356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5247c36c7264fc046944928dafd85983, type: 3}
