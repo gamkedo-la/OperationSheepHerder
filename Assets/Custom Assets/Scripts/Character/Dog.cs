@@ -46,6 +46,13 @@ public class Dog : Character
 
     void FSM_Herd(FSM fsm, FSM.Step step, FSM.State state)
     {
+
+        if(_agent == null)
+        {
+            Debug.LogWarning("No Dog Agent Assigned");
+            return;
+        }
+
         if (step == FSM.Step.Enter)
         {
 
