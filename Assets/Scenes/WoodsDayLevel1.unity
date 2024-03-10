@@ -425,7 +425,7 @@ Transform:
   m_Children:
   - {fileID: 705507995}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &414971981
 PrefabInstance:
@@ -519,6 +519,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8962650079861881031, guid: 8276383505d8de34a8045a72b79b4843, type: 3}
   m_PrefabInstance: {fileID: 414971981}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &662105413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7155922535850730701, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_Name
+      value: LittleDragonParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 375.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.2721405
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 404.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3311962203902219751, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3311962203902219751, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1628,6 +1689,10 @@ PrefabInstance:
     - target: {fileID: 8682044081317851857, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.z
       value: 12.917128
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800065742644287665, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 407.2
       objectReference: {fileID: 0}
     - target: {fileID: 8850219564448081876, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
