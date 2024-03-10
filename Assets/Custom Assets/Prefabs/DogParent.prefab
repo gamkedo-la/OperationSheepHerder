@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 8129281625845975668}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1902637212058644218
 Animator:
@@ -70,8 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b44f69b6cc97dc4fb47fe40f08b0dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 0}
-  _animator: {fileID: 353926639609640574}
+  _agent: {fileID: 321825359994847458}
+  _animator: {fileID: 0}
   uiHealthValue: {fileID: 0}
   uiHealthObject: {fileID: 0}
   player: {fileID: 0}
@@ -428,15 +428,11 @@ PrefabInstance:
     - {fileID: 1006258715457616670, guid: 7167af269eb25b14fb427aed732341f0, type: 3}
     - {fileID: 316043114932941467, guid: 7167af269eb25b14fb427aed732341f0, type: 3}
     - {fileID: 4400502189782277747, guid: 7167af269eb25b14fb427aed732341f0, type: 3}
+    - {fileID: 6253414741361516841, guid: 7167af269eb25b14fb427aed732341f0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7167af269eb25b14fb427aed732341f0, type: 3}
---- !u!95 &353926639609640574 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6253414741361516841, guid: 7167af269eb25b14fb427aed732341f0, type: 3}
-  m_PrefabInstance: {fileID: 5918277415791073111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8129281625845975668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2517779808593206563, guid: 7167af269eb25b14fb427aed732341f0, type: 3}
