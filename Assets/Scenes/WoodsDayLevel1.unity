@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7968087563639658752, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 8007261443627516837, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
       propertyPath: m_IsActive
       value: 0
