@@ -32,7 +32,7 @@ public class Dragon : Enemy
 
     private void Start()
     {
-        
+        fsm.OnSpawn(_chase);
     }
 
     private void FixedUpdate()

@@ -75,6 +75,7 @@ public class Wolf : Enemy
         activeWolves = GameManager.instance.activeWolves;
         activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_chase);
+        _animator.Play("Run");
 
     }
     void FixedUpdate()

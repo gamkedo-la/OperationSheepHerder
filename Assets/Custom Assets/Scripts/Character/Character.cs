@@ -6,8 +6,8 @@ public abstract class Character : MonoBehaviour
 {
     public NavMeshAgent _agent;
 
-    [SerializeField]
-    Animator _animator;
+    
+    public Animator _animator;
 
 
     public Slider uiHealthValue;
