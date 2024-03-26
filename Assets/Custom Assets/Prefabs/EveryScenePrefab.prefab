@@ -4116,6 +4116,7 @@ MonoBehaviour:
     m_Flags: 0
   debugAll: 0
   debugFSM: 0
+  farthestSheep: -1
   sheepPrefab: {fileID: 792757998885314416, guid: 8276383505d8de34a8045a72b79b4843, type: 3}
   wolfPrefab: {fileID: 6239194566748115450, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
   spawnRadiusForSheep: 0
