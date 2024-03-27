@@ -1,12 +1,9 @@
 using UnityEngine;
 
 /*
- * Circles around nearby sheep to drive them towards the player
- *      -player puts dog in herding mode
- *      -dog follows player with sheep, unless a sheep has strayed then dog will leave player to retrieve sheep
- *      -dog is in idle mode when close enough to player
+ * -dog follows player with sheep, unless a sheep has strayed then dog will leave player to retrieve sheep
+ * -dog is in idle mode when close enough to player and no sheep to herd or defend
  * Attack an enemy that is attacking a sheep
- *      -player puts dog in attack mode
  * Get knocked out for a short time
  *      -when takes too much damage
  */
@@ -16,10 +13,15 @@ public class Dog : Character
     float attackRadius;
     [SerializeField]
     float attackCooldown;
+    [SerializeField]
+    AudioClip bark;
+    [SerializeField]
+    AudioClip knockout;
 
     FSM fsm;
     FSM.State _herd, _attack, _knockedOut;
     float idleRadius = 4f;
+    AudioSource audioSource;
 
     private void OnEnable()
     {
@@ -37,6 +39,7 @@ public class Dog : Character
     private void Start()
     {
         fsm.OnSpawn(_herd);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -60,6 +63,7 @@ public class Dog : Character
 
         if (step == FSM.Step.Update)
         {
+
             Vector3 goToPoint;
             if (GameManager.instance.farthestSheep != -1)
             {
@@ -112,7 +116,8 @@ public class Dog : Character
     {
         if (step == FSM.Step.Enter)
         {
-
+            audioSource.clip = knockout;
+            audioSource.Play();
         }
 
         if (step == FSM.Step.Update)
@@ -122,7 +127,7 @@ public class Dog : Character
 
         if (step == FSM.Step.Exit)
         {
-
+            audioSource.clip = null;
         }
     }
     public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)

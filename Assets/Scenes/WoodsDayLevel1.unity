@@ -725,11 +725,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!195 &1197184577 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 7362643845218852013, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-  m_PrefabInstance: {fileID: 9028759597406480453}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1258979262 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6239194566748115450, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
@@ -1562,6 +1557,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 9386000658b7ebb4db0598003cdb590c, type: 2}
     - target: {fileID: 3412775716558196273, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.187729
@@ -1614,10 +1613,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 5.4398193
       objectReference: {fileID: 0}
-    - target: {fileID: 5071699367386527290, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: _agent
-      value: 
-      objectReference: {fileID: 1197184577}
     - target: {fileID: 5077153350302237122, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 370.9

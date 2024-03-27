@@ -73,8 +73,12 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        activeSheep = FindObjectsOfType<Sheep>().ToList();
-        activeWolves = FindObjectsOfType<Wolf>().ToList();
+
+        if (instance = this)
+        {
+            activeSheep = FindObjectsOfType<Sheep>().ToList();
+            activeWolves = FindObjectsOfType<Wolf>().ToList();
+        }
     }
 
     private void Start()
@@ -84,7 +88,6 @@ public class GameManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
 
         StartCoroutine(CheckSheepDistanceFromPlayer());
-
     }
 
 

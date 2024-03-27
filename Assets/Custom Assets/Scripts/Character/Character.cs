@@ -24,4 +24,5 @@ public abstract class Character : MonoBehaviour
 
     public abstract void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null);
 
+
 }

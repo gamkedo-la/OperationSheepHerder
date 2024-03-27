@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 8129281625845975668}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1902637212058644218
 Animator:
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 321825359994847458}
-  _animator: {fileID: 0}
+  _animator: {fileID: 1902637212058644218}
   uiHealthValue: {fileID: 0}
   uiHealthObject: {fileID: 0}
   player: {fileID: 0}
@@ -82,6 +82,8 @@ MonoBehaviour:
   speed: 5
   attackRadius: 0
   attackCooldown: 0
+  bark: {fileID: 8300000, guid: 024df06f4b8b07e479c83edf3916e8ff, type: 3}
+  knockout: {fileID: 8300000, guid: 55f40a51df8cada4eb4f239631ba7581, type: 3}
 --- !u!65 &2748545337111327557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
