@@ -14,8 +14,6 @@ public class Dog : Character
     [SerializeField]
     float attackCooldown;
     [SerializeField]
-    AudioClip bark;
-    [SerializeField]
     AudioClip knockout;
 
     FSM fsm;

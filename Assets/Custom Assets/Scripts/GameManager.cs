@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public List<Level> levels;
     public Level currentLevel;
 
+    public GameObject player;
+
     public InputAction pauseAction;
 
     /// <summary>
@@ -57,9 +59,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI pointsText;
-
-    [SerializeField]
-    GameObject player;
 
     float maxSheepDistance = 30f;
 

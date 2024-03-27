@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8962650079861881031}
   - component: {fileID: 3884688776824101589}
+  - component: {fileID: 1834324292720971507}
   - component: {fileID: 4750037485171241609}
   - component: {fileID: 5642637392924491420}
   - component: {fileID: 5121915568109594024}
@@ -37,7 +38,7 @@ Transform:
   - {fileID: 6788090721501504936}
   - {fileID: 5227997615829581881}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3884688776824101589
 MonoBehaviour:
@@ -69,6 +70,21 @@ MonoBehaviour:
   bellRadius: 50
   baseSpeed: 4.1
   fleeSpeed: 5
+--- !u!114 &1834324292720971507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792757998885314416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a210febbd6cd3f4a9fc5e5c6e97530e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: ac12790cbf649f547b0478ca4a6c6e72, type: 3}
+  minTimeBetweenClips: 5
+  maxTimeBetweenClips: 20
 --- !u!65 &4750037485171241609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,7 +135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792757998885314416}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 503f6ca1303f8cd4a9d565abc6cc0e5e, type: 3}
   m_Name: 
@@ -177,7 +193,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 53e60ee7e606dea4f81f5e2213612f58, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ac12790cbf649f547b0478ca4a6c6e72, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
