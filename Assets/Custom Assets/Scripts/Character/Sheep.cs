@@ -223,13 +223,6 @@ public class Sheep : Character
         NavMesh.SamplePosition(randDirection, out NavMeshHit navHit, dist, layermask);
         return navHit.position;
     }
-    public IEnumerator FaceTarget()
-    {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-        yield return null;
-    }
     void OnDestroy()
     {
         if (Application.isPlaying)

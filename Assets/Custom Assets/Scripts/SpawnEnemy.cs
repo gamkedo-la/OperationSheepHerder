@@ -21,7 +21,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Start()
     {
-        level = GameManager.instance.currentLevel;
+        level = GameManager.instance.currentLevelData;
         wave = 0;
         typesOfEnemies = level.typesOfEnemies;
 

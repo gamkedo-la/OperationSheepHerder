@@ -7,19 +7,13 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using System;
 
-public class PlayerController : Character
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     float playerSpeed;
 
     [SerializeField]
     float attackCooldown;
-
-    //TODO: remove
-    [SerializeField]
-    float bellTimer;
-    [SerializeField]
-    bool followBell = false;
 
     [SerializeField]
     float rotationSpeed;
@@ -64,7 +58,6 @@ public class PlayerController : Character
     void Start()
     {
         playerController = GetComponent<CharacterController>();
-        speed = playerSpeed;
         timer = FindObjectOfType<Timer>();
         trajectoryRenderer = GetComponentInChildren<RockTrajectory>();
         playerInput = GetComponent<PlayerInput>().actions;
@@ -90,7 +83,7 @@ public class PlayerController : Character
             right.y = 0f;
             right.Normalize();
             move = ((forward * inputVec.y + right * inputVec.x));
-            move.y = gravity.y * Time.deltaTime * speed;
+            move.y = gravity.y * Time.deltaTime * playerSpeed;
             move.Normalize();
         }
         else
@@ -106,7 +99,7 @@ public class PlayerController : Character
     public void EndAiming()
     {
         holdingAim = false;
-        PlayerAttack();
+        PlayerRockAttack();
     }
     private void Update()
     {
@@ -122,12 +115,13 @@ public class PlayerController : Character
     {
         //if arrow keys pressed, move rock trajectory, otherwise launch rock in forward direction
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();
+        //TODO: prevent player rotating full body with up/down input keys, but still rotate playerforward object to aim higher/lower
         transform.Rotate(new Vector2(input.x, input.y * aimRotationSpeed), Space.World);
         trajectoryRenderer.DrawTrajectory();
     }
 
     //called when attack button is released
-    public void PlayerAttack()
+    public void PlayerRockAttack()
     {
         trajectoryRenderer.ClearTrajectory();
 
@@ -145,19 +139,8 @@ public class PlayerController : Character
         trajectoryRenderer.transform.localEulerAngles = Vector3.zero;
     }
 
-    //TODO: REMOVE BELL, REPLACE WITH DOG
-    public void OnRingBell()
-    {
-        if (timer.followBellTimerActive == false)
-        {
-            timer.StartCoroutine(timer.CooldownTimer(bellTimer, "Player"));
-        }
-
-
-    }
     void FixedUpdate()
     {
-        CheckOnGround();
         if (move.x != 0 || move.z != 0)
         {
             transform.Rotate(new Vector3(move.x, 0, move.y) * Time.deltaTime, Space.Self);
@@ -185,7 +168,7 @@ public class PlayerController : Character
                 move.z = 0f;
             }
         }
-        playerController.Move(speed * Time.deltaTime * move);
+        playerController.Move(playerSpeed * Time.deltaTime * move);
     }
     void CheckOnGround()
     {
@@ -220,7 +203,7 @@ public class PlayerController : Character
         float dot = Vector3.Dot(move, hit.normal);
         if (dot > 0f)
         {
-            move = (move - hit.normal * dot).normalized * speed;
+            move = (move - hit.normal * dot).normalized * playerSpeed;
         }
         return true;
     }
@@ -240,8 +223,4 @@ public class PlayerController : Character
         }
     }
 
-    public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)
-    {
-        throw new NotImplementedException();
-    }
 }

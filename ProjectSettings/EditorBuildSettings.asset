@@ -12,7 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8e6cdfac08057934788aae8a90d1519a
   - enabled: 1
-    path: Assets/Scenes/WoodsDayLevel1.unity
+    path: Assets/Scenes/Woods Day.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Armageddon.unity
+    guid: 9f5bb4be8c5b8944f8a7d29ab1fa025a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 299fc08397732024dbeb8fea0df0af85, type: 2}

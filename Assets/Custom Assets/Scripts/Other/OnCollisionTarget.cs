@@ -34,7 +34,8 @@ public class OnCollisionTarget : MonoBehaviour
             firstHit = false;
             if (hitObject.CompareTag("Ground"))
             {
-                particles.Play();
+                //TODO: add dust particles for when ground hit, if time
+                //particles.Play();
             }
 
             else

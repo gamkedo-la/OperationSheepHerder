@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     public OnUpdateSheep onUpdateSheepCallback;
     public OnUpdateWolves onUpdateWolvesCallback;
 
-    public List<Level> levels;
-    public Level currentLevel;
+    public List<Level> levelData;
+    public Level currentLevelData;
 
     public GameObject player;
 
@@ -37,13 +37,7 @@ public class GameManager : MonoBehaviour
     public int farthestSheep = -1;
 
     [SerializeField]
-    GameObject sheepPrefab;
-
-    [SerializeField]
-    GameObject wolfPrefab;
-
-    [SerializeField]
-    float spawnRadiusForSheep;
+    Scene[] levelScenes;
 
     [SerializeField] 
     GameObject pauseMenu;
@@ -83,14 +77,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
-        //Separate scene for each level
-        string sceneName = SceneManager.GetActiveScene().name;
-
         StartCoroutine(CheckSheepDistanceFromPlayer());
     }
-
-
-
 
     private void OnEnable()
     {
@@ -102,23 +90,6 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         pauseAction.Disable();
-    }
-    public void LoadSceneByName(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-        if (sceneName.Contains("Level"))
-        {
-            SetupLevel();
-        }
-    }
-
-    void SetupLevel()
-    {
-        for (int i = 0; i < currentLevel.sheepCount;)
-        {
-            //GameObject tmp = Instantiate(sheepPrefab);
-            //TODO: tmp.transform.position = random location within spawnRadiusForSheep around Player's SheepSpawner GameObject
-        }
     }
 
     public void OnPauseGame()
@@ -140,7 +111,7 @@ public class GameManager : MonoBehaviour
     {
         activeSheep.Clear();
         activeSheep = FindObjectsOfType<Sheep>().ToList();
-        if (activeSheep.Count <= currentLevel.minSheepToCompleteLevel)
+        if (activeSheep.Count <= currentLevelData.minSheepToCompleteLevel)
         {
             GameOver();
         }
@@ -196,8 +167,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         int sheepSaved = activeSheep.Count;
         sheepSavedText.text = $"You saved {sheepSaved} sheep!";
-        int points = sheepSaved * currentLevel.pointsPerSheep;
+        int points = sheepSaved * currentLevelData.pointsPerSheep;
         pointsText.text = $"{points} points";
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(levelData[1].sceneName);
     }
 
     public void GameOver()
