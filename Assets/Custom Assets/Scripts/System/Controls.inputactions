@@ -209,15 +209,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ZoomCamera",
-                    "type": "Button",
-                    "id": "0f22da97-21c9-4e1a-b230-df70176d6d5f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [

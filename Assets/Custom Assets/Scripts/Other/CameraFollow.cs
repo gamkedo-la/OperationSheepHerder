@@ -42,11 +42,15 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] 
     LayerMask obstructionMask = -1;
 
-    [SerializeField, Min(1)] 
-    float minZoom = 5f;
+    //TODO: implement camera zoom
+    /*    [SerializeField, Min(1)] 
+        float minZoom = 5f;
 
-    [SerializeField] 
-    float maxZoom = 15f; 
+        [SerializeField] 
+        float maxZoom = 15f; 
+
+        float inputZoom;
+    */
 
     const float e = 0.001f;
 
@@ -58,7 +62,6 @@ public class CameraFollow : MonoBehaviour
 
     float lastManualRotationTime;
 
-    float inputZoom;
 
 
     Vector3 CameraHalfExtends { 
@@ -93,10 +96,6 @@ public class CameraFollow : MonoBehaviour
         {
             maxVerticalAngle = minVerticalAngle;
         }
-    }
-    void Start()
-    {
-        focus = FindObjectOfType<PlayerController>().transform;
     }
     void UpdateFocusPoint()
     {
@@ -177,10 +176,10 @@ public class CameraFollow : MonoBehaviour
             orbitAngles.y -= 360f;
         }
     }
-    void OnZoomCamera(InputValue input)
+/*    void OnZoomCamera(InputValue input)
     {
         inputZoom = input.Get<float>();
-    }
+    }*/
     void LateUpdate()
     {
         UpdateFocusPoint();

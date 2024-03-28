@@ -268,7 +268,6 @@ public class Wolf : Enemy
     }
     public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)
     {
-        //when the player presses 'I' they take 5 damage
         currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health
         uiHealthValue.value = currentHealth / maxHealth;

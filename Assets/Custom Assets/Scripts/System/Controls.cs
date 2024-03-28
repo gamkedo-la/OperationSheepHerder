@@ -231,15 +231,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ZoomCamera"",
-                    ""type"": ""Button"",
-                    ""id"": ""0f22da97-21c9-4e1a-b230-df70176d6d5f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -374,7 +365,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_RotateCamera = m_Camera.FindAction("RotateCamera", throwIfNotFound: true);
-        m_Camera_ZoomCamera = m_Camera.FindAction("ZoomCamera", throwIfNotFound: true);
         // GameManager
         m_GameManager = asset.FindActionMap("GameManager", throwIfNotFound: true);
         m_GameManager_PauseGame = m_GameManager.FindAction("PauseGame", throwIfNotFound: true);
@@ -518,13 +508,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Camera;
     private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
     private readonly InputAction m_Camera_RotateCamera;
-    private readonly InputAction m_Camera_ZoomCamera;
     public struct CameraActions
     {
         private @Controls m_Wrapper;
         public CameraActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @RotateCamera => m_Wrapper.m_Camera_RotateCamera;
-        public InputAction @ZoomCamera => m_Wrapper.m_Camera_ZoomCamera;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -537,9 +525,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @RotateCamera.started += instance.OnRotateCamera;
             @RotateCamera.performed += instance.OnRotateCamera;
             @RotateCamera.canceled += instance.OnRotateCamera;
-            @ZoomCamera.started += instance.OnZoomCamera;
-            @ZoomCamera.performed += instance.OnZoomCamera;
-            @ZoomCamera.canceled += instance.OnZoomCamera;
         }
 
         private void UnregisterCallbacks(ICameraActions instance)
@@ -547,9 +532,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @RotateCamera.started -= instance.OnRotateCamera;
             @RotateCamera.performed -= instance.OnRotateCamera;
             @RotateCamera.canceled -= instance.OnRotateCamera;
-            @ZoomCamera.started -= instance.OnZoomCamera;
-            @ZoomCamera.performed -= instance.OnZoomCamera;
-            @ZoomCamera.canceled -= instance.OnZoomCamera;
         }
 
         public void RemoveCallbacks(ICameraActions instance)
@@ -633,7 +615,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface ICameraActions
     {
         void OnRotateCamera(InputAction.CallbackContext context);
-        void OnZoomCamera(InputAction.CallbackContext context);
     }
     public interface IGameManagerActions
     {

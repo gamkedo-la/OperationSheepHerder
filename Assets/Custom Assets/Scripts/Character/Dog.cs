@@ -130,7 +130,26 @@ public class Dog : Character
     }
     public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)
     {
-        throw new System.NotImplementedException();
+        currentHealth -= damage;
+        //this updates the Slider value of Current Health / Max Health
+        uiHealthValue.value = currentHealth / maxHealth;
+
+        //if the enemy health is less than the max, turn the UI on
+        if (currentHealth <= maxHealth)
+        {
+            uiHealthObject.SetActive(true);
+            uiHealthObject.transform.LookAt(Camera.main.transform);
+        }
+        //if the enemy health is at (or greater than) max, turn the UI off
+        else
+        {
+            uiHealthObject.SetActive(false);
+        }
+
+        if (currentHealth <= 0)
+        {
+            fsm.TransitionTo(_knockedOut);
+        }
     }
 
     private void OnDisable()

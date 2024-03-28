@@ -241,7 +241,6 @@ public class Sheep : Character
         }
         fsm.TransitionTo(_flee);
 
-        //when the player presses 'I' they take 5 damage
         currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health
         uiHealthValue.value = currentHealth / maxHealth;
