@@ -367,7 +367,7 @@ MonoBehaviour:
   player: {fileID: 0}
   currentHealth: 0
   maxHealth: 0
-  attackPower: 0
+  attackPower: 5
   speed: 5
   attackRadius: 0
   attackCooldown: 0
