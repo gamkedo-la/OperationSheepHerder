@@ -231,7 +231,7 @@ public class Sheep : Character
         }
     }
 
-    public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)
+    public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
     {
         
         attacker = enemy;

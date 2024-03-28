@@ -266,7 +266,7 @@ public class Wolf : Enemy
     {
         activeSheep = GameManager.instance.activeSheep;
     }
-    public override void TakeDamage(float damage, WeaponSO weapon = null, GameObject enemy = null)
+    public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
     {
         currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health

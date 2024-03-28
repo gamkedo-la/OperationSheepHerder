@@ -15,7 +15,7 @@ public class OnCollisionTarget : MonoBehaviour
     ParticleSystem starParticles;
     float timeStamp;
     [SerializeField]
-    WeaponSO weaponType;
+    Weapon weaponType;
     float coolDownSeconds;
     
 
