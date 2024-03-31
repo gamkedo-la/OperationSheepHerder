@@ -6,7 +6,6 @@ public class terrainColliderHack : MonoBehaviour
 {
     void Awake() 
     {
-        // Commit test - Will remove
         // some dumb forum post mentioned this might fix the problem
         // with tree colliders not working lolololololololololololol
         GetComponent<TerrainCollider>().enabled = false;
