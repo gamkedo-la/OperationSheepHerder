@@ -681,6 +681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LittleDragonParent
       objectReference: {fileID: 0}
+    - target: {fileID: 7155922535850730701, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
+      propertyPath: m_TagString
+      value: Dragon
+      objectReference: {fileID: 0}
     - target: {fileID: 8722545641226997134, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1581,11 +1585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2034282172959127670, guid: 9301b24b43b8ed24b968e4f45bc29c10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 382.84
+      value: 383.27
       objectReference: {fileID: 0}
     - target: {fileID: 2034282172959127670, guid: 9301b24b43b8ed24b968e4f45bc29c10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.31
+      value: 6.48
       objectReference: {fileID: 0}
     - target: {fileID: 2034282172959127670, guid: 9301b24b43b8ed24b968e4f45bc29c10, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2010,6 +2014,10 @@ PrefabInstance:
     - target: {fileID: 4387571835113103713, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.z
       value: 11.80384
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430337491197894304, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_TagString
+      value: Dog
       objectReference: {fileID: 0}
     - target: {fileID: 4787303368439945070, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x

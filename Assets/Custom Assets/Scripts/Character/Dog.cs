@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -21,6 +22,9 @@ public class Dog : Character
     float idleRadius = 4f;
     AudioSource audioSource;
 
+    List<Wolf> activeWolves;
+    List<Sheep> activeSheep;
+
     private void OnEnable()
     {
         onHitCallback += TakeDamage;
@@ -38,8 +42,20 @@ public class Dog : Character
     {
         fsm.OnSpawn(_herd);
         audioSource = GetComponent<AudioSource>();
+        GameManager.instance.onUpdateSheepCallback += UpdateSheep;
+        GameManager.instance.onUpdateWolvesCallback += UpdateWolves;
+        activeSheep = GameManager.instance.activeSheep;
+        activeWolves = GameManager.instance.activeWolves;
     }
-
+    void UpdateWolves()
+    {
+        activeWolves = GameManager.instance.activeWolves;
+    }
+    //called when GameManager.instance.activeSheep changes
+    void UpdateSheep()
+    {
+        activeSheep = GameManager.instance.activeSheep;
+    }
     private void FixedUpdate()
     {
         fsm.OnUpdate();

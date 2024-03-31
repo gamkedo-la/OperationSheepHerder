@@ -172,13 +172,7 @@ public class RockTrajectory : MonoBehaviour
 
 
         }
-        if (hit.collider)
-        {
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                //LockOn(hit.collider.gameObject);
-            }
-        }
+
         line.positionCount = curvePoints.Count;
         line.SetPositions(curvePoints.ToArray());
     }

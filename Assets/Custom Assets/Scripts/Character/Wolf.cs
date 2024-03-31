@@ -18,28 +18,19 @@ public class Wolf : Enemy
     bool packFollower; // if something happens to the leader or they need to split, just flip false
     Vector2 packChaseRandomFormationOffset; // to avoid bunching up
 
-    //TODO: Decide whether to use hunger variable to make game harder; maybe increase speed or attack power
-    /*  speed += something if wolves hungry, harder over time
-        [SerializeField] 
-        float hungerThreshold;
-        track current hunger level
-        TODO: have increased hunger level make wolves more desperate; less likely to attack in packs, easier to kill; hunger goes down when it kills a sheep 
-        TODO: decide if above comment is how things will work
-        float hunger;*/
-
-
     //if distance is less than attackRadius, wolf will transition to attack
     [SerializeField] 
     float attackRadius;
+    //time in seconds wolf must wait before able to attack again - to avoid nonstop attacking
     [SerializeField]
     float attackTimerCooldown;
 
     FSM fsm;
-    FSM.State _chase, _attack, _evade, _die, _currentState;
+    FSM.State _chase, _attack, _die;
 
     Timer timer;
-    Vector3 previousTargetPosition;
 
+    Vector3 previousTargetPosition;
 
     List<Wolf> activeWolves;
     List<Sheep> activeSheep;
@@ -55,8 +46,6 @@ public class Wolf : Enemy
         fsm = new FSM();
         _chase = FSM_Chase;
         _attack = FSM_Attack;
-        //keep evade??
-        _evade = FSM_Evade;
         _die = FSM_Die;
     }
 
@@ -75,7 +64,7 @@ public class Wolf : Enemy
         activeWolves = GameManager.instance.activeWolves;
         activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_chase);
-
+        _agent.speed = speed;
     }
     void FixedUpdate()
     {
@@ -87,14 +76,11 @@ public class Wolf : Enemy
     {
         if (step == FSM.Step.Enter)
         {
-            _currentState = _chase;
-            _agent.speed = speed;
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("wolf enter chase state");
             }
 
-            // todo: add chance to target player?
             if (packFollower)
             {
                 target = null;
@@ -102,8 +88,8 @@ public class Wolf : Enemy
                 int safetyLockBreak = 40; // 40 tries to find a non follower wolf, should be ample
                 packChaseRandomFormationOffset = Random.insideUnitCircle;
                 packChaseRandomFormationOffset.Normalize();
-                packChaseRandomFormationOffset *= Random.RandomRange(2f,6f); // how far is pack formation?
-                packChaseRandomFormationOffset.y -= Random.RandomRange(2f, 6f); // shift the circle behind the leader
+                packChaseRandomFormationOffset *= Random.Range(2f,6f); // how far is pack formation?
+                packChaseRandomFormationOffset.y -= Random.Range(2f, 6f); // shift the circle behind the leader
                 while (target == null || targetWolfScript == this || targetWolfScript.packFollower)
                 {
                     //TODO: Physics.SphereOverlap to check if wolf is close enough to bother following/using pack behaviour
@@ -116,10 +102,10 @@ public class Wolf : Enemy
                         break;
                     }
                 }
-            } else if (activeSheep.Count > 0)
+            } 
+            else if (activeSheep.Count > 0)
             {
                 //TODO: Switch to closest sheep
-                // note: there was a  - 1 here, but Random.Range already excludes the higher end, so no -1 :) -chris
                 target = activeSheep[Random.Range(0, activeSheep.Count)].gameObject;
             }
             else
@@ -164,21 +150,28 @@ public class Wolf : Enemy
         }
 
     }
-    //state wolf must be in to cause damage to player or sheep
+    //state wolf must be in to cause damage to player, dog or sheep
     void FSM_Attack(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
         {
-            _currentState = _attack;
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("wolf enter attack state");
             }
             
-            //will be switching to event 
             if (target == null)
             {
                 fsm.TransitionTo(_chase);
+            }
+
+            //TODO: Test fix
+            else if (target.CompareTag("Enemy") && target.name.Contains("Wolf"))
+            {
+                if (target.GetComponent<Wolf>().target.CompareTag("Sheep"))
+                {
+                    target = target.GetComponent<Wolf>().target;
+                }
             }
         }
         if (step == FSM.Step.Update)
@@ -186,22 +179,24 @@ public class Wolf : Enemy
 
             if (target != null)
             {
-                if (!timer.wolfCooldownTimerActive)
+                if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
+                {
+                    fsm.TransitionTo(_chase);
+                }
+
+                else
                 {
                     if (!timer.wolfCooldownTimerActive)
                     {
+
                         target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
                         StartCoroutine(timer.CooldownTimer(attackTimerCooldown, name));
                         fsm.TransitionTo(_chase);
                     }
                     //add code to play attack animation
                 }
-
-                if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
-                {
-                    fsm.TransitionTo(_chase);
-                }
             }
+
             else
             {
                 fsm.TransitionTo(_chase);
@@ -210,34 +205,15 @@ public class Wolf : Enemy
         }
         if (step == FSM.Step.Exit)
         {
-            target = null;
-        }
-    }
-
-    //evade player after being attacked or if targeted by player
-    void FSM_Evade(FSM fsm, FSM.Step step, FSM.State state)
-    {
-        if (step == FSM.Step.Enter)
-        {
-        }
-
-        if (step == FSM.Step.Update)
-        {
-            //get player location
-
-        }
-
-        if (step == FSM.Step.Exit)
-        {
 
         }
     }
+
     //final code to be executed upon wolf being killed by player
     void FSM_Die(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
         {
-            _currentState = _die;
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("wolf died");
@@ -268,6 +244,11 @@ public class Wolf : Enemy
     }
     public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
     {
+
+        if (enemy.CompareTag("Dog"))
+        {
+
+        }
         currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health
         uiHealthValue.value = currentHealth / maxHealth;
