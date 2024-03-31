@@ -81,9 +81,12 @@ public class Wolf : Enemy
                 Debug.Log("wolf enter chase state");
             }
 
-            if (packFollower && !target || !target.CompareTag("Dog"))
+            if (packFollower)
             {
-                target = null;
+                if (target && !target.CompareTag("Dog"))
+                {
+                    target = null;
+                }
                 Wolf targetWolfScript = null;
                 int safetyLockBreak = 40; // 40 tries to find a non follower wolf, should be ample
                 packChaseRandomFormationOffset = Random.insideUnitCircle;
