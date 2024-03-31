@@ -81,7 +81,7 @@ public class Wolf : Enemy
                 Debug.Log("wolf enter chase state");
             }
 
-            if (packFollower)
+            if (packFollower && !target || !target.CompareTag("Dog"))
             {
                 target = null;
                 Wolf targetWolfScript = null;
@@ -247,7 +247,8 @@ public class Wolf : Enemy
 
         if (enemy.CompareTag("Dog"))
         {
-
+            target = enemy;
+            fsm.TransitionTo(_chase);
         }
         currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health
