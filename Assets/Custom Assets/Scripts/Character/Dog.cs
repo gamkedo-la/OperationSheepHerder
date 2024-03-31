@@ -70,6 +70,12 @@ public class Dog : Character
             return;
         }
 
+        if (!_agent.isOnNavMesh)
+        {
+            Debug.LogWarning("Agent is not on the nav mesh");
+            return;
+        }
+
         if (step == FSM.Step.Enter)
         {
 
