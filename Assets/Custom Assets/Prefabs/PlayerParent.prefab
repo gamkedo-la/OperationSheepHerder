@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855dd245a4f2c3a44896e0e56567ab2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeed: 7
   attackCooldown: 1.5
   rotationSpeed: 1
   playerInputSpace: {fileID: 0}
