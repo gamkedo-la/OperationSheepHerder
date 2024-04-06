@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /*
  * -dog follows player with sheep, unless a sheep has strayed then dog will leave player to retrieve sheep
@@ -18,11 +19,12 @@ public class Dog : Character
     AudioClip knockout;
 
     FSM fsm;
-    FSM.State _herd, _attack, _knockedOut;
+    FSM.State _herd, _follow, _attack, _knockedOut;
+
     float idleRadius = 4f;
     AudioSource audioSource;
 
-    List<Wolf> activeWolves;
+    List<Wolf> activeEnemies;
     List<Sheep> activeSheep;
 
     private void OnEnable()
@@ -36,20 +38,22 @@ public class Dog : Character
         _herd = FSM_Herd;
         _attack = FSM_Attack;
         _knockedOut = FSM_KnockedOut;
+        _follow = FSM_Follow;
     }
 
     private void Start()
     {
-        fsm.OnSpawn(_herd);
+        fsm.OnSpawn(_follow);
         audioSource = GetComponent<AudioSource>();
         GameManager.instance.onUpdateSheepCallback += UpdateSheep;
-        GameManager.instance.onUpdateWolvesCallback += UpdateWolves;
+        GameManager.instance.onUpdateEnemiesCallback += UpdateWolves;
         activeSheep = GameManager.instance.activeSheep;
-        activeWolves = GameManager.instance.activeWolves;
+        activeEnemies = GameManager.instance.activeEnemies;
     }
+
     void UpdateWolves()
     {
-        activeWolves = GameManager.instance.activeWolves;
+        activeEnemies = GameManager.instance.activeEnemies;
     }
     //called when GameManager.instance.activeSheep changes
     void UpdateSheep()
@@ -59,6 +63,31 @@ public class Dog : Character
     private void FixedUpdate()
     {
         fsm.OnUpdate();
+    }
+
+    void FSM_Follow(FSM fsm, FSM.Step step, FSM.State state)
+    {
+        NavMeshPath path = new();
+
+        if (step == FSM.Step.Enter)
+        {
+        }
+
+        if (step == FSM.Step.Update)
+        {
+            _agent.CalculatePath(player.transform.position, path);
+            _agent.SetPath(path);
+            
+            if (activeEnemies != null && activeEnemies.Count > 0) 
+            {
+                fsm.TransitionTo(_herd);
+            }
+        }
+
+        if (step == FSM.Step.Exit)
+        {
+
+        }
     }
 
     void FSM_Herd(FSM fsm, FSM.Step step, FSM.State state)

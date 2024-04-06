@@ -16,6 +16,7 @@ public class Sheep : Character
     [SerializeField] float bellRadius;
     [SerializeField] float baseSpeed;
     [SerializeField] float fleeSpeed;
+    [SerializeField] GameObject dog;
 
     FSM fsm;
     FSM.State _follow;
@@ -74,11 +75,7 @@ public class Sheep : Character
         if (step == FSM.Step.Enter)
         {
             _currentState = _flee;
-            //keep track of previous hit count in order to restart flee timer if attacked again
-            //fleeTimerEnd = Random.Range(3.5f, 6);
 
-            //set speed to flee speed
-            //animator.SetBool("isRunning", true);
             speed = fleeSpeed;
             agent.speed = speed;
 
@@ -137,7 +134,10 @@ public class Sheep : Character
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance <= safeRadiusWithPlayer)
             {
-                fsm.TransitionTo(_wander);
+                if (Vector3.Distance(transform.position, dog.transform.position) >= 15)
+                {
+                    fsm.TransitionTo(_wander);
+                }
             }
             if (attacker != null)
             {

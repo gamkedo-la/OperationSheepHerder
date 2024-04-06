@@ -38,6 +38,7 @@ public class DitherMeshBlockingCamera : MonoBehaviour
     {
         propBlock = new MaterialPropertyBlock();
         ditheredTrees = new List<GameObject>();
+        playerController = FindObjectOfType<PlayerController>();
     }
     private void OnEnable()
     {

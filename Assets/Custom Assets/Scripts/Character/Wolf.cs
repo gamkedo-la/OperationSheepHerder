@@ -51,17 +51,17 @@ public class Wolf : Enemy
 
     void OnEnable()
     {
-        if (GameManager.instance != null && !GameManager.instance.activeWolves.Contains(this))
+        if (GameManager.instance != null && !GameManager.instance.activeEnemies.Contains(this))
         {
-            GameManager.instance.UpdateActiveWolves();
+            GameManager.instance.UpdateActiveEnemies();
         }
         onHitCallback += TakeDamage;
     }
     void Start()
     {
-        GameManager.instance.onUpdateWolvesCallback += UpdateWolves;
+        GameManager.instance.onUpdateEnemiesCallback += UpdateWolves;
         GameManager.instance.onUpdateSheepCallback += UpdateSheep;
-        activeWolves = GameManager.instance.activeWolves;
+        activeWolves = GameManager.instance.activeEnemies.FindAll(enemy => enemy.name.Contains("Wolf"));
         activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_chase);
         _agent.speed = speed;
@@ -238,7 +238,7 @@ public class Wolf : Enemy
     //called when GameManager.instance.activeWolves changes
     void UpdateWolves()
     {
-        activeWolves = GameManager.instance.activeWolves;
+        activeWolves = GameManager.instance.activeEnemies;
     }
     //called when GameManager.instance.activeSheep changes
     void UpdateSheep()
@@ -280,7 +280,7 @@ public class Wolf : Enemy
     {
         if (Application.isPlaying)
         {
-            GameManager.instance.UpdateActiveWolves();
+            GameManager.instance.UpdateActiveEnemies();
         }
     }
 }
