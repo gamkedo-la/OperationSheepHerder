@@ -114,9 +114,18 @@ public class Dog : Character
         {
 
             Vector3 goToPoint;
+
             if (GameManager.instance.farthestSheep != -1)
             {
-                goToPoint = GameManager.instance.activeSheep[GameManager.instance.farthestSheep].transform.position;
+                if (!GameManager.instance.activeSheep[GameManager.instance.farthestSheep])
+                {
+                    return;
+                }
+                else
+                {
+                    goToPoint = GameManager.instance.activeSheep[GameManager.instance.farthestSheep].transform.position;
+                }
+
             }
             else
             {
@@ -124,7 +133,7 @@ public class Dog : Character
             }
             if (Vector3.Distance(transform.position, goToPoint) <= idleRadius)
             {
-                if (GameManager.instance.farthestSheep != -1)
+                if (GameManager.instance.farthestSheep != -1 && GameManager.instance.activeSheep[GameManager.instance.farthestSheep])
                 {
                     GameManager.instance.activeSheep[GameManager.instance.farthestSheep].ReturnToPlayer();
                 }

@@ -12,7 +12,9 @@ public class Dragon : Enemy
     [SerializeField]
     float attackRadius;
     [SerializeField]
-    float attackCooldown;
+    float attackTimerCooldown;
+    [SerializeField]
+    Timer timer;
 
     FSM fsm;
     FSM.State _wait, _attack, _die;
@@ -39,8 +41,7 @@ public class Dragon : Enemy
 
     private void FixedUpdate()
     {
-        //fsm.OnUpdate();
-        _agent.Move(Vector3.forward * 0.005f);
+        fsm.OnUpdate();
     }
 
     void FSM_Wait(FSM fsm, FSM.Step step, FSM.State state)
@@ -56,6 +57,7 @@ public class Dragon : Enemy
             {
                 if (Vector3.Distance(transform.position, GameManager.instance.activeSheep[i].transform.position) < attackRadius)
                 {
+                    target = GameManager.instance.activeSheep[i].gameObject;
                     fsm.TransitionTo(_attack);
                 }
             }
@@ -71,12 +73,26 @@ public class Dragon : Enemy
     {
         if (step == FSM.Step.Enter)
         {
-
+            //TODO: Create fire particles
+            //play fire particles & dragon attack animation
         }
 
         if (step == FSM.Step.Update)
         {
+            if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
+            {
+                fsm.TransitionTo(_wait);
+            }
 
+            if (target)
+            {
+                if (!cooldownTimerActive)
+                {
+                    target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
+                    StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
+                }
+
+            }
         }
 
         if (step == FSM.Step.Exit)
@@ -89,7 +105,11 @@ public class Dragon : Enemy
     {
         if (step == FSM.Step.Enter)
         {
-
+            if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
+            {
+                Debug.Log("dragon died");
+            }
+            //TODO: Create poof particles effect to play when any character dies
         }
 
         if (step == FSM.Step.Update)
@@ -127,6 +147,7 @@ public class Dragon : Enemy
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            fsm.TransitionTo(_die);
         }
     }
 

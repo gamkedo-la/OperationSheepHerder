@@ -264,6 +264,7 @@ public class Sheep : Character
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             fsm.TransitionTo(_die);
         }
     }

@@ -494,14 +494,14 @@ MonoBehaviour:
   uiHealthObject: {fileID: 8007261443627516837}
   player: {fileID: 0}
   currentHealth: 30
-  maxHealth: 30
-  attackPower: 2
+  maxHealth: 20
+  attackPower: 4
   speed: 5
   type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
   target: {fileID: 0}
   chaseRadius: 30
-  packFollower: 0
-  attackRadius: 5
+  packFollower: 1
+  attackRadius: 4
   attackTimerCooldown: 4
 --- !u!114 &7996129234608487495
 MonoBehaviour:

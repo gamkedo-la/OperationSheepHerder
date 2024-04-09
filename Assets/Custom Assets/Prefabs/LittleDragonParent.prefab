@@ -362,14 +362,16 @@ MonoBehaviour:
   uiHealthValue: {fileID: 2553699362456632351}
   uiHealthObject: {fileID: 5601314768882493218}
   player: {fileID: 0}
+  cooldownTimerActive: 0
   currentHealth: 30
-  maxHealth: 30
+  maxHealth: 60
   attackPower: 10
   speed: 2
   type: {fileID: 11400000, guid: 7229205f9883f48499a2b957d9365271, type: 2}
   target: {fileID: 0}
-  attackRadius: 0
-  attackCooldown: 0
+  attackRadius: 7
+  attackTimerCooldown: 3
+  timer: {fileID: 0}
 --- !u!114 &1973586855131695572
 MonoBehaviour:
   m_ObjectHideFlags: 0

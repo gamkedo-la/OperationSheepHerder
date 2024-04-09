@@ -16,6 +16,8 @@ public abstract class Character : MonoBehaviour
 
     public GameObject player;
 
+    public bool cooldownTimerActive = false;
+
     [SerializeField]
     protected float currentHealth, maxHealth, attackPower, speed;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Character
 {
     [SerializeField]
     float playerSpeed;
@@ -25,9 +25,6 @@ public class PlayerController : MonoBehaviour
 
     public delegate void Attack();
     public Attack onAttackCallback;
-    //TODO: decide if this delegate & callback are needed
-    public delegate void TargetFound(GameObject target);
-    public TargetFound onTargetFoundCallback;
 
     public readonly Vector3 gravity = new Vector3(0, -3f, 0);
 
@@ -114,9 +111,9 @@ public class PlayerController : MonoBehaviour
     {
         trajectoryRenderer.ClearTrajectory();
 
-        if (timer.playerCooldownTimerActive == false)
+        if (!cooldownTimerActive)
         {
-            timer.StartCoroutine(timer.CooldownTimer(attackCooldown, "Player"));
+            timer.StartCoroutine(timer.CooldownTimer(attackCooldown, this));
 
             onAttackCallback?.Invoke();
         }
@@ -212,4 +209,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
+    {
+        //TODO: Fix player needing to implement character 
+    }
 }

@@ -189,11 +189,11 @@ public class Wolf : Enemy
 
                 else
                 {
-                    if (!timer.wolfCooldownTimerActive)
+                    if (!cooldownTimerActive)
                     {
 
                         target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
-                        StartCoroutine(timer.CooldownTimer(attackTimerCooldown, name));
+                        StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
                         fsm.TransitionTo(_chase);
                     }
                     //add code to play attack animation

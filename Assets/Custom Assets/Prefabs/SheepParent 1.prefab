@@ -57,10 +57,11 @@ MonoBehaviour:
   uiHealthValue: {fileID: 4381266199736400845}
   uiHealthObject: {fileID: 898402279234985845}
   player: {fileID: 0}
+  cooldownTimerActive: 0
   currentHealth: 30
   maxHealth: 30
   attackPower: 0
-  speed: 56
+  speed: 5
   attacker: {fileID: 0}
   wanderTime: 5
   wanderRadius: 15

@@ -365,12 +365,13 @@ MonoBehaviour:
   uiHealthValue: {fileID: 9021222717719331224}
   uiHealthObject: {fileID: 2084588343335596047}
   player: {fileID: 0}
+  cooldownTimerActive: 0
   currentHealth: 0
   maxHealth: 0
   attackPower: 5
   speed: 5
-  attackRadius: 0
-  attackCooldown: 0
+  attackRadius: 2
+  attackCooldown: 1
   knockout: {fileID: 8300000, guid: 55f40a51df8cada4eb4f239631ba7581, type: 3}
 --- !u!114 &8418930848343297677
 MonoBehaviour:
