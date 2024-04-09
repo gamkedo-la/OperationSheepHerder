@@ -15,7 +15,7 @@ public class Dragon : Enemy
     float attackCooldown;
 
     FSM fsm;
-    FSM.State _chase, _attack, _die;
+    FSM.State _wait, _attack, _die;
 
     private void OnEnable()
     {
@@ -25,22 +25,25 @@ public class Dragon : Enemy
     private void Awake()
     {
         fsm = new();
-        _chase = FSM_Chase;
+        _wait = FSM_Wait;
         _attack = FSM_Attack;
         _die = FSM_Die;
     }
 
     private void Start()
     {
-        fsm.OnSpawn(_chase);
+        fsm.OnSpawn(_wait);
+        transform.LookAt(player.transform.position);
+
     }
 
     private void FixedUpdate()
     {
-        fsm.OnUpdate();
+        //fsm.OnUpdate();
+        _agent.Move(Vector3.forward * 0.005f);
     }
 
-    void FSM_Chase(FSM fsm, FSM.Step step, FSM.State state)
+    void FSM_Wait(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
         {
@@ -49,7 +52,13 @@ public class Dragon : Enemy
 
         if (step == FSM.Step.Update)
         {
-
+            for (int i = 0; i < GameManager.instance.activeSheep.Count; i++)
+            {
+                if (Vector3.Distance(transform.position, GameManager.instance.activeSheep[i].transform.position) < attackRadius)
+                {
+                    fsm.TransitionTo(_attack);
+                }
+            }
         }
 
         if (step == FSM.Step.Exit)

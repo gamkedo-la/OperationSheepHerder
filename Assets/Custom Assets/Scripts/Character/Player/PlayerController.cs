@@ -44,11 +44,6 @@ public class PlayerController : MonoBehaviour
     public Transform Target { get; set; }
     public bool LockedOn { get; set; }
 
-    private void Awake()
-    {
-        RenderSettings.fog = true;
-        Debug.Log("turning on fog, it's off in scene mode");
-    }
     void Start()
     {
         playerController = GetComponent<CharacterController>();

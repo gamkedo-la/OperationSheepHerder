@@ -30,7 +30,7 @@ public class Sheep : Character
     Vector3 attackerDirection;
 
     NavMeshAgent agent;
-    private float safeRadiusWithPlayer = 4f;
+    private float safeRadiusWithPlayer = 5f;
 
     private void Start()
     {
@@ -43,9 +43,8 @@ public class Sheep : Character
         _wander = FSM_Wander;
         _die = FSM_Die;
         fsm = new FSM();
-        fsm.OnSpawn(_wander);
-
-        
+        fsm.OnSpawn(_follow);
+        _animator.SetBool("IsWalking", true);
     }
 
     public void OnPlayerBell()
@@ -65,7 +64,7 @@ public class Sheep : Character
             fsm.TransitionTo(_wander);
         }
     }
-    void FixedUpdate()
+    void Update()
     {
         fsm.OnUpdate();
     }
@@ -123,7 +122,7 @@ public class Sheep : Character
             {
                 Debug.Log("sheep is following player");
             }
-            //animator.SetBool("isWalking", true);
+            _animator.SetBool("IsWalking", true);
         }
         if (step == FSM.Step.Update)
         {
@@ -134,10 +133,7 @@ public class Sheep : Character
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance <= safeRadiusWithPlayer)
             {
-                if (Vector3.Distance(transform.position, dog.transform.position) >= 15)
-                {
-                    fsm.TransitionTo(_wander);
-                }
+                fsm.TransitionTo(_wander);
             }
             if (attacker != null)
             {
@@ -164,7 +160,7 @@ public class Sheep : Character
                 Debug.Log("sheep is wandering");
             }
             wanderTimer = wanderTime;
-            //animator.SetBool("isWalking", true);
+            _animator.SetBool("IsWalking", true);
         }
         if (step == FSM.Step.Update)
         {
@@ -180,6 +176,14 @@ public class Sheep : Character
                     agent.SetDestination(newPos);
                     wanderTimer = 0;
                 }
+                if (_agent.remainingDistance < 0.5f)
+                {
+                    _animator.SetBool("IsWalking", false);
+                }
+                else
+                {
+                    _animator.SetBool("IsWalking", true);
+                }
             }
         }
         if (step == FSM.Step.Exit)
@@ -191,6 +195,7 @@ public class Sheep : Character
     {
         if (step == FSM.Step.Enter)
         {
+            _animator.SetBool("IsWalking", false);
             _currentState = _die;
 
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)

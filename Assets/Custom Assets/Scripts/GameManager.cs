@@ -67,7 +67,11 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        if (instance = this)
+        //fun tidbit! in this case, you can do instance = this and it will work without complaining. However, this is BAD! 
+        //This is a Unity specific problem. Unity objects have an implicit conversion to bool, meaning if (instance = this) 
+        //will overwrite whatever instance was equal to, set it equal to this, and that will always evaluate to true so the code
+        //below will always run
+        if (instance == this)
         {
             activeSheep = FindObjectsOfType<Sheep>().ToList();
             activeEnemies = FindObjectsOfType<Wolf>().ToList();

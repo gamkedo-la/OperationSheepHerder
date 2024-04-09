@@ -4291,11 +4291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeSheep: []
-  activeWolves: []
+  activeEnemies: []
   levelData:
   - {fileID: 11400000, guid: 2d4838600b2e78f4a9bead182917b0c9, type: 2}
   - {fileID: 11400000, guid: 7443bb092ad8ba04cb6863559201c6ae, type: 2}
-  currentLevelData: {fileID: 11400000, guid: 2d4838600b2e78f4a9bead182917b0c9, type: 2}
+  currentLevelData: {fileID: 11400000, guid: 84ab59000f7a6fe43bf9c198eebd7b33, type: 2}
   player: {fileID: 8800065742644287664}
   pauseAction:
     m_Name: Pause
