@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: 
   type: Wolf
-  baseSpeed: 4
+  baseSpeed: 8
   prefab: {fileID: 6239194566748115450, guid: e30faaf293d3a974e9a839a9a4e8f37b, type: 3}
-  baseAttack: 3
+  baseAttack: 5

@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.UI;
 using Unity.AI.Navigation;
 using UnityEngine.Android;
+using Unity.VisualScripting;
 
 public class Wolf : Enemy
 {
@@ -17,7 +18,8 @@ public class Wolf : Enemy
     [SerializeField]
     bool packFollower; // if something happens to the leader or they need to split, just flip false
     Vector2 packChaseRandomFormationOffset; // to avoid bunching up
-
+    [SerializeField]
+    GameObject leader;
     //if distance is less than attackRadius, wolf will transition to attack
     [SerializeField] 
     float attackRadius;
@@ -81,40 +83,46 @@ public class Wolf : Enemy
                 Debug.Log("wolf enter chase state");
             }
 
-            if (packFollower)
+            if (target == null || target.IsDestroyed())
             {
-                if (target && !target.CompareTag("Dog"))
+                if (packFollower)
                 {
-                    target = null;
-                }
-                Wolf targetWolfScript = null;
-                int safetyLockBreak = 40; // 40 tries to find a non follower wolf, should be ample
-                packChaseRandomFormationOffset = Random.insideUnitCircle;
-                packChaseRandomFormationOffset.Normalize();
-                packChaseRandomFormationOffset *= Random.Range(2f,6f); // how far is pack formation?
-                packChaseRandomFormationOffset.y -= Random.Range(2f, 6f); // shift the circle behind the leader
-                while (target == null || targetWolfScript == this || targetWolfScript.packFollower)
-                {
-                    //TODO: Physics.SphereOverlap to check if wolf is close enough to bother following/using pack behaviour
-                    target = activeWolves[Random.Range(0, activeWolves.Count)].gameObject;
-                    targetWolfScript = target.GetComponent<Wolf>();
-                    if(safetyLockBreak-- < 0) // prevent infinite loop from bad dice rolls or few wolves left
+                    Wolf targetWolfScript = null;
+                    int safetyLockBreak = 40; // 40 tries to find a non follower wolf, should be ample
+                    packChaseRandomFormationOffset = Random.insideUnitCircle;
+                    packChaseRandomFormationOffset.Normalize();
+                    packChaseRandomFormationOffset *= Random.Range(2f, 6f); // how far is pack formation?
+                    packChaseRandomFormationOffset.y -= Random.Range(2f, 6f); // shift the circle behind the leader
+                    while (target == null || targetWolfScript == this || targetWolfScript.packFollower)
                     {
-                        target = player;
-                        packFollower = false; // couldn't find another wolf to follow, give up
-                        break;
+                        //TODO: Physics.SphereOverlap to check if wolf is close enough to bother following/using pack behaviour
+                        leader = activeWolves[Random.Range(0, activeWolves.Count)].gameObject;
+                        if (Vector3.Distance(transform.position, leader.transform.position) > 15)
+                        {
+                            leader = activeWolves[Random.Range(0, activeWolves.Count)].gameObject;
+                        }
+                        target = leader;
+                        targetWolfScript = leader.GetComponent<Wolf>();
+                        if (safetyLockBreak-- < 0) // prevent infinite loop from bad dice rolls or few wolves left
+                        {
+                            target = player;
+                            packFollower = false; // couldn't find another wolf to follow, give up
+                            break;
+                        }
+
                     }
                 }
-            } 
-            else if (activeSheep.Count > 0)
-            {
-                //TODO: Switch to closest sheep
-                target = activeSheep[Random.Range(0, activeSheep.Count)].gameObject;
+                else if (activeSheep.Count > 0)
+                {
+                    //TODO: Switch to closest sheep
+                    target = activeSheep[Random.Range(0, activeSheep.Count)].gameObject;
+                }
+                else
+                {
+                    target = player;
+                }
             }
-            else
-            {
-                target = player;
-            }
+           
 
             previousTargetPosition = target.transform.position;
 
@@ -126,9 +134,20 @@ public class Wolf : Enemy
                 Vector3 targetPos = target.transform.position;
                 if (packFollower)
                 {
-                    // pack formation offset relative to leader orientation
-                    targetPos += packChaseRandomFormationOffset.x * target.transform.right +
-                                    packChaseRandomFormationOffset.y * target.transform.forward;
+                    if (Vector3.Distance(leader.transform.position, leader.GetComponent<Wolf>().target.transform.position) < 5)
+                    {
+                        target = leader.GetComponent<Wolf>().target;
+                        targetPos = target.transform.position;
+                    }
+
+                    else
+                    {
+                        // pack formation offset relative to leader orientation
+                        targetPos = leader.transform.position;
+                        targetPos += packChaseRandomFormationOffset.x * target.transform.right +
+                                        packChaseRandomFormationOffset.y * target.transform.forward;
+                    }
+
                 }
                 if (!_agent.hasPath || targetPos != previousTargetPosition)
                 {
@@ -144,6 +163,10 @@ public class Wolf : Enemy
                 {
                     fsm.TransitionTo(_attack);
                 }
+            }
+            else
+            {
+                fsm.TransitionTo(_chase);
             }
 
         }
@@ -208,7 +231,7 @@ public class Wolf : Enemy
         }
         if (step == FSM.Step.Exit)
         {
-
+            
         }
     }
 
