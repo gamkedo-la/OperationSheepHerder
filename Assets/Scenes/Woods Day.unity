@@ -1825,6 +1825,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 7cb31405b9911864fa3817612e5054ae, type: 2}
     - target: {fileID: 3412775716558196273, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.187729
@@ -2071,7 +2075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8800065742644287665, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.36
+      value: 14.26
       objectReference: {fileID: 0}
     - target: {fileID: 8800065742644287665, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2124,6 +2128,7 @@ PrefabInstance:
     - {fileID: 1339301813029913441, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
     - {fileID: 1530794412674354160, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
     - {fileID: 1807769377364582605, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
+    - {fileID: 7803477850799729852, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8099246974566155311, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       insertIndex: 4
