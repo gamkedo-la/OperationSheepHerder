@@ -63,6 +63,10 @@ public class Dog : Character
     private void FixedUpdate()
     {
         fsm.OnUpdate();
+
+        // Check if the agent is moving
+        _animator.SetBool("isMoving", IsMoving());
+    
     }
 
     void FSM_Follow(FSM fsm, FSM.Step step, FSM.State state)
@@ -92,8 +96,7 @@ public class Dog : Character
 
     void FSM_Herd(FSM fsm, FSM.Step step, FSM.State state)
     {
-
-        if(_agent == null)
+        if (_agent == null)
         {
             Debug.LogWarning("No Dog Agent Assigned");
             return;
@@ -107,7 +110,7 @@ public class Dog : Character
 
         if (step == FSM.Step.Enter)
         {
-
+            //_animator.SetBool("isHerding", true);
         }
 
         if (step == FSM.Step.Update)
@@ -148,7 +151,7 @@ public class Dog : Character
 
         if (step == FSM.Step.Exit)
         {
-
+            //_animator.SetBool("isHerding", false);
         }
     }
 
