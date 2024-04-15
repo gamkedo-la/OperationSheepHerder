@@ -69,7 +69,7 @@ public class PlayerController : Character
             right.y = 0f;
             right.Normalize();
             move = ((forward * inputVec.y + right * inputVec.x));
-            move.y = gravity.y * Time.deltaTime * playerSpeed;
+            move.y = gravity.y/playerSpeed;
             move.Normalize();
         }
         else
