@@ -40,6 +40,7 @@ public class LoadingManager : MonoBehaviour
         fadeInAnimationClipLength = fadeInAnimationClip.length;
         fadeOutAnimationClipLength = fadeOutAnimationClip.length;
         StartCoroutine(LoadInitialization());
+        myAnimator = GetComponent<Animator>();
     }
 
     public void LoadScene(GameSceneEnums sceneEnum)

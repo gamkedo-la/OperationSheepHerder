@@ -6,7 +6,15 @@ public class PlayButtonScript : MonoBehaviour
 {
     public void HandlePlayButtonClick()
     {
-        //LoadingManager.Instance.LoadScene(GameEnumsNamespace.GameSceneEnums.WoodsDayLevel1);
+        if (LoadingManager.Instance == null)
+        {
+            Debug.LogError("LoadingManager instance is null");
+            return;
+        }
+
+        LoadingManager.Instance.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingManager.Instance.LoadScene(GameEnumsNamespace.GameSceneEnums.WoodsDay);
         //TODO: make functional
+        print("button clicked");
     }
 }
