@@ -368,13 +368,13 @@ MonoBehaviour:
   currentHealth: 50
   maxHealth: 50
   attackPower: 10
-  speed: 2
+  speed: 6
   type: {fileID: 11400000, guid: 7229205f9883f48499a2b957d9365271, type: 2}
   target: {fileID: 0}
   FireSFX: {fileID: 8300000, guid: 341265db4ac5f904bb6f4c42ec1d969d, type: 3}
   FireVFX: {fileID: 211199367939311837}
   attackRadius: 7
-  attackTimerCooldown: 3
+  attackTimerCooldown: 1
   timer: {fileID: 0}
 --- !u!114 &1973586855131695572
 MonoBehaviour:
@@ -400,7 +400,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

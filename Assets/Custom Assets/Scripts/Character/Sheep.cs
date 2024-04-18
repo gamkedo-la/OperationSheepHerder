@@ -6,38 +6,39 @@ using UnityEngine.AI;
 public class Sheep : Character
 {
     public GameObject attacker = null;
+    public bool safe;
 
     [SerializeField] float wanderTime;
     [SerializeField] float wanderRadius;
     [SerializeField] float followTime;
 
     [SerializeField] float fleeTimerEnd;
-    [SerializeField] bool isFleeing = false;
     [SerializeField] float bellRadius;
-    [SerializeField] float baseSpeed;
     [SerializeField] float fleeSpeed;
     [SerializeField] GameObject dog;
+    [SerializeField] GameObject barn;
 
     FSM fsm;
     FSM.State _follow;
     FSM.State _flee;
     FSM.State _wander;
     FSM.State _die;
-    FSM.State _currentState;
 
     Timer timer;
     float wanderTimer;
     Vector3 attackerDirection;
 
     NavMeshAgent agent;
-    private float safeRadiusWithPlayer = 5f;
+    float safeRadiusWithPlayer = 5f;
+
+    Vector2 followOffset;
+
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         timer = FindObjectOfType<Timer>();
         wanderTimer = wanderTime;
-        speed = baseSpeed;
         _flee = FSM_Flee;
         _follow = FSM_Follow;
         _wander = FSM_Wander;
@@ -47,36 +48,21 @@ public class Sheep : Character
         _animator.SetBool("IsWalking", true);
     }
 
-    public void OnPlayerBell()
-    {
-        if (Vector3.Distance(transform.position, player.transform.position) < bellRadius)
-        {
-            if (_currentState == _wander)
-            {
-                fsm.TransitionTo(_follow);
-            }
-        }
-    }
-    public void OnPlayerBellEnded()
-    {
-        if (_currentState == _follow)
-        {
-            fsm.TransitionTo(_wander);
-        }
-    }
     void Update()
     {
         fsm.OnUpdate();
+
+        if (safe)
+        {
+            _agent.SetDestination(barn.transform.position);
+        }
     }
 
     void FSM_Flee(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
         {
-            _currentState = _flee;
-
-            speed = fleeSpeed;
-            agent.speed = speed;
+            agent.speed = fleeSpeed;
 
             if (attacker != null)
             {
@@ -109,27 +95,31 @@ public class Sheep : Character
         }
         if (step == FSM.Step.Exit)
         {
-            //animator.SetBool("isRunning", false);
             attacker = null;
+            _agent.speed = speed;
         }
     }
     void FSM_Follow(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
         {
-            _currentState = _follow;
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("sheep is following player");
             }
             _animator.SetBool("IsWalking", true);
+
+            followOffset = Random.insideUnitCircle;
+            followOffset.Normalize();
+            followOffset *= Random.Range(2f, 6f);
+            followOffset.y -= Random.Range(2f, 6f);
+
         }
         if (step == FSM.Step.Update)
         {
             //begin movement to player position
-            speed = baseSpeed;
             agent.speed = speed;
-            agent.SetDestination(player.transform.position);
+            agent.SetDestination(player.transform.position + followOffset.x * player.transform.right + followOffset.y * player.transform.forward);
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance <= safeRadiusWithPlayer)
             {
@@ -143,8 +133,7 @@ public class Sheep : Character
         }
         if (step == FSM.Step.Exit)
         {
-            //animator.SetBool("isWalking", false);
-            //return to wander after 3-4 seconds, or transition to flee if attacked
+
         }
 
     }
@@ -152,9 +141,6 @@ public class Sheep : Character
     {
         if (step == FSM.Step.Enter)
         {
-
-            _currentState = _wander;
-                
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("sheep is wandering");
@@ -171,7 +157,6 @@ public class Sheep : Character
                 {
                     Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
 
-                    speed = baseSpeed;
                     agent.speed = speed;
                     agent.SetDestination(newPos);
                     wanderTimer = 0;
@@ -184,11 +169,23 @@ public class Sheep : Character
                 {
                     _animator.SetBool("IsWalking", true);
                 }
+
+                if (Vector3.Distance(transform.position, player.transform.position) < safeRadiusWithPlayer && Vector3.Distance(transform.position, dog.transform.position) < safeRadiusWithPlayer) 
+                {
+                    fsm.TransitionTo(_follow);
+                }
+
+                //if only the dragon is left, follow player (prevents sheep being behind when player approaches dragon)
+                //also follow player if no enemies left
+                if (GameManager.instance.activeEnemies.Count == 1 || GameManager.instance.activeEnemies.Count == 0)
+                {
+                    fsm.TransitionTo(_follow);
+                }
             }
         }
         if (step == FSM.Step.Exit)
         {
-            //animator.SetBool("isWalking", false);
+
         }
     }
     public void FSM_Die(FSM fsm, FSM.Step step, FSM.State state)
@@ -196,7 +193,6 @@ public class Sheep : Character
         if (step == FSM.Step.Enter)
         {
             _animator.SetBool("IsWalking", false);
-            _currentState = _die;
 
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {

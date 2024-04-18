@@ -5,9 +5,6 @@ using UnityEngine.AI;
 /*
  * -dog follows player with sheep, unless a sheep has strayed then dog will leave player to retrieve sheep
  * -dog is in idle mode when close enough to player and no sheep to herd or defend
- * Attack an enemy that is attacking a sheep
- * Get knocked out for a short time
- *      -when takes too much damage
  */
 public class Dog : Character
 {
@@ -25,7 +22,6 @@ public class Dog : Character
     AudioSource audioSource;
 
     List<Enemy> activeEnemies;
-    List<Sheep> activeSheep;
 
     private void OnEnable()
     {
@@ -44,21 +40,15 @@ public class Dog : Character
     {
         fsm.OnSpawn(_follow);
         audioSource = GetComponent<AudioSource>();
-        GameManager.instance.onUpdateSheepCallback += UpdateSheep;
-        GameManager.instance.onUpdateEnemiesCallback += UpdateWolves;
-        activeSheep = GameManager.instance.activeSheep;
+        GameManager.instance.onUpdateEnemiesCallback += UpdateEnemies;
         activeEnemies = GameManager.instance.activeEnemies;
     }
 
-    void UpdateWolves()
+    void UpdateEnemies()
     {
         activeEnemies = GameManager.instance.activeEnemies;
     }
-    //called when GameManager.instance.activeSheep changes
-    void UpdateSheep()
-    {
-        activeSheep = GameManager.instance.activeSheep;
-    }
+
     private void FixedUpdate()
     {
         fsm.OnUpdate();
@@ -74,6 +64,7 @@ public class Dog : Character
 
         if (step == FSM.Step.Enter)
         {
+
         }
 
         if (step == FSM.Step.Update)
@@ -139,11 +130,9 @@ public class Dog : Character
                 {
                     GameManager.instance.activeSheep[GameManager.instance.farthestSheep].ReturnToPlayer();
                 }
-                _agent.isStopped = true;
             }
             else
             {
-                _agent.isStopped = false;
                 _agent.SetDestination(goToPoint);
             }
         }
@@ -154,7 +143,7 @@ public class Dog : Character
         }
     }
 
-
+    //Didn't get to
     void FSM_KnockedOut(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)

@@ -219,7 +219,6 @@ public class Wolf : Enemy
                         StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
                         fsm.TransitionTo(_chase);
                     }
-                    //add code to play attack animation
                 }
             }
 
@@ -254,8 +253,7 @@ public class Wolf : Enemy
         }
         if (step == FSM.Step.Exit)
         {
-/*            Debug.Log($"{this.name} died!");
-            Destroy(gameObject);*/
+
         }
     }
     //called when GameManager.instance.activeWolves changes

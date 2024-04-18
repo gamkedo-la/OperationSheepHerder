@@ -15,4 +15,4 @@ MonoBehaviour:
   type: Dragon
   baseSpeed: 6
   prefab: {fileID: 7155922535850730701, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
-  baseAttack: 7
+  baseAttack: 10

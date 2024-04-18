@@ -54,7 +54,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI pointsText;
 
-    float maxSheepDistance = 30f;
+    [SerializeField]
+    float maxSheepDistance = 10f;
 
     private void Awake()
     {
@@ -159,16 +160,11 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        Debug.Log("Play again");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void LevelComplete()
     {
-        Time.timeScale = 0;
-        Debug.Log("Level Complete!");
-        //show level complete text
         levelCompletePanel.SetActive(true);
-        Time.timeScale = 0f;
         int sheepSaved = activeSheep.Count;
         sheepSavedText.text = $"You saved {sheepSaved} sheep!";
         int points = sheepSaved * currentLevelData.pointsPerSheep;
@@ -185,10 +181,6 @@ public class GameManager : MonoBehaviour
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("game over panel not connected to scene");
         }
     }
 

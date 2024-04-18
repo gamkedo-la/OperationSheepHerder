@@ -496,7 +496,7 @@ MonoBehaviour:
   cooldownTimerActive: 0
   currentHealth: 30
   maxHealth: 30
-  attackPower: 4
+  attackPower: 5
   speed: 6
   type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
   target: {fileID: 0}

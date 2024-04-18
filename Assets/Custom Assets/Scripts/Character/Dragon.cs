@@ -60,6 +60,7 @@ public class Dragon : Enemy
 
         if (step == FSM.Step.Update)
         {
+
             for (int i = 0; i < GameManager.instance.activeSheep.Count; i++)
             {
                 if (Vector3.Distance(transform.position, GameManager.instance.activeSheep[i].transform.position) < attackRadius)
@@ -90,19 +91,23 @@ public class Dragon : Enemy
 
         if (step == FSM.Step.Update)
         {
-            if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
-            {
-                fsm.TransitionTo(_wait);
-            }
-
             if (target)
             {
+                if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
+                {
+                    fsm.TransitionTo(_wait);
+                }
+
+                transform.LookAt(target.transform.position);
                 if (!cooldownTimerActive)
                 {
                     target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
                     StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
                 }
-
+            }
+            else
+            {
+                fsm.TransitionTo(_wait);
             }
         }
 
