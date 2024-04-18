@@ -9,6 +9,8 @@ public class Dragon : Enemy
      *      -can't stay up long so must land after a little while
      *  Die when health drops to 0
     */
+    [SerializeField] 
+    ParticleSystem FireVFX;
     [SerializeField]
     float attackRadius;
     [SerializeField]
@@ -75,6 +77,9 @@ public class Dragon : Enemy
         {
             //TODO: Create fire particles
             //play fire particles & dragon attack animation
+            Debug.Log("Play FireSound & VFX");
+            //emmit fire from FireVFX
+            FireVFX.Play();
         }
 
         if (step == FSM.Step.Update)
