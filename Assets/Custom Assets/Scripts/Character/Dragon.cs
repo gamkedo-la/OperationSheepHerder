@@ -9,6 +9,8 @@ public class Dragon : Enemy
      *      -can't stay up long so must land after a little while
      *  Die when health drops to 0
     */
+    [SerializeField]
+    AudioClip FireSFX;
     [SerializeField] 
     ParticleSystem FireVFX;
     [SerializeField]
@@ -17,6 +19,8 @@ public class Dragon : Enemy
     float attackTimerCooldown;
     [SerializeField]
     Timer timer;
+
+    AudioSource audioSource;
 
     FSM fsm;
     FSM.State _wait, _attack, _die;
@@ -32,6 +36,7 @@ public class Dragon : Enemy
         _wait = FSM_Wait;
         _attack = FSM_Attack;
         _die = FSM_Die;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -80,6 +85,7 @@ public class Dragon : Enemy
             Debug.Log("Play FireSound & VFX");
             //emmit fire from FireVFX
             FireVFX.Play();
+            AudioSource.PlayClipAtPoint(FireSFX, transform.position);
         }
 
         if (step == FSM.Step.Update)
