@@ -120,6 +120,7 @@ public class Dragon : Enemy
             {
                 Debug.Log("dragon died");
             }
+            Destroy(gameObject);
             //TODO: Create poof particles effect to play when any character dies
         }
 

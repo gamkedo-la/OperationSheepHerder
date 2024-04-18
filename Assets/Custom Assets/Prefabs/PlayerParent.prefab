@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b8beede6bccbf47b106e70494aa673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 5372984501935618717}
   rockPrefab: {fileID: 1072227298933755419, guid: 2dba03a09fda6af48b485301ce483c25, type: 3}
   rockCount: 0
   maxRockCount: 5
@@ -294,6 +295,7 @@ MonoBehaviour:
     width: 1000
     height: 1000
   probeDistance: 1
+  trajectoryRenderer: {fileID: 8507308350311247569}
 --- !u!143 &5372984501935618715
 CharacterController:
   m_ObjectHideFlags: 0

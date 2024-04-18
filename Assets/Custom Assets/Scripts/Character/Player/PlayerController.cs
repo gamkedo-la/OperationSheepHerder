@@ -21,6 +21,10 @@ public class PlayerController : Character
     [SerializeField, Min(0f)]
     float probeDistance = 1f;
 
+    [SerializeField]
+    RockTrajectory trajectoryRenderer;
+
+
     CharacterController playerController;
 
     public delegate void Attack();
@@ -35,9 +39,7 @@ public class PlayerController : Character
     bool onGround;
     bool holdingAim = false;
     InputActionAsset playerInput;
-    RockTrajectory trajectoryRenderer;
 
-    float aimRotationSpeed = 2;
     public Transform Target { get; set; }
     public bool LockedOn { get; set; }
 
@@ -45,7 +47,6 @@ public class PlayerController : Character
     {
         playerController = GetComponent<CharacterController>();
         timer = FindObjectOfType<Timer>();
-        trajectoryRenderer = GetComponentInChildren<RockTrajectory>();
         playerInput = GetComponent<PlayerInput>().actions;
         playerInput.Enable();
         playerInput.FindAction("LaunchAttack", true).started += _ => StartAiming();
@@ -102,7 +103,14 @@ public class PlayerController : Character
         //if arrow keys pressed, move rock trajectory, otherwise launch rock in forward direction
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();
         //TODO: prevent player rotating full body with up/down input keys, but still rotate playerforward object to aim higher/lower
-        transform.Rotate(new Vector2(input.x, input.y * aimRotationSpeed), Space.World);
+        if (input.x != 0)
+        {
+            trajectoryRenderer.transform.Rotate(new Vector3(input.x, 0, 0));
+        }
+        if (input.y != 0)
+        {
+            transform.Rotate(new Vector3(0, input.y, 0));
+        }
         trajectoryRenderer.DrawTrajectory();
     }
 
@@ -122,6 +130,8 @@ public class PlayerController : Character
             return;
         }
 
+
+        transform.SetLocalPositionAndRotation(transform.position, new Quaternion(0, transform.rotation.y, 0, transform.rotation.w));
         trajectoryRenderer.transform.localEulerAngles = Vector3.zero;
     }
 
