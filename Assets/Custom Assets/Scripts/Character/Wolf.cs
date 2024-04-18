@@ -270,12 +270,15 @@ public class Wolf : Enemy
     }
     public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
     {
-
-        if (enemy.CompareTag("Dog"))
+        if (enemy)
         {
-            target = enemy;
-            fsm.TransitionTo(_chase);
+            if (enemy.CompareTag("Dog"))
+            {
+                target = enemy;
+                fsm.TransitionTo(_chase);
+            }
         }
+
         currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health
         uiHealthValue.value = currentHealth / maxHealth;

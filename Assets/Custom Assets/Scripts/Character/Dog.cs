@@ -19,7 +19,7 @@ public class Dog : Character
     AudioClip knockout;
 
     FSM fsm;
-    FSM.State _herd, _follow, _attack, _knockedOut;
+    FSM.State _herd, _follow, _knockedOut;
 
     float idleRadius = 4f;
     AudioSource audioSource;
@@ -36,7 +36,6 @@ public class Dog : Character
     {
         fsm = new FSM();
         _herd = FSM_Herd;
-        _attack = FSM_Attack;
         _knockedOut = FSM_KnockedOut;
         _follow = FSM_Follow;
     }
@@ -155,23 +154,6 @@ public class Dog : Character
         }
     }
 
-    void FSM_Attack(FSM fsm, FSM.Step step, FSM.State state)
-    {
-        if (step == FSM.Step.Enter)
-        {
-
-        }
-
-        if (step == FSM.Step.Update)
-        {
-
-        }
-
-        if (step == FSM.Step.Exit)
-        {
-
-        }
-    }
 
     void FSM_KnockedOut(FSM fsm, FSM.Step step, FSM.State state)
     {

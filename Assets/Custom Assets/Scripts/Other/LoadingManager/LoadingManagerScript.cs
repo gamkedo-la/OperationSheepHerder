@@ -93,6 +93,7 @@ public class LoadingManager : MonoBehaviour
                 yield return new WaitForSeconds(fadeOutAnimationClipLength);
 
                 loadingImage.gameObject.SetActive(false);
+                fadeImage.gameObject.SetActive(false);  
                 asyncLoad.allowSceneActivation = true;
             }
 

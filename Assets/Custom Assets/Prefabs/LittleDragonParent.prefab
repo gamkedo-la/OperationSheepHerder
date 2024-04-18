@@ -364,8 +364,8 @@ MonoBehaviour:
   uiHealthObject: {fileID: 5601314768882493218}
   player: {fileID: 0}
   cooldownTimerActive: 0
-  currentHealth: 30
-  maxHealth: 60
+  currentHealth: 50
+  maxHealth: 50
   attackPower: 10
   speed: 2
   type: {fileID: 11400000, guid: 7229205f9883f48499a2b957d9365271, type: 2}
