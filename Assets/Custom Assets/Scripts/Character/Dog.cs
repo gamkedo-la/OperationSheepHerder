@@ -24,7 +24,7 @@ public class Dog : Character
     float idleRadius = 4f;
     AudioSource audioSource;
 
-    List<Wolf> activeEnemies;
+    List<Enemy> activeEnemies;
     List<Sheep> activeSheep;
 
     private void OnEnable()

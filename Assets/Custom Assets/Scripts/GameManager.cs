@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static bool GamePaused = false;
 
     public List<Sheep> activeSheep;
-    public List<Wolf> activeEnemies;
+    public List<Enemy> activeEnemies;
     public delegate void OnUpdateSheep();
     public delegate void OnUpdateEnemies();
     public OnUpdateSheep onUpdateSheepCallback;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         if (instance == this)
         {
             activeSheep = FindObjectsOfType<Sheep>().ToList();
-            activeEnemies = FindObjectsOfType<Wolf>().ToList();
+            activeEnemies = FindObjectsOfType<Enemy>().ToList<Enemy>();
         }
     }
 
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
     public void UpdateActiveEnemies()
     {
         activeEnemies.Clear();
-        activeEnemies = FindObjectsOfType<Wolf>().ToList();
+        activeEnemies = FindObjectsOfType<Enemy>().ToList<Enemy>();
         onUpdateEnemiesCallback.Invoke();
     }
 

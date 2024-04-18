@@ -3277,7 +3277,7 @@ MonoBehaviour:
   focusRadius: 8
   focusCentering: 0.5
   rotationSpeed: 90
-  distance: 12
+  distance: 20.4
   minVerticalAngle: 5.1
   maxVerticalAngle: 60
   alignDelay: 5
@@ -14858,10 +14858,6 @@ PrefabInstance:
     - target: {fileID: 1093680723317464459, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1093680723317464459, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3048206151809105854, guid: 4859dc622710bcd4a9ae620b067df281, type: 3}
       propertyPath: m_Layer

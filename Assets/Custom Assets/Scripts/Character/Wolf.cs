@@ -34,7 +34,7 @@ public class Wolf : Enemy
 
     Vector3 previousTargetPosition;
 
-    List<Wolf> activeWolves;
+    List<Enemy> activeWolves;
     List<Sheep> activeSheep;
     void Awake()
     {

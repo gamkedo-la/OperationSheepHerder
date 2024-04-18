@@ -493,14 +493,16 @@ MonoBehaviour:
   uiHealthValue: {fileID: 5105575936262005147}
   uiHealthObject: {fileID: 8007261443627516837}
   player: {fileID: 0}
+  cooldownTimerActive: 0
   currentHealth: 30
-  maxHealth: 20
+  maxHealth: 30
   attackPower: 4
-  speed: 5
+  speed: 6
   type: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
   target: {fileID: 0}
   chaseRadius: 30
-  packFollower: 1
+  packFollower: 0
+  leader: {fileID: 0}
   attackRadius: 4
   attackTimerCooldown: 4
 --- !u!114 &7996129234608487495
@@ -527,7 +529,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 200

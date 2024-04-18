@@ -44,7 +44,6 @@ public class OnCollisionTarget : MonoBehaviour
                 {
                     if (hitObject.CompareTag("Enemy"))
                     {
-                        Debug.Log("hit enemy");
                         hitObject.GetComponent<Enemy>().onHitCallback.Invoke(weaponType.DamageValue, weaponType, null);
                         Instantiate(starParticles, collision.contacts[0].point, Quaternion.identity);
                     }

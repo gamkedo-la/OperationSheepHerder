@@ -115,12 +115,11 @@ public class RockTrajectory : MonoBehaviour
 
             curvePoints.Add(currentPosition);
 
-            Vector3 lastPosition = line.GetPosition(line.positionCount-1);
+            Vector3 lastPosition = line.GetPosition(line.positionCount - 1);
 
             if (Physics.Raycast(lastPosition, (currentPosition - lastPosition).normalized, out var hit, (currentPosition - lastPosition).magnitude))
             {
                 if(hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Ground")){
-                    Debug.Log(hit.transform.tag);
                     curvePoints.Add(hit.point);
                     break;
                 }
