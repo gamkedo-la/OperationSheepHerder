@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        onUpdateSheepCallback.Invoke();
+        onUpdateSheepCallback?.Invoke();
     }
 
     IEnumerator CheckSheepDistanceFromPlayer()
@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
     }
     public void LevelComplete()
     {
+        player.GetComponent<PlayerController>().enabled = false;
         levelCompletePanel.SetActive(true);
         int sheepSaved = activeSheep.Count;
         sheepSavedText.text = $"You saved {sheepSaved} sheep!";
@@ -171,6 +172,7 @@ public class GameManager : MonoBehaviour
         pointsText.text = $"{points} points";
     }
 
+    //used to transition from woods day to armageddon
     public void NextLevel()
     {
         SceneManager.LoadScene(levelData[1].sceneName);

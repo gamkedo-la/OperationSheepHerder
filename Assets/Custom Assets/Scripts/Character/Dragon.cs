@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Dragon : Enemy
@@ -23,10 +24,13 @@ public class Dragon : Enemy
     AudioSource audioSource;
 
     FSM fsm;
-    FSM.State _wait, _attack, _die;
+    FSM.State _wait, _chase, _attack, _die;
+
+    List<Sheep> activeSheep;
 
     private void OnEnable()
     {
+        GameManager.instance.onUpdateSheepCallback += UpdateSheep;
         onHitCallback += TakeDamage;
     }
 
@@ -34,6 +38,7 @@ public class Dragon : Enemy
     {
         fsm = new();
         _wait = FSM_Wait;
+        _chase = FSM_Chase;
         _attack = FSM_Attack;
         _die = FSM_Die;
         audioSource = GetComponent<AudioSource>();
@@ -41,6 +46,7 @@ public class Dragon : Enemy
 
     private void Start()
     {
+        activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_wait);
         transform.LookAt(player.transform.position);
 
@@ -77,13 +83,54 @@ public class Dragon : Enemy
         }
     }
 
+    void FSM_Chase(FSM fsm, FSM.Step step, FSM.State state)
+    {
+        if (step == FSM.Step.Enter)
+        {
+            if (!target)
+            {
+                //index negative until closest is found
+                int indexOfClosestSheep = -1;
+                //start max distance at random larger number, all sheep should be closer than this
+                float maxDistance = 100;
+                for (int i = 0; i < GameManager.instance.activeSheep.Count; i++)
+                {
+                    float distance = Vector3.Distance(transform.position, GameManager.instance.activeSheep[i].transform.position);
+                    if (distance < maxDistance)
+                    {
+                        //index only updated if that sheep is closer than a previous one
+                        indexOfClosestSheep = i;
+                        maxDistance = distance;
+                    }
+                }
+                target = GameManager.instance.activeSheep[indexOfClosestSheep].gameObject;
+            }
+        }
+
+        if (step == FSM.Step.Update)
+        {
+            _agent.SetDestination(target.transform.position);
+
+            if (Vector3.Distance(transform.position, target.transform.position) < attackRadius)
+            {
+                fsm.TransitionTo(_attack);
+            }
+        }
+
+        if (step == FSM.Step.Exit)
+        {
+
+        }
+    }
+
     void FSM_Attack(FSM fsm, FSM.Step step, FSM.State state)
     {
         if (step == FSM.Step.Enter)
         {
-            //TODO: Create fire particles
-            //play fire particles & dragon attack animation
-            Debug.Log("Play FireSound & VFX");
+            if (GameManager.instance.debugAll)
+            {
+                Debug.Log("Play FireSound & VFX");
+            }
             //emmit fire from FireVFX
             FireVFX.Play();
             AudioSource.PlayClipAtPoint(FireSFX, transform.position);
@@ -95,7 +142,7 @@ public class Dragon : Enemy
             {
                 if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
                 {
-                    fsm.TransitionTo(_wait);
+                    fsm.TransitionTo(_chase);
                 }
 
                 transform.LookAt(target.transform.position);
@@ -140,10 +187,17 @@ public class Dragon : Enemy
         }
     }
 
+    void UpdateSheep()
+    {
+        activeSheep = GameManager.instance.activeSheep;
+    }
+
     public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
     {
         currentHealth -= damage;
-        
+
+        fsm.TransitionTo(_chase);
+
         uiHealthValue.value = currentHealth / maxHealth;
 
         if (uiHealthObject)
@@ -170,6 +224,8 @@ public class Dragon : Enemy
 
     private void OnDisable()
     {
+        GameManager.instance.onUpdateSheepCallback -= UpdateSheep;
+
         onHitCallback -= TakeDamage;
     }
 }

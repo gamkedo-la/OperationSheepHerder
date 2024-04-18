@@ -57,12 +57,19 @@ public class Wolf : Enemy
         {
             GameManager.instance.UpdateActiveEnemies();
         }
+        GameManager.instance.onUpdateEnemiesCallback += UpdateWolves;
+        GameManager.instance.onUpdateSheepCallback += UpdateSheep;
         onHitCallback += TakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.onUpdateEnemiesCallback -= UpdateWolves;
+        GameManager.instance.onUpdateSheepCallback -= UpdateSheep;
+        onHitCallback -= TakeDamage;
     }
     void Start()
     {
-        GameManager.instance.onUpdateEnemiesCallback += UpdateWolves;
-        GameManager.instance.onUpdateSheepCallback += UpdateSheep;
         activeWolves = GameManager.instance.activeEnemies.FindAll(enemy => enemy.name.Contains("Wolf"));
         activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_chase);
