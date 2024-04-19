@@ -3182,8 +3182,8 @@ MonoBehaviour:
   focusCentering: 0.5
   rotationSpeed: 90
   distance: 15.3
-  minVerticalAngle: 5.1
-  maxVerticalAngle: 60
+  minVerticalAngle: 5
+  maxVerticalAngle: 62.2
   alignDelay: 5
   alignSmoothRange: 45
   obstructionMask:

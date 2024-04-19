@@ -47,7 +47,7 @@ public class CameraFollow : MonoBehaviour
         float minZoom = 5f;
 
         [SerializeField] 
-        float maxZoom = 15f; 
+        float maxZoom = 20f; 
 
         float inputZoom;
     */
@@ -166,7 +166,12 @@ public class CameraFollow : MonoBehaviour
     }
     void ConstrainAngles()
     {
-        orbitAngles.x = Mathf.Clamp(orbitAngles.x, minVerticalAngle, maxVerticalAngle);
+        float minVerticalAngleToUse = minVerticalAngle;
+        if (focus.transform.position.y > 5f)
+        {
+            minVerticalAngleToUse = 20f;
+        }
+        orbitAngles.x = Mathf.Clamp(orbitAngles.x, minVerticalAngleToUse, maxVerticalAngle);
         if (orbitAngles.y < 0f)
         {
             orbitAngles.y += 360f;

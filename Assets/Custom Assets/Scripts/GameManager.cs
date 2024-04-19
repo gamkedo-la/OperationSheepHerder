@@ -99,7 +99,10 @@ public class GameManager : MonoBehaviour
 
     public void OnPauseGame()
     {
-        Debug.Log("Game paused");
+        if (GameManager.instance.debugAll)
+        {
+            Debug.Log("Game paused");
+        }
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         GamePaused = !GamePaused;
         if (GamePaused == true)

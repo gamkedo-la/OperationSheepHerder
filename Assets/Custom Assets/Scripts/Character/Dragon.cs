@@ -28,7 +28,7 @@ public class Dragon : Enemy
 
     List<Sheep> activeSheep;
 
-    private void OnEnable()
+    void OnEnable()
     {
         GameManager.instance.onUpdateSheepCallback += UpdateSheep;
         onHitCallback += TakeDamage;
