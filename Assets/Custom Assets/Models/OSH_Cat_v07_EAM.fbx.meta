@@ -1,0 +1,1119 @@
+fileFormatVersion: 2
+guid: ac8580c8130bcee429d9b169db96a339
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CatCH|AttackA
+      takeName: CatCH|AttackA
+      internalID: 3245109507783605885
+      firstFrame: 0
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|AttackB
+      takeName: CatCH|AttackB
+      internalID: -509267185946310584
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|Idle
+      takeName: CatCH|Idle
+      internalID: 3896676990985215239
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|PoseStanding
+      takeName: CatCH|PoseStanding
+      internalID: 3414720882332394208
+      firstFrame: 0
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|PoseZeroed
+      takeName: CatCH|PoseZeroed
+      internalID: -8692352070192050490
+      firstFrame: 0
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|Run
+      takeName: CatCH|Run
+      internalID: -6990935761732526879
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|Idle-Top
+      takeName: CatCH|Idle
+      internalID: 5626793733700483931
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BodyLimbs
+        weight: 1
+      - path: CatCH
+        weight: 1
+      - path: CatCH/COG
+        weight: 0
+      - path: CatCH/COG/Hip_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L/Ankle_L_end
+        weight: 0
+      - path: CatCH/COG/Hip_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R/Ankle_R_end
+        weight: 0
+      - path: CatCH/COG/Rump
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8/Tail8_end
+        weight: 0
+      - path: CatCH/COG/Spine0
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L/Prop_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R/Prop_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L/Ear1_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R/Ear1_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L/Eye_B1_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R/Eye_B1_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L/Eye_B2_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R/Eye_B2_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L/Eye_B3_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R/Eye_B3_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L/Eye_B4_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R/Eye_B4_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L/Eye_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R/Eye_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L/Eye_T1_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R/Eye_T1_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L/Eye_T2_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R/Eye_T2_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L/Eye_T3_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R/Eye_T3_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L/Eye_T4_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R/Eye_T4_R_end
+        weight: 1
+      - path: EyeL
+        weight: 1
+      - path: EyeR
+        weight: 1
+      - path: Head
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|Idle-Bottom
+      takeName: CatCH|Idle
+      internalID: 7363700423098908270
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BodyLimbs
+        weight: 1
+      - path: CatCH
+        weight: 1
+      - path: CatCH/COG
+        weight: 1
+      - path: CatCH/COG/Hip_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L/Ankle_L_end
+        weight: 1
+      - path: CatCH/COG/Hip_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R/Ankle_R_end
+        weight: 1
+      - path: CatCH/COG/Rump
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8/Tail8_end
+        weight: 1
+      - path: CatCH/COG/Spine0
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L/Prop_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R/Prop_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L/Ear1_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R/Ear1_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L/Eye_B1_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R/Eye_B1_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L/Eye_B2_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R/Eye_B2_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L/Eye_B3_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R/Eye_B3_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L/Eye_B4_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R/Eye_B4_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L/Eye_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R/Eye_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L/Eye_T1_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R/Eye_T1_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L/Eye_T2_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R/Eye_T2_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L/Eye_T3_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R/Eye_T3_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L/Eye_T4_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R/Eye_T4_R_end
+        weight: 0
+      - path: EyeL
+        weight: 0
+      - path: EyeR
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|Run-Top
+      takeName: CatCH|Run
+      internalID: -650471586423844864
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BodyLimbs
+        weight: 1
+      - path: CatCH
+        weight: 1
+      - path: CatCH/COG
+        weight: 0
+      - path: CatCH/COG/Hip_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L
+        weight: 0
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L/Ankle_L_end
+        weight: 0
+      - path: CatCH/COG/Hip_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R
+        weight: 0
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R/Ankle_R_end
+        weight: 0
+      - path: CatCH/COG/Rump
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8
+        weight: 0
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8/Tail8_end
+        weight: 0
+      - path: CatCH/COG/Spine0
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L/Prop_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R/Prop_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L/Ear1_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R/Ear1_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L/Eye_B1_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R/Eye_B1_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L/Eye_B2_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R/Eye_B2_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L/Eye_B3_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R/Eye_B3_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L/Eye_B4_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R/Eye_B4_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L/Eye_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R/Eye_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L/Eye_T1_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R/Eye_T1_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L/Eye_T2_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R/Eye_T2_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L/Eye_T3_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R/Eye_T3_R_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L/Eye_T4_L_end
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R/Eye_T4_R_end
+        weight: 1
+      - path: EyeL
+        weight: 1
+      - path: EyeR
+        weight: 1
+      - path: Head
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CatCH|Run-Bottom
+      takeName: CatCH|Run
+      internalID: 4572772750302369856
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BodyLimbs
+        weight: 1
+      - path: CatCH
+        weight: 1
+      - path: CatCH/COG
+        weight: 1
+      - path: CatCH/COG/Hip_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L
+        weight: 1
+      - path: CatCH/COG/Hip_L/Leg_L/Knee_L/Ankle_L/Ankle_L_end
+        weight: 1
+      - path: CatCH/COG/Hip_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R
+        weight: 1
+      - path: CatCH/COG/Hip_R/Leg_R/Knee_R/Ankle_R/Ankle_R_end
+        weight: 1
+      - path: CatCH/COG/Rump
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8
+        weight: 1
+      - path: CatCH/COG/Rump/Tail0/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8/Tail8_end
+        weight: 1
+      - path: CatCH/COG/Spine0
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1
+        weight: 1
+      - path: CatCH/COG/Spine0/Spine1/Chest_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_L/Clav_L/Shoulder_L/Elbow_L/Wrist_L/Prop_L/Prop_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Chest_R/Clav_R/Shoulder_R/Elbow_R/Wrist_R/Prop_R/Prop_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_L/Ear1_L/Ear1_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Ear0_R/Ear1_R/Ear1_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_L/Eye_B1_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B1_R/Eye_B1_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_L/Eye_B2_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B2_R/Eye_B2_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_L/Eye_B3_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B3_R/Eye_B3_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_L/Eye_B4_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_B4_R/Eye_B4_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_L/Eye_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_R/Eye_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_L/Eye_T1_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T1_R/Eye_T1_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_L/Eye_T2_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T2_R/Eye_T2_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_L/Eye_T3_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T3_R/Eye_T3_R_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_L/Eye_T4_L_end
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R
+        weight: 0
+      - path: CatCH/COG/Spine0/Spine1/Spine2/Spine3/Neck/Head/Eye_T4_R/Eye_T4_R_end
+        weight: 0
+      - path: EyeL
+        weight: 0
+      - path: EyeR
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
