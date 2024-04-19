@@ -4,6 +4,9 @@ using System.Linq;
 public class LaunchRock : MonoBehaviour
 {
     [SerializeField]
+    PlayerController player;
+
+    [SerializeField]
     GameObject rockPrefab;
 
     [SerializeField] 
@@ -16,12 +19,11 @@ public class LaunchRock : MonoBehaviour
 
     GameObject[] rocks;
 
-    PlayerController player;
+    
     
     int counter = 0;
     void Awake()
     {
-        player = GetComponentInParent<PlayerController>();
         rocks = new GameObject[5];
         for (int i = 0; i < rocks.Length; i++)
         {
@@ -42,7 +44,7 @@ public class LaunchRock : MonoBehaviour
     public void OnPlayerAttack()
     {
         var fireVector = transform.forward;
-        if(player.LockedOn){
+        if(player.LockedOn && player.Target){
             var directionVector = player.Target.position - transform.position;
             directionVector.y = 0;
             fireVector = directionVector.normalized;

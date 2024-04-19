@@ -7,6 +7,7 @@ namespace GameEnumsNamespace
         LoadingSplashScreen,
         MainMenu,
         Armageddon,
+        WoodsDay,
         WoodsDayLevel1,
         WoodsDayLevel2,
         WoodsNightLevel3,

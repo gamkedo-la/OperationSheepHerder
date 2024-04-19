@@ -40,6 +40,7 @@ public class LoadingManager : MonoBehaviour
         fadeInAnimationClipLength = fadeInAnimationClip.length;
         fadeOutAnimationClipLength = fadeOutAnimationClip.length;
         StartCoroutine(LoadInitialization());
+        myAnimator = GetComponent<Animator>();
     }
 
     public void LoadScene(GameSceneEnums sceneEnum)
@@ -92,6 +93,7 @@ public class LoadingManager : MonoBehaviour
                 yield return new WaitForSeconds(fadeOutAnimationClipLength);
 
                 loadingImage.gameObject.SetActive(false);
+                fadeImage.gameObject.SetActive(false);  
                 asyncLoad.allowSceneActivation = true;
             }
 

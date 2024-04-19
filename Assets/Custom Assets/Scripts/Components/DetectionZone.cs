@@ -9,6 +9,7 @@ public class DetectionZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Sheep"))
         {
+            other.GetComponent<Sheep>().safe = true;
             count++;
             if (GameManager.instance.debugAll)
             {

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   _name: Rock
-  _damageValue: 5
+  _damageValue: 10

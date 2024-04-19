@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1834324292720971507}
   - component: {fileID: 4750037485171241609}
   - component: {fileID: 5642637392924491420}
-  - component: {fileID: 5121915568109594024}
   - component: {fileID: 787711279439224914}
   - component: {fileID: 950569593465716449}
   m_Layer: 7
@@ -61,13 +60,12 @@ MonoBehaviour:
   currentHealth: 30
   maxHealth: 30
   attackPower: 0
-  speed: 5
+  speed: 7
   attacker: {fileID: 0}
   wanderTime: 5
   wanderRadius: 15
   followTime: 10
   fleeTimerEnd: 5
-  isFleeing: 0
   bellRadius: 50
   baseSpeed: 4.1
   fleeSpeed: 5
@@ -117,11 +115,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 28
+  m_Speed: 7
   m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -129,34 +127,6 @@ NavMeshAgent:
   m_BaseOffset: -0.28
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5121915568109594024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792757998885314416}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503f6ca1303f8cd4a9d565abc6cc0e5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: bc7d946cc20ad5d47b35066056af2af5, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3884688776824101589}
-        m_TargetAssemblyTypeName: Sheep, Assembly-CSharp
-        m_MethodName: OnPlayerBell
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!54 &787711279439224914
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class Wolf : Enemy
 
     Vector3 previousTargetPosition;
 
-    List<Wolf> activeWolves;
+    List<Enemy> activeWolves;
     List<Sheep> activeSheep;
     void Awake()
     {
@@ -57,12 +57,19 @@ public class Wolf : Enemy
         {
             GameManager.instance.UpdateActiveEnemies();
         }
+        GameManager.instance.onUpdateEnemiesCallback += UpdateWolves;
+        GameManager.instance.onUpdateSheepCallback += UpdateSheep;
         onHitCallback += TakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.onUpdateEnemiesCallback -= UpdateWolves;
+        GameManager.instance.onUpdateSheepCallback -= UpdateSheep;
+        onHitCallback -= TakeDamage;
     }
     void Start()
     {
-        GameManager.instance.onUpdateEnemiesCallback += UpdateWolves;
-        GameManager.instance.onUpdateSheepCallback += UpdateSheep;
         activeWolves = GameManager.instance.activeEnemies.FindAll(enemy => enemy.name.Contains("Wolf"));
         activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_chase);
@@ -219,7 +226,6 @@ public class Wolf : Enemy
                         StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
                         fsm.TransitionTo(_chase);
                     }
-                    //add code to play attack animation
                 }
             }
 
@@ -254,8 +260,7 @@ public class Wolf : Enemy
         }
         if (step == FSM.Step.Exit)
         {
-/*            Debug.Log($"{this.name} died!");
-            Destroy(gameObject);*/
+
         }
     }
     //called when GameManager.instance.activeWolves changes
@@ -270,12 +275,15 @@ public class Wolf : Enemy
     }
     public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
     {
-
-        if (enemy.CompareTag("Dog"))
+        if (enemy)
         {
-            target = enemy;
-            fsm.TransitionTo(_chase);
+            if (enemy.CompareTag("Dog"))
+            {
+                target = enemy;
+                fsm.TransitionTo(_chase);
+            }
         }
+
         currentHealth -= damage;
         //this updates the Slider value of Current Health / Max Health
         uiHealthValue.value = currentHealth / maxHealth;

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static bool GamePaused = false;
 
     public List<Sheep> activeSheep;
-    public List<Wolf> activeEnemies;
+    public List<Enemy> activeEnemies;
     public delegate void OnUpdateSheep();
     public delegate void OnUpdateEnemies();
     public OnUpdateSheep onUpdateSheepCallback;
@@ -54,7 +54,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI pointsText;
 
-    float maxSheepDistance = 30f;
+    [SerializeField]
+    float maxSheepDistance = 10f;
 
     private void Awake()
     {
@@ -74,7 +75,7 @@ public class GameManager : MonoBehaviour
         if (instance == this)
         {
             activeSheep = FindObjectsOfType<Sheep>().ToList();
-            activeEnemies = FindObjectsOfType<Wolf>().ToList();
+            activeEnemies = FindObjectsOfType<Enemy>().ToList<Enemy>();
         }
     }
 
@@ -98,7 +99,10 @@ public class GameManager : MonoBehaviour
 
     public void OnPauseGame()
     {
-        Debug.Log("Game paused");
+        if (GameManager.instance.debugAll)
+        {
+            Debug.Log("Game paused");
+        }
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         GamePaused = !GamePaused;
         if (GamePaused == true)
@@ -119,7 +123,7 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        onUpdateSheepCallback.Invoke();
+        onUpdateSheepCallback?.Invoke();
     }
 
     IEnumerator CheckSheepDistanceFromPlayer()
@@ -153,28 +157,25 @@ public class GameManager : MonoBehaviour
     public void UpdateActiveEnemies()
     {
         activeEnemies.Clear();
-        activeEnemies = FindObjectsOfType<Wolf>().ToList();
+        activeEnemies = FindObjectsOfType<Enemy>().ToList<Enemy>();
         onUpdateEnemiesCallback.Invoke();
     }
 
     public void PlayAgain()
     {
-        Debug.Log("Play again");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void LevelComplete()
     {
-        Time.timeScale = 0;
-        Debug.Log("Level Complete!");
-        //show level complete text
+        player.GetComponent<PlayerController>().enabled = false;
         levelCompletePanel.SetActive(true);
-        Time.timeScale = 0f;
         int sheepSaved = activeSheep.Count;
         sheepSavedText.text = $"You saved {sheepSaved} sheep!";
         int points = sheepSaved * currentLevelData.pointsPerSheep;
         pointsText.text = $"{points} points";
     }
 
+    //used to transition from woods day to armageddon
     public void NextLevel()
     {
         SceneManager.LoadScene(levelData[1].sceneName);
@@ -185,10 +186,6 @@ public class GameManager : MonoBehaviour
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("game over panel not connected to scene");
         }
     }
 
