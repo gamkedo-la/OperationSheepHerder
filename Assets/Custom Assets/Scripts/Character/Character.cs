@@ -29,6 +29,15 @@ public abstract class Character : MonoBehaviour
     // Method to check if the character is moving
     public bool IsMoving()
     {
-        return _agent.velocity.sqrMagnitude > 0.1f; // Adjust the threshold value as needed
+        //if anyone but the player, meaning they use NavMesh to navigate
+        if (_agent)
+        {
+            return _agent.velocity.sqrMagnitude > 0.1f; // Adjust the threshold value as needed
+        }
+        //otherwise check players character controller component
+        else
+        {
+            return GetComponent<CharacterController>().velocity.sqrMagnitude > 0.1f;
+        }
     }
 }

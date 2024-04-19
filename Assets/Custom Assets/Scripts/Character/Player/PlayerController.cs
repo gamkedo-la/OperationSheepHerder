@@ -137,6 +137,7 @@ public class PlayerController : Character
 
     void FixedUpdate()
     {
+        _animator.SetBool("Run", IsMoving());
         if (move.x != 0 || move.z != 0)
         {
             transform.Rotate(new Vector3(move.x, 0, move.y) * Time.deltaTime, Space.Self);
