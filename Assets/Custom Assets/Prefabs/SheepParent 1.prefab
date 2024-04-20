@@ -62,14 +62,15 @@ MonoBehaviour:
   attackPower: 0
   speed: 7
   attacker: {fileID: 0}
+  safe: 0
   wanderTime: 5
   wanderRadius: 15
   followTime: 10
   fleeTimerEnd: 5
   bellRadius: 50
-  baseSpeed: 4.1
   fleeSpeed: 5
   dog: {fileID: 0}
+  barn: {fileID: 0}
 --- !u!114 &1834324292720971507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +98,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

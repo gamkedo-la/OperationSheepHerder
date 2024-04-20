@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LeavesDitherMat
-  m_Shader: {fileID: 4800000, guid: a5dff29386aa43243865e74f0767471d, type: 3}
+  m_Shader: {fileID: 10606, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,11 +29,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Cutoff: 0.3
     - _Diffuse: 0.62
     - _Dither: 1
+    - _ShadowStrength: 1
     - _Shininess: 0.98
+    - _SquashAmount: 1
     - _TMultiplier: 0
+    - _TranslucencyViewDependency: 0.7
     m_Colors:
     - _Color: {r: 0, g: 0.103773594, b: 0, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TranslucencyColor: {r: 0.73, g: 0.85, b: 0.41, a: 1}
+    - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

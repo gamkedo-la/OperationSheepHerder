@@ -80,7 +80,7 @@ Shader "Unlit/Dither"
                 16.0 / 17.0,  8.0 / 17.0, 14.0 / 17.0,  6.0 / 17.0
                 };
 
-                int index = (int(pos.x) % 4) * 4 + int(pos.y) % 4;
+                uint index = (uint(pos.x) % 4) * 4 + uint(pos.y) % 4;
                 clip(_Dither - DITHER_THRESHOLDS[index]);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
