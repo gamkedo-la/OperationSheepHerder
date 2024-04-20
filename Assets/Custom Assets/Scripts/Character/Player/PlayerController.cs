@@ -101,6 +101,7 @@ public class PlayerController : Character
     public void OnAimRock()
     {
         //if arrow keys pressed, move rock trajectory, otherwise launch rock in forward direction
+        _animator.SetBool("AimAttack", true);
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();
         //TODO: prevent player rotating full body with up/down input keys, but still rotate playerforward object to aim higher/lower
         if (input.x != 0)
@@ -117,6 +118,8 @@ public class PlayerController : Character
     //called when attack button is released
     public void PlayerRockAttack()
     {
+        _animator.SetBool("AimAttack", false);
+        _animator.SetBool("LaunchAttack", true);
         trajectoryRenderer.ClearTrajectory();
 
         if (!cooldownTimerActive)
@@ -137,9 +140,14 @@ public class PlayerController : Character
 
     void FixedUpdate()
     {
-        _animator.SetBool("Run", IsMoving());
         if (move.x != 0 || move.z != 0)
         {
+            _animator.SetBool("Run", true);
+
+            if (!_animator.GetBool("AimAttack"))
+            {
+                _animator.SetBool("LaunchAttack", false);
+            }
             transform.Rotate(new Vector3(move.x, 0, move.y) * Time.deltaTime, Space.Self);
             transform.forward = new Vector3(move.x, 0, move.z);
 
@@ -164,6 +172,10 @@ public class PlayerController : Character
                 newPosition.z = allowedArea.yMax;
                 move.z = 0f;
             }
+        }
+        else
+        {
+            _animator.SetBool("Run", false);
         }
         playerController.Move(playerSpeed * Time.deltaTime * move);
     }

@@ -167,7 +167,7 @@ public class CameraFollow : MonoBehaviour
     void ConstrainAngles()
     {
         float minVerticalAngleToUse = minVerticalAngle;
-        if (focus.transform.position.y > 5f)
+        if (focus.transform.position.y > 1f)
         {
             minVerticalAngleToUse = 20f;
         }
