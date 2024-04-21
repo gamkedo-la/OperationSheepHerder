@@ -1905,10 +1905,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    - target: {fileID: 423377548239533498, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 424921658291043026, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -2185,14 +2181,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    - target: {fileID: 2066459258092464668, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_text
-      value: 'Rotate Camera Left/Right/Up/Down: V/N/H/B'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081641543275678654, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_text
-      value: 'Aim Attack: Hold F, IJKL'
-      objectReference: {fileID: 0}
     - target: {fileID: 2090433058276124657, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -2397,10 +2385,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    - target: {fileID: 3374251811910622097, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 395fb1a29b43eaa49aa358ee1e5ffe35, type: 2}
     - target: {fileID: 3397753626782175076, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -2721,10 +2705,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    - target: {fileID: 5066166323168433085, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5071699367386527290, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: _animator
       value: 
@@ -2764,14 +2744,6 @@ PrefabInstance:
     - target: {fileID: 5212073284882468011, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5215132132422310742, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_text
-      value: Success!!
-      objectReference: {fileID: 0}
-    - target: {fileID: 5215132132422310742, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5232299662573064214, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3017,10 +2989,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    - target: {fileID: 6419852343590707915, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -202
-      objectReference: {fileID: 0}
     - target: {fileID: 6493158313003404463, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3088,14 +3056,6 @@ PrefabInstance:
     - target: {fileID: 6849529663135268946, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6889459653185490575, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 6889459653185490575, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -101
       objectReference: {fileID: 0}
     - target: {fileID: 6890510451732992735, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3168,10 +3128,6 @@ PrefabInstance:
     - target: {fileID: 7114631457256701110, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7136490045128434708, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
-      propertyPath: m_Center.z
-      value: -7.92
       objectReference: {fileID: 0}
     - target: {fileID: 7162998352247660109, guid: 6e5fac3f77521bb40a02604d3e132d51, type: 3}
       propertyPath: m_StaticEditorFlags

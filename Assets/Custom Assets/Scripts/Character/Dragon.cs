@@ -114,13 +114,22 @@ public class Dragon : Enemy
 
         if (step == FSM.Step.Update)
         {
-            _agent.SetDestination(target.transform.position);
-
-            if (Vector3.Distance(transform.position, target.transform.position) < attackRadius)
+            if (target)
             {
-                fsm.TransitionTo(_attack);
+                _agent.SetDestination(target.transform.position);
+
+                if (Vector3.Distance(transform.position, target.transform.position) < attackRadius)
+                {
+                    fsm.TransitionTo(_attack);
+                }
+            }
+            else
+            {
+                fsm.TransitionTo(_wait);
             }
         }
+
+
 
         if (step == FSM.Step.Exit)
         {

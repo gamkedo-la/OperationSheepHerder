@@ -174,7 +174,7 @@ public class Sheep : Character
                     fsm.TransitionTo(_follow);
                 }
 
-                if (!GameManager.instance.activeEnemies.Find(x => x.name.Contains("Wolf")))
+                if (!GameManager.instance.activeEnemies.Find(x => x.GetComponent<Wolf>()))
                 {
                     int distantEnemies = 0;
                     for (int i = 0; i < GameManager.instance.activeEnemies.Count; i++)

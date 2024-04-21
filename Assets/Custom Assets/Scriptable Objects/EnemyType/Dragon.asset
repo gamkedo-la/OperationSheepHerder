@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dragon
   m_EditorClassIdentifier: 
   type: Dragon
-  baseSpeed: 6
+  baseSpeed: 10
   prefab: {fileID: 7155922535850730701, guid: 1fc2770ce8f78f94da3b198b5058ac7d, type: 3}
   baseAttack: 10
