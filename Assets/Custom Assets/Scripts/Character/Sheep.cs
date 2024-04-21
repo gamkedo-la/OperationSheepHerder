@@ -17,6 +17,7 @@ public class Sheep : Character
     [SerializeField] float fleeSpeed;
     [SerializeField] GameObject dog;
     [SerializeField] GameObject barn;
+    [SerializeField] Timer timer;
 
     FSM fsm;
     FSM.State _follow;
@@ -24,7 +25,6 @@ public class Sheep : Character
     FSM.State _wander;
     FSM.State _die;
 
-    Timer timer;
     float wanderTimer;
     Vector3 attackerDirection;
 
@@ -37,7 +37,6 @@ public class Sheep : Character
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        timer = FindObjectOfType<Timer>();
         wanderTimer = wanderTime;
         _flee = FSM_Flee;
         _follow = FSM_Follow;
@@ -45,7 +44,6 @@ public class Sheep : Character
         _die = FSM_Die;
         fsm = new FSM();
         fsm.OnSpawn(_follow);
-        _animator.SetBool("IsWalking", true);
     }
 
     void Update()
@@ -55,6 +53,16 @@ public class Sheep : Character
         if (safe)
         {
             _agent.SetDestination(barn.transform.position);
+        }
+
+        if (_agent.velocity.sqrMagnitude > 0.1f)
+        {
+            _animator.SetBool("IsWalking", true);
+        }
+
+        else
+        {
+            _animator.SetBool("IsWalking", false);
         }
     }
 
@@ -68,6 +76,7 @@ public class Sheep : Character
             {
                 //establish point in opposite direction of attack direction
                 attackerDirection = transform.position - attacker.transform.position;
+                attackerDirection.y = 0;
             }
 
             timer.StartCoroutine(timer.FleeTimer(fleeTimerEnd));
@@ -84,7 +93,7 @@ public class Sheep : Character
             //begin movement towards established flee point
             if (attacker != null)
             {
-                agent.SetDestination(attacker.transform.position + (attackerDirection * 10));
+                agent.SetDestination(attacker.transform.position + (attackerDirection * 20));
 
             }
 
@@ -107,7 +116,6 @@ public class Sheep : Character
             {
                 Debug.Log("sheep is following player");
             }
-            _animator.SetBool("IsWalking", true);
 
             followOffset = Random.insideUnitCircle;
             followOffset.Normalize();
@@ -146,7 +154,6 @@ public class Sheep : Character
                 Debug.Log("sheep is wandering");
             }
             wanderTimer = wanderTime;
-            _animator.SetBool("IsWalking", true);
         }
         if (step == FSM.Step.Update)
         {
@@ -160,14 +167,6 @@ public class Sheep : Character
                     agent.speed = speed;
                     agent.SetDestination(newPos);
                     wanderTimer = 0;
-                }
-                if (_agent.remainingDistance < 0.5f)
-                {
-                    _animator.SetBool("IsWalking", false);
-                }
-                else
-                {
-                    _animator.SetBool("IsWalking", true);
                 }
 
                 if (Vector3.Distance(transform.position, player.transform.position) < safeRadiusWithPlayer && Vector3.Distance(transform.position, dog.transform.position) < safeRadiusWithPlayer) 
@@ -192,8 +191,6 @@ public class Sheep : Character
     {
         if (step == FSM.Step.Enter)
         {
-            _animator.SetBool("IsWalking", false);
-
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("sheep died");

@@ -18,11 +18,11 @@ public class PlayerController : Character
     [SerializeField]
     Rect allowedArea;
 
-    [SerializeField, Min(0f)]
-    float probeDistance = 1f;
-
     [SerializeField]
     RockTrajectory trajectoryRenderer;
+
+    [SerializeField]
+    Timer timer;
 
 
     CharacterController playerController;
@@ -30,16 +30,12 @@ public class PlayerController : Character
     public delegate void Attack();
     public Attack onAttackCallback;
 
-    public readonly Vector3 gravity = new Vector3(0, -3f, 0);
+    public readonly Vector3 gravity = new(0, -3f, 0);
 
     //movement direction 
     Vector3 move;
-    Timer timer;
-    int stepsSinceLastGrounded;
-    bool onGround;
     bool holdingAim = false;
     InputActionAsset playerInput;
-
     public Transform Target { get; set; }
     public bool LockedOn { get; set; }
 
@@ -101,16 +97,20 @@ public class PlayerController : Character
     public void OnAimRock()
     {
         //if arrow keys pressed, move rock trajectory, otherwise launch rock in forward direction
+        if (cooldownTimerActive)
+        {
+            return;
+        }
         _animator.SetBool("AimAttack", true);
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();
         //TODO: prevent player rotating full body with up/down input keys, but still rotate playerforward object to aim higher/lower
         if (input.x != 0)
         {
-            trajectoryRenderer.transform.Rotate(new Vector3(input.x, 0, 0));
+            trajectoryRenderer.transform.Rotate(new Vector3(input.x / 4, 0, 0));
         }
         if (input.y != 0)
         {
-            transform.Rotate(new Vector3(0, input.y, 0));
+            transform.Rotate(new Vector3(0, input.y / 4, 0));
         }
         trajectoryRenderer.DrawTrajectory();
     }
@@ -178,58 +178,6 @@ public class PlayerController : Character
             _animator.SetBool("Run", false);
         }
         playerController.Move(playerSpeed * Time.deltaTime * move);
-    }
-    void CheckOnGround()
-    {
-        stepsSinceLastGrounded += 1;
-        if (onGround || SnapToGround())
-        {
-            stepsSinceLastGrounded = 0;
-        }
-    }
-    bool SnapToGround()
-    {
-        if (stepsSinceLastGrounded <= 1)
-        {
-            return false;
-        }
-        if (!Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, probeDistance))
-        {
-            if (GameManager.instance.debugAll)
-            {
-                Debug.Log("no hit collider within probe distance");
-            }
-            return false;
-        }
-        if (!hit.collider.gameObject.CompareTag("Ground"))
-        {
-            if (GameManager.instance.debugAll)
-            {
-                Debug.Log("hit object not ground");
-            }
-            return false;
-        }
-        float dot = Vector3.Dot(move, hit.normal);
-        if (dot > 0f)
-        {
-            move = (move - hit.normal * dot).normalized * playerSpeed;
-        }
-        return true;
-    }
-    void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            onGround = true;
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            onGround = false;
-        }
     }
 
     public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)

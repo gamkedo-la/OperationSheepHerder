@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class LaunchRock : MonoBehaviour
 {
@@ -44,12 +45,21 @@ public class LaunchRock : MonoBehaviour
     public void OnPlayerAttack()
     {
         var fireVector = transform.forward;
+        float distanceFromTargetMultiplier = 1f;
         if(player.LockedOn && player.Target){
+            Debug.Log("locked on");
             var directionVector = player.Target.position - transform.position;
-            directionVector.y = 0;
+            if (directionVector.y <= 0)
+            {
+                directionVector.y = 0.1f;
+            }
+            distanceFromTargetMultiplier = Vector3.Distance(player.Target.position, transform.position);
+            directionVector.y *= distanceFromTargetMultiplier;
+            directionVector.y += player.Target.GetChild(0).GetChild(0).localPosition.y * player.Target.localScale.y * 2;
+
             fireVector = directionVector.normalized;
+            
         }
-        
 
         // to begin level, instantiate new rock objects until reaching maxRockCount
         if (rockCount < maxRockCount)

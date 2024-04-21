@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 5372984501935618717}
   - component: {fileID: 5372984501935618715}
   - component: {fileID: 4210051465182553481}
+  - component: {fileID: 1788333609741147609}
   m_Layer: 0
   m_Name: PlayerParent
   m_TagString: Player
@@ -208,7 +209,7 @@ Transform:
   - {fileID: 3603991841769354638}
   - {fileID: 1093680723317464459}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5372984501935618716
 MonoBehaviour:
@@ -261,9 +262,9 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   attackPower: 0
-  speed: 0
-  playerSpeed: 7
-  attackCooldown: 0.75
+  speed: 8
+  playerSpeed: 8
+  attackCooldown: 1
   rotationSpeed: 1
   playerInputSpace: {fileID: 0}
   allowedArea:
@@ -272,8 +273,8 @@ MonoBehaviour:
     y: 0
     width: 1000
     height: 1000
-  probeDistance: 1
   trajectoryRenderer: {fileID: 8507308350311247569}
+  timer: {fileID: 0}
 --- !u!143 &5372984501935618715
 CharacterController:
   m_ObjectHideFlags: 0
@@ -396,6 +397,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &1788333609741147609
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5372984501935618719}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.75, y: 1.25, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.35, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &3857695925059981925
 PrefabInstance:
   m_ObjectHideFlags: 0

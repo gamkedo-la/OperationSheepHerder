@@ -97,21 +97,25 @@ public class RockTrajectory : MonoBehaviour
         var curvePoints = new List<Vector3>();
         startPosition = transform.position;
         startVelocity = (player.Target.position - startPosition).normalized * GetComponent<LaunchRock>().launchVelocity;
-        startVelocity.y = 0;
+        if (startVelocity.y < 0)
+        {
+            startVelocity.y = 0.1f;
+        }
         curvePoints.Add(startPosition);
         var currentPosition = startPosition;
         var currentVelocity = startVelocity;
-
         int i = 0;
         int numSteps = 10;
         float dt = 0.1f;
         float time = 0.0f;
-        while (i < numSteps && Vector3.Distance(currentPosition, player.Target.position) > Vector3.kEpsilon)
+        while (i < numSteps && Vector3.Distance(currentPosition, player.Target.position) > Vector3.kEpsilon && Vector3.Distance(currentPosition, player.Target.position) < 15f)
         {
+            currentVelocity.y *= Vector3.Distance(player.Target.position, player.transform.position) / Physics.gravity.y;
             i++;
             time += dt;
-            currentPosition = startPosition + time * startVelocity;
-            currentPosition.y = startPosition.y + startVelocity.y * time + (Physics.gravity.y / 2f * time * time);
+            currentPosition = startPosition + time * currentVelocity;
+            currentPosition.y += player.Target.GetChild(0).GetChild(0).localPosition.y * player.Target.localScale.y * 2;
+            //currentPosition.y = startPosition.y + (currentVelocity.y * time + (Physics.gravity.y / 2f * time * time));
 
             curvePoints.Add(currentPosition);
 

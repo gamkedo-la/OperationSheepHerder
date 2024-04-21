@@ -22,7 +22,7 @@ public class Dragon : Enemy
     Timer timer;
 
     AudioSource audioSource;
-
+    float wakeUpRadius = 40f;
     FSM fsm;
     FSM.State _wait, _chase, _attack, _die;
 
@@ -66,6 +66,11 @@ public class Dragon : Enemy
 
         if (step == FSM.Step.Update)
         {
+
+            if (Vector3.Distance(player.transform.position, transform.position) < wakeUpRadius)
+            {
+                fsm.TransitionTo(_chase);
+            }
 
             for (int i = 0; i < GameManager.instance.activeSheep.Count; i++)
             {

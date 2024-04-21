@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
     {
         activeEnemies.Clear();
         activeEnemies = FindObjectsOfType<Enemy>().ToList<Enemy>();
-        onUpdateEnemiesCallback.Invoke();
+        onUpdateEnemiesCallback?.Invoke();
     }
 
     public void PlayAgain()

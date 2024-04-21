@@ -27,10 +27,12 @@ public class Wolf : Enemy
     [SerializeField]
     float attackTimerCooldown;
 
+    [SerializeField]
+    Timer timer;
+
     FSM fsm;
     FSM.State _chase, _attack, _die;
 
-    Timer timer;
 
     Vector3 previousTargetPosition;
 
@@ -141,20 +143,26 @@ public class Wolf : Enemy
                 Vector3 targetPos = target.transform.position;
                 if (packFollower)
                 {
-                    if (Vector3.Distance(leader.transform.position, leader.GetComponent<Wolf>().target.transform.position) < 5)
+                    if (leader && leader.GetComponent<Wolf>().target)
                     {
-                        target = leader.GetComponent<Wolf>().target;
-                        targetPos = target.transform.position;
-                    }
+                        if (Vector3.Distance(leader.transform.position, leader.GetComponent<Wolf>().target.transform.position) < 5)
+                        {
+                            target = leader.GetComponent<Wolf>().target;
+                            targetPos = target.transform.position;
+                        }
 
+                        else
+                        {
+                            // pack formation offset relative to leader orientation
+                            targetPos = leader.transform.position;
+                            targetPos += packChaseRandomFormationOffset.x * target.transform.right +
+                                            packChaseRandomFormationOffset.y * target.transform.forward;
+                        }
+                    }
                     else
                     {
-                        // pack formation offset relative to leader orientation
-                        targetPos = leader.transform.position;
-                        targetPos += packChaseRandomFormationOffset.x * target.transform.right +
-                                        packChaseRandomFormationOffset.y * target.transform.forward;
+                        target = GameManager.instance.activeSheep[0].gameObject;
                     }
-
                 }
                 if (!_agent.hasPath || targetPos != previousTargetPosition)
                 {
@@ -201,9 +209,10 @@ public class Wolf : Enemy
             //TODO: Test fix
             else if (target.CompareTag("Enemy") && target.name.Contains("Wolf"))
             {
-                if (target.GetComponent<Wolf>().target.CompareTag("Sheep"))
+                target = null;
+                if (leader.GetComponent<Wolf>().target.CompareTag("Sheep"))
                 {
-                    target = target.GetComponent<Wolf>().target;
+                    target = leader.GetComponent<Wolf>().target;
                 }
             }
         }
@@ -214,6 +223,13 @@ public class Wolf : Enemy
             {
                 if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
                 {
+                    for (int i = 0; i < GameManager.instance.activeSheep.Count; i++)
+                    {
+                        if (Vector3.Distance(GameManager.instance.activeSheep[i].transform.position, transform.position) < Vector3.Distance(transform.position, target.transform.position))
+                        {
+                            target = null;
+                        }
+                    }
                     fsm.TransitionTo(_chase);
                 }
 
@@ -221,10 +237,8 @@ public class Wolf : Enemy
                 {
                     if (!cooldownTimerActive)
                     {
-
                         target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
                         StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
-                        fsm.TransitionTo(_chase);
                     }
                 }
             }
@@ -246,6 +260,7 @@ public class Wolf : Enemy
     {
         if (step == FSM.Step.Enter)
         {
+            player.GetComponent<PlayerController>().LockedOn = false;
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("wolf died");
