@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void LevelComplete()
@@ -191,6 +192,7 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
     public void LoadSettingsMenu()
