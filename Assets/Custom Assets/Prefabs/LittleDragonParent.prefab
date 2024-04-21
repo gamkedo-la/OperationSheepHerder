@@ -5208,10 +5208,10 @@ MonoBehaviour:
   speed: 9.5
   type: {fileID: 11400000, guid: 7229205f9883f48499a2b957d9365271, type: 2}
   target: {fileID: 0}
-  FireSFX: {fileID: 8300000, guid: 341265db4ac5f904bb6f4c42ec1d969d, type: 3}
+  FireSFX: {fileID: 8300000, guid: 46d04c02dfbe34f3ba435bbbb43b5842, type: 3}
   FireVFX: {fileID: 6250113990812656038}
   attackRadius: 7
-  attackTimerCooldown: 2.5
+  attackTimerCooldown: 2.75
   timer: {fileID: 0}
 --- !u!114 &1205004985828951357
 MonoBehaviour:
@@ -5259,9 +5259,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 46d04c02dfbe34f3ba435bbbb43b5842, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5269,7 +5269,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 10
   MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
@@ -5320,7 +5320,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

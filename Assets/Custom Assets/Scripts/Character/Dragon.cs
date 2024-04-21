@@ -28,6 +28,7 @@ public class Dragon : Enemy
 
     List<Sheep> activeSheep;
 
+
     void OnEnable()
     {
         GameManager.instance.onUpdateSheepCallback += UpdateSheep;
@@ -145,9 +146,6 @@ public class Dragon : Enemy
             {
                 Debug.Log("Play FireSound & VFX");
             }
-            //emmit fire from FireVFX
-            FireVFX.Play();
-            AudioSource.PlayClipAtPoint(FireSFX, transform.position);
         }
 
         if (step == FSM.Step.Update)
@@ -162,6 +160,9 @@ public class Dragon : Enemy
                 transform.LookAt(target.transform.position);
                 if (!cooldownTimerActive)
                 {
+                    //emmit fire from FireVFX
+                    FireVFX.Play();
+                    audioSource.Play();
                     target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
                     StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
                 }

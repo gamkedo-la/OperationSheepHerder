@@ -14,7 +14,6 @@ public class PlayButtonScript : MonoBehaviour
 
         LoadingManager.Instance.transform.GetChild(0).gameObject.SetActive(true);
         LoadingManager.Instance.LoadScene(GameEnumsNamespace.GameSceneEnums.WoodsDay);
-        //TODO: make functional
         print("button clicked");
     }
 }
