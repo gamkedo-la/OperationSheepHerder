@@ -271,7 +271,7 @@ MonoBehaviour:
   packFollower: 1
   leader: {fileID: 0}
   attackRadius: 4
-  attackTimerCooldown: 3
+  attackTimerCooldown: 2
   timer: {fileID: 0}
 --- !u!114 &2078805577062617321
 MonoBehaviour:

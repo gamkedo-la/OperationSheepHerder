@@ -97,9 +97,14 @@ public class PlayerController : Character
     public void OnAimRock()
     {
         //if arrow keys pressed, move rock trajectory, otherwise launch rock in forward direction
+        
         if (cooldownTimerActive)
         {
             return;
+        }
+        if (Target)
+        {
+            transform.LookAt(Target.position);
         }
         _animator.SetBool("AimAttack", true);
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();
@@ -132,8 +137,6 @@ public class PlayerController : Character
         {
             return;
         }
-
-
         transform.SetLocalPositionAndRotation(transform.position, new Quaternion(0, transform.rotation.y, 0, transform.rotation.w));
         trajectoryRenderer.transform.localEulerAngles = Vector3.zero;
     }
@@ -154,22 +157,18 @@ public class PlayerController : Character
             Vector3 newPosition = transform.localPosition + move;
             if (newPosition.x < allowedArea.xMin)
             {
-                newPosition.x = allowedArea.xMin;
                 move.x = 0f;
             }
             else if (newPosition.x > allowedArea.xMax)
             {
-                newPosition.x = allowedArea.xMax;
                 move.x = 0f;
             }
             if (newPosition.z < allowedArea.yMin)
             {
-                newPosition.z = allowedArea.yMin;
                 move.z = 0f;
             }
             else if (newPosition.z > allowedArea.yMax)
             {
-                newPosition.z = allowedArea.yMax;
                 move.z = 0f;
             }
         }

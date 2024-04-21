@@ -47,14 +47,13 @@ public class LaunchRock : MonoBehaviour
         var fireVector = transform.forward;
         float distanceFromTargetMultiplier = 1f;
         if(player.LockedOn && player.Target){
-            Debug.Log("locked on");
             var directionVector = player.Target.position - transform.position;
             if (directionVector.y <= 0)
             {
                 directionVector.y = 0.1f;
             }
             distanceFromTargetMultiplier = Vector3.Distance(player.Target.position, transform.position);
-            directionVector.y *= distanceFromTargetMultiplier;
+            directionVector.y *= distanceFromTargetMultiplier / 2;
             directionVector.y += player.Target.GetChild(0).GetChild(0).localPosition.y * player.Target.localScale.y * 2;
 
             fireVector = directionVector.normalized;

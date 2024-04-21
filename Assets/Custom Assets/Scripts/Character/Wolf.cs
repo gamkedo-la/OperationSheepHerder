@@ -238,6 +238,7 @@ public class Wolf : Enemy
                 {
                     if (!cooldownTimerActive)
                     {
+                        transform.LookAt(target.transform.position);
                         target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
                         StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
                     }

@@ -264,7 +264,7 @@ MonoBehaviour:
   attackPower: 0
   speed: 8
   playerSpeed: 8
-  attackCooldown: 1
+  attackCooldown: 0.75
   rotationSpeed: 1
   playerInputSpace: {fileID: 0}
   allowedArea:
@@ -272,7 +272,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1000
-    height: 1000
+    height: 464
   trajectoryRenderer: {fileID: 8507308350311247569}
   timer: {fileID: 0}
 --- !u!143 &5372984501935618715
