@@ -93,7 +93,7 @@ public class Sheep : Character
             //begin movement towards established flee point
             if (attacker != null)
             {
-                agent.SetDestination(attacker.transform.position + (attackerDirection * 20));
+                agent.SetDestination(attacker.transform.position + (attackerDirection * 100));
 
             }
 
@@ -119,8 +119,8 @@ public class Sheep : Character
 
             followOffset = Random.insideUnitCircle;
             followOffset.Normalize();
-            followOffset *= Random.Range(2f, 6f);
-            followOffset.y -= Random.Range(2f, 6f);
+            followOffset *= Random.Range(4f, 8f);
+            followOffset.y -= Random.Range(4f, 8f);
 
         }
         if (step == FSM.Step.Update)

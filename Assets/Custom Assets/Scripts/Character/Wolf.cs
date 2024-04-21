@@ -36,7 +36,7 @@ public class Wolf : Enemy
 
     Vector3 previousTargetPosition;
 
-    List<Enemy> activeWolves;
+    List<Enemy> activeEnemies;
     List<Sheep> activeSheep;
     void Awake()
     {
@@ -72,13 +72,21 @@ public class Wolf : Enemy
     }
     void Start()
     {
-        activeWolves = GameManager.instance.activeEnemies.FindAll(enemy => enemy.name.Contains("Wolf"));
+        activeEnemies = GameManager.instance.activeEnemies.FindAll(enemy => enemy.name.Contains("Wolf"));
         activeSheep = GameManager.instance.activeSheep;
         fsm.OnSpawn(_chase);
         _agent.speed = speed;
     }
     void FixedUpdate()
     {
+        if (_agent.velocity.sqrMagnitude > 0)
+        {
+            _animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            _animator.SetBool("IsMoving", false);
+        }
         fsm.OnUpdate();
     }
 
@@ -92,9 +100,9 @@ public class Wolf : Enemy
                 Debug.Log("wolf enter chase state");
             }
 
-            if (target == null || target.IsDestroyed())
+            if (target == null)
             {
-                if (packFollower)
+/*                if (packFollower)
                 {
                     Wolf targetWolfScript = null;
                     int safetyLockBreak = 40; // 40 tries to find a non follower wolf, should be ample
@@ -105,31 +113,26 @@ public class Wolf : Enemy
                     while (target == null || targetWolfScript == this || targetWolfScript.packFollower)
                     {
                         //TODO: Physics.SphereOverlap to check if wolf is close enough to bother following/using pack behaviour
-                        leader = activeWolves[Random.Range(0, activeWolves.Count)].gameObject;
-                        if (Vector3.Distance(transform.position, leader.transform.position) > 15)
-                        {
-                            leader = activeWolves[Random.Range(0, activeWolves.Count)].gameObject;
-                        }
+                        List<Enemy> wolves = activeEnemies.FindAll(x => x.GetComponent<Wolf>());
+                        leader = wolves[Random.Range(0, activeEnemies.Count)].gameObject;
+
                         target = leader;
                         targetWolfScript = leader.GetComponent<Wolf>();
                         if (safetyLockBreak-- < 0) // prevent infinite loop from bad dice rolls or few wolves left
                         {
-                            target = player;
+                            target = activeSheep[0].gameObject;
                             packFollower = false; // couldn't find another wolf to follow, give up
                             break;
                         }
 
                     }
-                }
-                else if (activeSheep.Count > 0)
+                }*/
+                if (activeSheep.Count > 0)
                 {
                     //TODO: Switch to closest sheep
                     target = activeSheep[Random.Range(0, activeSheep.Count)].gameObject;
                 }
-                else
-                {
-                    target = player;
-                }
+
             }
            
 
@@ -141,29 +144,33 @@ public class Wolf : Enemy
             if (target != null)
             {
                 Vector3 targetPos = target.transform.position;
-                if (packFollower)
+/*                if (packFollower)
                 {
-                    if (leader && leader.GetComponent<Wolf>().target)
+                    if (leader)
                     {
-                        if (Vector3.Distance(leader.transform.position, leader.GetComponent<Wolf>().target.transform.position) < 5)
+                        if (leader.GetComponent<Wolf>().target)
                         {
-                            target = leader.GetComponent<Wolf>().target;
-                            targetPos = target.transform.position;
+                            if (Vector3.Distance(leader.transform.position, leader.GetComponent<Wolf>().target.transform.position) < 5)
+                            {
+                                target = leader.GetComponent<Wolf>().target;
+                                targetPos = target.transform.position;
+                            }
+
+                            else
+                            {
+                                // pack formation offset relative to leader orientation
+                                targetPos = leader.transform.position;
+                                targetPos += packChaseRandomFormationOffset.x * target.transform.right +
+                                                packChaseRandomFormationOffset.y * target.transform.forward;
+                            }
                         }
 
-                        else
-                        {
-                            // pack formation offset relative to leader orientation
-                            targetPos = leader.transform.position;
-                            targetPos += packChaseRandomFormationOffset.x * target.transform.right +
-                                            packChaseRandomFormationOffset.y * target.transform.forward;
-                        }
                     }
                     else
                     {
-                        target = GameManager.instance.activeSheep[0].gameObject;
+                        target = activeSheep[0].gameObject;
                     }
-                }
+                }*/
                 if (!_agent.hasPath || targetPos != previousTargetPosition)
                 {
                     
@@ -210,7 +217,7 @@ public class Wolf : Enemy
             else if (target.CompareTag("Enemy") && target.name.Contains("Wolf"))
             {
                 target = null;
-                if (leader.GetComponent<Wolf>().target.CompareTag("Sheep"))
+                if (leader && leader.GetComponent<Wolf>().target && leader.GetComponent<Wolf>().target.CompareTag("Sheep"))
                 {
                     target = leader.GetComponent<Wolf>().target;
                 }
@@ -223,13 +230,7 @@ public class Wolf : Enemy
             {
                 if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
                 {
-                    for (int i = 0; i < GameManager.instance.activeSheep.Count; i++)
-                    {
-                        if (Vector3.Distance(GameManager.instance.activeSheep[i].transform.position, transform.position) < Vector3.Distance(transform.position, target.transform.position))
-                        {
-                            target = null;
-                        }
-                    }
+                    target = null;
                     fsm.TransitionTo(_chase);
                 }
 
@@ -281,7 +282,7 @@ public class Wolf : Enemy
     //called when GameManager.instance.activeWolves changes
     void UpdateWolves()
     {
-        activeWolves = GameManager.instance.activeEnemies;
+        activeEnemies = GameManager.instance.activeEnemies;
     }
     //called when GameManager.instance.activeSheep changes
     void UpdateSheep()
