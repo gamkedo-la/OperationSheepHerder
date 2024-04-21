@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Armageddon
   levelNumber: 1
-  sheepCount: 7
-  unlocked: 1
+  sheepCount: 6
+  unlocked: 0
   completed: 0
   typesOfEnemies:
   - {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}

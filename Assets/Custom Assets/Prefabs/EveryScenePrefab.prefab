@@ -7043,7 +7043,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: -5.92}
+  m_Center: {x: 0, y: 0, z: -6.25}
   m_TimeToStationary: 0.5
 --- !u!4 &6535568507625818626 stripped
 Transform:
@@ -7406,7 +7406,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: -25.99, y: 0, z: -4.54}
+  m_Center: {x: -25.99, y: 0, z: -5.6}
   m_TimeToStationary: 0.5
 --- !u!4 &7864068825631567834 stripped
 Transform:

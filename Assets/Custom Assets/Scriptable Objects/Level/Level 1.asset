@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Woods Day
   levelNumber: 1
-  sheepCount: 3
+  sheepCount: 6
   unlocked: 1
   completed: 0
   typesOfEnemies:
   - {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
+  - {fileID: 11400000, guid: 7229205f9883f48499a2b957d9365271, type: 2}
   spawnRate: 1
   spawnWaves: 1
-  minSheepToCompleteLevel: 2
+  minSheepToCompleteLevel: 3
   pointsPerSheep: 100

@@ -33,7 +33,6 @@ public class Sheep : Character
 
     Vector2 followOffset;
 
-
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -147,6 +146,7 @@ public class Sheep : Character
     }
     void FSM_Wander(FSM fsm, FSM.Step step, FSM.State state)
     {
+
         if (step == FSM.Step.Enter)
         {
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
@@ -174,12 +174,22 @@ public class Sheep : Character
                     fsm.TransitionTo(_follow);
                 }
 
-                //if only the dragon is left, follow player (prevents sheep being behind when player approaches dragon)
-                //also follow player if no enemies left
-                if (GameManager.instance.activeEnemies.Count == 1 || GameManager.instance.activeEnemies.Count == 0)
+                if (!GameManager.instance.activeEnemies.Find(x => x.name.Contains("Wolf")))
                 {
-                    fsm.TransitionTo(_follow);
+                    int distantEnemies = 0;
+                    for (int i = 0; i < GameManager.instance.activeEnemies.Count; i++)
+                    {
+                        if (Vector3.Distance(player.transform.position, GameManager.instance.activeEnemies[i].transform.position) > 30f)
+                        {
+                            distantEnemies++;
+                        }
+                    }
+                    if (distantEnemies == GameManager.instance.activeEnemies.Count)
+                    {
+                        fsm.TransitionTo(_follow);
+                    }
                 }
+                
             }
         }
         if (step == FSM.Step.Exit)

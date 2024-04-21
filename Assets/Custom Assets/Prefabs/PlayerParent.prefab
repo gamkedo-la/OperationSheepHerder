@@ -262,8 +262,8 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   attackPower: 0
-  speed: 8
-  playerSpeed: 8
+  speed: 0
+  playerSpeed: 10
   attackCooldown: 0.75
   rotationSpeed: 1
   playerInputSpace: {fileID: 0}
@@ -272,7 +272,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1000
-    height: 464
+    height: 1000
   trajectoryRenderer: {fileID: 8507308350311247569}
   timer: {fileID: 0}
 --- !u!143 &5372984501935618715
@@ -296,8 +296,8 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2.68
   m_Radius: 1
-  m_SlopeLimit: 40
-  m_StepOffset: 0.3
+  m_SlopeLimit: 1
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.37, z: 0}

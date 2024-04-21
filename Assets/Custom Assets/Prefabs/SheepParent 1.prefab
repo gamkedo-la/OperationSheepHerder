@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8962650079861881031}
   - component: {fileID: 3884688776824101589}
   - component: {fileID: 1834324292720971507}
-  - component: {fileID: 4750037485171241609}
   - component: {fileID: 5642637392924491420}
   - component: {fileID: 787711279439224914}
   - component: {fileID: 950569593465716449}
+  - component: {fileID: 2972870552525124718}
   m_Layer: 7
   m_Name: SheepParent 1
   m_TagString: Sheep
@@ -60,7 +60,7 @@ MonoBehaviour:
   currentHealth: 30
   maxHealth: 30
   attackPower: 0
-  speed: 7
+  speed: 6.5
   attacker: {fileID: 0}
   safe: 0
   wanderTime: 5
@@ -68,7 +68,7 @@ MonoBehaviour:
   followTime: 10
   fleeTimerEnd: 5
   bellRadius: 50
-  fleeSpeed: 5
+  fleeSpeed: 8.5
   dog: {fileID: 0}
   barn: {fileID: 0}
   timer: {fileID: 0}
@@ -86,27 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTimeBetweenClips: 5
   maxTimeBetweenClips: 20
---- !u!65 &4750037485171241609
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792757998885314416}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.8, y: 2, z: 2.5}
-  m_Center: {x: -0.05, y: 1.5, z: 0.4}
 --- !u!195 &5642637392924491420
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -116,10 +95,10 @@ NavMeshAgent:
   m_GameObject: {fileID: 792757998885314416}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
-  m_Speed: 7
+  m_Radius: 2
+  m_Speed: 6.5
   m_Acceleration: 16
-  avoidancePriority: 10
+  avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
@@ -252,6 +231,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &2972870552525124718
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792757998885314416}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &898402279234985845
 GameObject:
   m_ObjectHideFlags: 0

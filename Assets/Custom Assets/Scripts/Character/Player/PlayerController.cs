@@ -104,7 +104,10 @@ public class PlayerController : Character
         }
         if (Target)
         {
-            transform.LookAt(Target.position);
+            if (transform.position.y < Target.position.y)
+            {
+                transform.LookAt(Target.position);
+            }
         }
         _animator.SetBool("AimAttack", true);
         Vector2 input = playerInput.FindAction("AimAttack", true).ReadValue<Vector2>();

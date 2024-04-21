@@ -5158,7 +5158,7 @@ GameObject:
   - component: {fileID: 1205004985828951357}
   - component: {fileID: 2195744543055461573}
   - component: {fileID: 6453891564545498698}
-  - component: {fileID: 8094620551968415014}
+  - component: {fileID: 4877943467622007415}
   m_Layer: 7
   m_Name: LittleDragonParent
   m_TagString: Enemy
@@ -5182,7 +5182,7 @@ Transform:
   - {fileID: 3509478773004447248}
   - {fileID: 2660477011744661017}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8220192565873506797
 MonoBehaviour:
@@ -5345,8 +5345,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &8094620551968415014
-BoxCollider:
+--- !u!136 &4877943467622007415
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5363,9 +5363,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 1.28, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.74, z: 0}
 --- !u!1001 &3695964802967207205
 PrefabInstance:
   m_ObjectHideFlags: 0

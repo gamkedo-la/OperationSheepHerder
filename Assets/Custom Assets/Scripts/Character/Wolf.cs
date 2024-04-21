@@ -134,10 +134,11 @@ public class Wolf : Enemy
                 }
 
             }
-           
+            else
+            {
+                previousTargetPosition = target.transform.position;
 
-            previousTargetPosition = target.transform.position;
-
+            }
         }
         if (step == FSM.Step.Update)
         {
