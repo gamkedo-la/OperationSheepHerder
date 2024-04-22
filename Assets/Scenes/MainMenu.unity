@@ -1003,6 +1003,7 @@ GameObject:
   - component: {fileID: 1198510911}
   - component: {fileID: 1198510910}
   - component: {fileID: 1198510909}
+  - component: {fileID: 1198510912}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -1075,13 +1076,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1198510912}
+        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
+        m_MethodName: InstantQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1125,6 +1126,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198510907}
   m_CullTransparentMesh: 1
+--- !u!114 &1198510912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198510907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6dd5c0da3404d12929f43577bbae49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1308295635
 GameObject:
   m_ObjectHideFlags: 0
