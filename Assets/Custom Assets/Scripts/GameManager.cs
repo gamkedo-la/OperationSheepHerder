@@ -179,6 +179,7 @@ public class GameManager : MonoBehaviour
     //used to transition from woods day to armageddon
     public void NextLevel()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(levelData[1].sceneName);
     }
 
@@ -187,6 +188,7 @@ public class GameManager : MonoBehaviour
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(true);
+            Time.timeScale = 0.5f;
         }
     }
 

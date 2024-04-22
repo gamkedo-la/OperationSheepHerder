@@ -53,9 +53,13 @@ public class Dragon : Enemy
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         fsm.OnUpdate();
+        if (uiHealthObject.activeSelf)
+        {
+            uiHealthObject.transform.LookAt(Camera.main.transform.position);
+        }
     }
 
     void FSM_Wait(FSM fsm, FSM.Step step, FSM.State state)

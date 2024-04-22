@@ -77,7 +77,7 @@ public class Wolf : Enemy
         fsm.OnSpawn(_chase);
         _agent.speed = speed;
     }
-    void FixedUpdate()
+    void Update()
     {
         if (_agent.velocity.sqrMagnitude > 0)
         {
@@ -88,6 +88,10 @@ public class Wolf : Enemy
             _animator.SetBool("IsMoving", false);
         }
         fsm.OnUpdate();
+        if (uiHealthObject.activeSelf)
+        {
+            uiHealthObject.transform.LookAt(Camera.main.transform.position);
+        }
     }
 
     //chase player or sheep to attack

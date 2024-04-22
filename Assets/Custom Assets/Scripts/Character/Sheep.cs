@@ -63,6 +63,11 @@ public class Sheep : Character
         {
             _animator.SetBool("IsWalking", false);
         }
+
+        if (uiHealthObject.activeSelf)
+        {
+            uiHealthObject.transform.LookAt(Camera.main.transform.position);
+        }
     }
 
     void FSM_Flee(FSM fsm, FSM.Step step, FSM.State state)
