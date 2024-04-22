@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class PlayButtonScript : MonoBehaviour
 {
+    bool alreadyClicked = false;
+
     public void HandlePlayButtonClick()
     {
+        if(alreadyClicked)
+        {
+            Debug.Log("Play already clicked, prevent staggered loading animation soft lock");
+            return;
+        }
+        alreadyClicked = true; // preventing bad state from repeat clicking
+
         if (LoadingManager.Instance == null)
         {
             Debug.LogError("LoadingManager instance is null");
