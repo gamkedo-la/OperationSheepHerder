@@ -50,7 +50,7 @@ MonoBehaviour:
   rockPrefab: {fileID: 1742592911594414998, guid: 0c0363b54630ae544940fcab69124c0e, type: 3}
   rockCount: 0
   maxRockCount: 5
-  launchVelocity: 15
+  launchVelocity: 20
 --- !u!114 &8507308350311247569
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,6 +47,7 @@ public class PlayerController : Character
         playerInput.Enable();
         playerInput.FindAction("LaunchAttack", true).started += _ => StartAiming();
         playerInput.FindAction("LaunchAttack", true).canceled += _ => EndAiming();
+        LockedOn = true;
     }
 
     public void OnLockOn()
