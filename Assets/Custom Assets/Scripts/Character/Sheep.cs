@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -32,6 +33,9 @@ public class Sheep : Character
     float safeRadiusWithPlayer = 5f;
 
     Vector2 followOffset;
+
+    float flashTimer = 0f;
+    bool flashRed = false;
 
     private void Start()
     {
@@ -68,6 +72,16 @@ public class Sheep : Character
         {
             uiHealthObject.transform.LookAt(Camera.main.transform.position);
         }
+
+/*        if (flashRed && flashTimer <= 1)
+        {
+            flashTimer += Time.deltaTime;
+            StartCoroutine(nameof(FlashRed));
+        }
+        else
+        {
+            flashRed = false;
+        }*/
     }
 
     void FSM_Flee(FSM fsm, FSM.Step step, FSM.State state)
@@ -244,9 +258,38 @@ public class Sheep : Character
         }
     }
 
+/*    IEnumerator FlashRed()
+    {
+        float flash = 1;
+
+        while (flash > 0 && flash <=1)
+        {
+            flash -= 0.05f;
+            transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetFloat("_Flash", flash);
+            yield return null;
+        }
+        StartCoroutine(FlashWhite());
+        yield break;
+
+    }
+
+    IEnumerator FlashWhite()
+    {
+        float flash = 0;
+
+        while (flash >= 0 && flash <= 1)
+        {
+            flash += 0.05f;
+            transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetFloat("_Flash", flash);
+            yield return null;
+        }
+
+        yield break;
+    }*/
     public override void TakeDamage(float damage, Weapon weapon = null, GameObject enemy = null)
     {
-        
+        flashRed = true;
+        flashTimer = 0;
         attacker = enemy;
         if (GameManager.instance.debugAll)
         {
