@@ -21,6 +21,8 @@ public class Dog : Character
     float idleRadius = 4f;
     AudioSource audioSource;
 
+    bool saveSheep;
+
     List<Enemy> activeEnemies;
 
     private void OnEnable()
@@ -101,6 +103,7 @@ public class Dog : Character
         if (step == FSM.Step.Enter)
         {
             //_animator.SetBool("isHerding", true);
+            saveSheep = false;
         }
 
         if (step == FSM.Step.Update)
@@ -108,33 +111,53 @@ public class Dog : Character
 
             Vector3 goToPoint;
 
-            if (GameManager.instance.farthestSheep != -1)
+            int sheepToTarget = GameManager.instance.farthestSheep;
+            if (sheepToTarget != -1 && sheepToTarget <= GameManager.instance.activeSheep.Count - 1)
             {
-                if (!GameManager.instance.activeSheep[GameManager.instance.farthestSheep])
+                if (!GameManager.instance.activeSheep[sheepToTarget])
                 {
                     return;
                 }
                 else
                 {
-                    goToPoint = GameManager.instance.activeSheep[GameManager.instance.farthestSheep].transform.position;
+                    if (!saveSheep)
+                    {
+                        goToPoint = GameManager.instance.activeSheep[sheepToTarget].transform.position;
+                        saveSheep = true;
+                    }
+                    else
+                    {
+                        goToPoint = player.transform.position;
+                        saveSheep = false;
+                    }
+
                 }
 
             }
             else
             {
                 goToPoint = player.transform.position;
+                saveSheep = false;
+            }
+
+            if (Vector3.Distance(goToPoint, player.transform.position) < 0.5f)
+            {
+                if (sheepToTarget != -1&& sheepToTarget <= GameManager.instance.activeSheep.Count - 1)
+                {
+                    goToPoint = GameManager.instance.activeSheep[sheepToTarget].transform.position;
+                }
             }
             if (Vector3.Distance(transform.position, goToPoint) <= idleRadius)
             {
-                if (GameManager.instance.farthestSheep != -1 && GameManager.instance.activeSheep[GameManager.instance.farthestSheep])
+                if (sheepToTarget != -1 && GameManager.instance.activeSheep[sheepToTarget])
                 {
-                    GameManager.instance.activeSheep[GameManager.instance.farthestSheep].ReturnToPlayer();
+                    Debug.Log("dog returns sheep");
+                    GameManager.instance.activeSheep[sheepToTarget].ReturnToPlayer();
+                    saveSheep = false;
                 }
             }
-            else
-            {
-                _agent.SetDestination(goToPoint);
-            }
+            _agent.SetDestination(goToPoint);
+
         }
 
         if (step == FSM.Step.Exit)

@@ -188,7 +188,8 @@ public class GameManager : MonoBehaviour
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(true);
-            Time.timeScale = 0.5f;
+            Time.timeScale = 0.2f;
+            player.GetComponent<PlayerController>().enabled = false;
         }
     }
 
