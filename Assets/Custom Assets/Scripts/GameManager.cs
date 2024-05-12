@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     public InputAction pauseAction;
 
+    public bool gameOver = false;
+    public bool win = false;
+
     /// <summary>
     /// Debug.Log all messages.
     /// </summary>
@@ -81,6 +84,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        win = false;
+        gameOver = false;
         Time.timeScale = 1.0f;
         StartCoroutine(CheckSheepDistanceFromPlayer());
     }
@@ -168,12 +173,17 @@ public class GameManager : MonoBehaviour
     }
     public void LevelComplete()
     {
-        player.GetComponent<PlayerController>().enabled = false;
-        levelCompletePanel.SetActive(true);
-        int sheepSaved = activeSheep.Count;
-        sheepSavedText.text = $"You saved {sheepSaved} sheep!";
-        int points = sheepSaved * currentLevelData.pointsPerSheep;
-        pointsText.text = $"{points} points";
+        if (!gameOver)
+        {
+            win = true;
+            player.GetComponent<PlayerController>().enabled = false;
+            levelCompletePanel.SetActive(true);
+            int sheepSaved = activeSheep.Count;
+            sheepSavedText.text = $"You saved {sheepSaved} sheep!";
+            int points = sheepSaved * currentLevelData.pointsPerSheep;
+            pointsText.text = $"{points} points";
+        }
+
     }
 
     //used to transition from woods day to armageddon
@@ -185,8 +195,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (gameOverPanel)
+        if (gameOverPanel && !win)
         {
+            gameOver = true;
             gameOverPanel.SetActive(true);
             Time.timeScale = 0.2f;
             player.GetComponent<PlayerController>().enabled = false;

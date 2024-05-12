@@ -346,9 +346,10 @@ MonoBehaviour:
   chaseRadius: 30
   packFollower: 0
   leader: {fileID: 0}
-  attackRadius: 4
+  attackRadius: 2
   attackTimerCooldown: 2
   timer: {fileID: 0}
+  wolf: {fileID: 11400000, guid: 98b94e17c5cf3e8419d66391c521dab0, type: 2}
 --- !u!114 &2078805577062617321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +378,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 200
-  m_StoppingDistance: 3
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 0

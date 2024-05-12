@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using Unity.AI.Navigation;
 using UnityEngine.Android;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Wolf : Enemy
 {
@@ -29,6 +30,9 @@ public class Wolf : Enemy
 
     [SerializeField]
     Timer timer;
+
+    [SerializeField]
+    EnemyType wolf;
 
     FSM fsm;
     FSM.State _chase, _attack, _die;
@@ -74,23 +78,33 @@ public class Wolf : Enemy
     {
         activeEnemies = GameManager.instance.activeEnemies.FindAll(enemy => enemy.name.Contains("Wolf"));
         activeSheep = GameManager.instance.activeSheep;
-        fsm.OnSpawn(_chase);
+        if (SceneManager.GetActiveScene().name.Equals("WoodsDay"))
+        {
+            _agent.enabled = false;
+        }
+        else
+        {
+            fsm.OnSpawn(_chase);
+        }
         _agent.speed = speed;
     }
     void Update()
     {
-        if (_agent.velocity.sqrMagnitude > 0)
+        if (_agent.enabled)
         {
-            _animator.SetBool("IsMoving", true);
-        }
-        else
-        {
-            _animator.SetBool("IsMoving", false);
-        }
-        fsm.OnUpdate();
-        if (uiHealthObject.activeSelf)
-        {
-            uiHealthObject.transform.LookAt(Camera.main.transform.position);
+            if (_agent.velocity.sqrMagnitude > 0)
+            {
+                _animator.SetBool("IsMoving", true);
+            }
+            else
+            {
+                _animator.SetBool("IsMoving", false);
+            }
+            fsm.OnUpdate();
+            if (uiHealthObject.activeSelf)
+            {
+                uiHealthObject.transform.LookAt(Camera.main.transform.position);
+            }
         }
     }
 
@@ -218,7 +232,6 @@ public class Wolf : Enemy
                 fsm.TransitionTo(_chase);
             }
 
-            //TODO: Test fix
             else if (target.CompareTag("Enemy") && target.name.Contains("Wolf"))
             {
                 target = null;
@@ -230,7 +243,6 @@ public class Wolf : Enemy
         }
         if (step == FSM.Step.Update)
         {
-
             if (target != null)
             {
                 if (Vector3.Distance(transform.position, target.transform.position) > attackRadius)
@@ -241,7 +253,7 @@ public class Wolf : Enemy
 
                 else
                 {
-                    if (!cooldownTimerActive)
+                    if (!cooldownTimerActive && !GameManager.instance.win && !GameManager.instance.gameOver)
                     {
                         transform.LookAt(target.transform.position);
                         target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
@@ -268,6 +280,7 @@ public class Wolf : Enemy
         if (step == FSM.Step.Enter)
         {
             player.GetComponent<PlayerController>().LockedOn = false;
+
             if (GameManager.instance.debugAll || GameManager.instance.debugFSM)
             {
                 Debug.Log("wolf died");

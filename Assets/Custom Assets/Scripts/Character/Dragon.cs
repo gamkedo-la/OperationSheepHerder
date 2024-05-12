@@ -150,6 +150,9 @@ public class Dragon : Enemy
             {
                 Debug.Log("Play FireSound & VFX");
             }
+            //emmit fire from FireVFX
+            FireVFX.Play();
+            audioSource.Play();
         }
 
         if (step == FSM.Step.Update)
@@ -162,13 +165,11 @@ public class Dragon : Enemy
                 }
 
                 transform.LookAt(target.transform.position);
-                if (!cooldownTimerActive)
+                if (!cooldownTimerActive && !GameManager.instance.win && !GameManager.instance.gameOver)
                 {
-                    //emmit fire from FireVFX
-                    FireVFX.Play();
-                    audioSource.Play();
                     target.GetComponent<Character>().TakeDamage(attackPower, null, this.gameObject);
                     StartCoroutine(timer.CooldownTimer(attackTimerCooldown, this));
+                    fsm.TransitionTo(_chase);
                 }
             }
             else

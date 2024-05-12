@@ -114,7 +114,11 @@ public class RockTrajectory : MonoBehaviour
             i++;
             time += dt;
             currentPosition = startPosition + time * currentVelocity;
-            currentPosition.y += player.Target.GetChild(0).GetChild(0).localPosition.y * player.Target.localScale.y * 2;
+            if (currentPosition.y < player.Target.position.y)
+            {
+                currentPosition.y += player.Target.GetChild(0).GetChild(0).localPosition.y * player.Target.localScale.y * 2;
+
+            }
             //currentPosition.y = startPosition.y + (currentVelocity.y * time + (Physics.gravity.y / 2f * time * time));
             if ((currentPosition - player.transform.position).magnitude > Vector3.Distance(player.Target.position, player.transform.position))
             {

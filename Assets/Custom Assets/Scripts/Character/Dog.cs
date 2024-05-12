@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 /*
  * -dog follows player with sheep, unless a sheep has strayed then dog will leave player to retrieve sheep
@@ -76,7 +77,10 @@ public class Dog : Character
             
             if (activeEnemies != null && activeEnemies.Count > 0) 
             {
-                fsm.TransitionTo(_herd);
+                if (!SceneManager.GetActiveScene().name.Equals("WoodsDay"))
+                {
+                    fsm.TransitionTo(_herd);
+                }
             }
         }
 
